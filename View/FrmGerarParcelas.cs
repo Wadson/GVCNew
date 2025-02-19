@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using ComponentFactory.Krypton.Toolkit;
-using System.Data.SqlClient;
+using System.Data.SqlServerCe;
 using SisControl.DALL;
 using static SisControl.View.FrmContaReceberr;
 
@@ -171,9 +171,9 @@ namespace SisControl.View
         //        }
         //    }
         //}
-        //private bool VendaExiste(int vendaID, SqlConnection connection, SqlTransaction transaction)
+        //private bool VendaExiste(int vendaID, SqlCeConnection connection, SqlCeTransaction transaction)
         //{
-        //    using (SqlCommand cmd = new SqlCommand("SELECT COUNT(*) FROM Venda WHERE VendaID = @VendaID", connection, transaction))
+        //    using (SqlCeCommand cmd = new SqlCeCommand("SELECT COUNT(*) FROM Venda WHERE VendaID = @VendaID", connection, transaction))
         //    {
         //        cmd.Parameters.AddWithValue("@VendaID", vendaID);
         //        return (int)cmd.ExecuteScalar() > 0;
@@ -223,7 +223,7 @@ namespace SisControl.View
         }
 
        
-        public void InserirParcelas(SqlConnection connection, SqlTransaction transaction)
+        public void InserirParcelas(SqlCeConnection connection, SqlCeTransaction transaction)
         {
             List<ParcelaModel> parcelas = new List<ParcelaModel>();
 

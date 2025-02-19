@@ -19,17 +19,19 @@ namespace SisControl
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            //// Criar a tela de login
+            // Criar a tela de login
             //FrmLogin frmLogin = new FrmLogin();
             //if (frmLogin.ShowDialog() == DialogResult.OK) // Se o login for bem-sucedido
             //{
-            //    Application.Run(new FrmPrincipal()); // Abre a tela principal
+            //    Application.Run(new FrmPrincipalTela()); // Abre a tela principal
             //}
             //else
             //{
             //    Application.Exit(); // Fecha o aplicativo se o login for cancelado
             //}
-            Application.Run(new FrmPrincipal());
+
+
+            Application.Run(new FrmPrincipalTela());
 
         }
     }

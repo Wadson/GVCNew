@@ -2,7 +2,7 @@
 using SisControl.MODEL;
 using System;
 using System.Collections.Generic;
-using System.Data.SqlClient;
+using System.Data.SqlServerCe;
 using System.Data;
 using System.Linq;
 using System.Text;
@@ -87,9 +87,9 @@ namespace SisControl.BLL
             var conn = Conexao.Conex();
             try
             {
-                SqlCommand sql = new SqlCommand("SELECT * FROM Usuario WHERE NomeUsuario like '" + pesquisa + "%'", conn);
+                SqlCeCommand sql = new SqlCeCommand("SELECT * FROM Usuario WHERE NomeUsuario like '" + pesquisa + "%'", conn);
                 conn.Open();
-                SqlDataReader datareader;
+                SqlCeDataReader datareader;
                 UsuarioMODEL obj_usuario = new UsuarioMODEL();
                 datareader = sql.ExecuteReader(CommandBehavior.CloseConnection);
 
@@ -114,9 +114,9 @@ namespace SisControl.BLL
             var conn = Conexao.Conex();
             try
             {
-                SqlCommand sql = new SqlCommand("SELECT * FROM Usuario WHERE UsuarioID like '" + pesquisa + "%'", conn);
+                SqlCeCommand sql = new SqlCeCommand("SELECT * FROM Usuario WHERE UsuarioID like '" + pesquisa + "%'", conn);
                 conn.Open();
-                SqlDataReader datareader;
+                SqlCeDataReader datareader;
                 UsuarioMODEL obj_usuario = new UsuarioMODEL();
                 datareader = sql.ExecuteReader(CommandBehavior.CloseConnection);
 

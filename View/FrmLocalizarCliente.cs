@@ -10,14 +10,23 @@ namespace SisControl.View
         protected int LinhaAtual = -1;
         private int _clienteID;
         public int numeroComZeros { get; set; }
-        public string nomeCliente { get; set; }
+        public string ClienteSelecionado { get; set; }
 
         private Form _formChamador;
-        public FrmLocalizarCliente(Form formChamador)
+        public FrmLocalizarCliente(Form formChamador, string textoDigitado)
         {
             InitializeComponent();
 
-            _formChamador = formChamador;
+            // Verifica se o formulário chamador é válido
+            if (formChamador != null)
+            {
+                this._formChamador = formChamador;
+            }
+            txtPesquisa.Text = textoDigitado;
+            txtPesquisa.SelectionStart = txtPesquisa.Text.Length;
+            PesquisarCliente();
+
+            //_formChamador = formChamador;
             dataGridPesquisar.SelectionChanged += dataGridPesquisar_SelectionChanged;
             txtPesquisa.TextChanged += txtPesquisa_TextChanged;
             this.dataGridPesquisar.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dataGridPesquisar_KeyDown);
@@ -38,15 +47,8 @@ namespace SisControl.View
             dataGridPesquisar.Columns["Telefone"].HeaderText = "Telefone";
             dataGridPesquisar.Columns["Email"].HeaderText = "E-mail";
             dataGridPesquisar.Columns["CidadeID"].HeaderText = "Cód. Cidade";
-            dataGridPesquisar.Columns["NomeCidade"].HeaderText = "Nome da Cidade";           
-            dataGridPesquisar.Columns["NomeEstado"].HeaderText = "Nome do Estado";          
-
-            // Ocultar coluna de Código (exemplo: CidadeID)
-            //dataGridPesquisar.Columns["CidadeID"].Visible = false;
-            //dataGridPesquisar.Columns["ClienteID"].Visible = false;
-            //dataGridPesquisar.Columns["EstadoID"].Visible = false;
-            // Definir tamanhos das colunas
-            //this.dataGridPesquisar.Columns["ClienteID"].Width = 100;
+            dataGridPesquisar.Columns["NomeCidade"].HeaderText = "Nome da Cidade";
+            dataGridPesquisar.Columns["NomeEstado"].HeaderText = "Nome do Estado";
 
             // Ajustar colunas automaticamente
             dataGridPesquisar.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
@@ -56,7 +58,22 @@ namespace SisControl.View
 
             // Centralizar coluna de Estoque (exemplo: NomeCidade)
             //this.dataGridPesquisar.Columns["NomeCidade"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+
+            // Configurar fundo amarelo claro
+            dataGridPesquisar.DefaultCellStyle.BackColor = System.Drawing.Color.LightYellow; // Fundo amarelo claro
+
+            // Ajustar largura do cabeçalho da linha
+            dataGridPesquisar.RowHeadersWidth = 10; // Definir largura do cabeçalho da linha
+                                                    // Ajustar largura dos cabeçalhos das colunas
+            foreach (DataGridViewColumn column in dataGridPesquisar.Columns)
+            {
+                column.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter; // Centralizar cabeçalho da coluna
+                column.HeaderCell.Style.WrapMode = DataGridViewTriState.False; // Evitar quebra de texto no cabeçalho
+                column.Width = 100; // Definir largura específica para cada coluna
+            }
         }
+
+
 
         public void ListarCliente()
         {
@@ -71,7 +88,7 @@ namespace SisControl.View
             ListarCliente();
         }
 
-        private void txtPesquisa_TextChanged(object sender, EventArgs e)
+        private void PesquisarCliente()
         {
             string textoPesquisa = txtPesquisa.Text.ToLower();
 
@@ -87,6 +104,10 @@ namespace SisControl.View
                 dataGridPesquisar.DataSource = dao.PesquisarPorNome(nome);
             }
         }
+        private void txtPesquisa_TextChanged(object sender, EventArgs e)
+        {
+           PesquisarCliente();
+        }
 
         private void btnSair_Click(object sender, EventArgs e)
         {
@@ -99,62 +120,117 @@ namespace SisControl.View
         }
 
         private bool isSelectingProduct = false;
-
+        private Form formChamador;
         private void SelecionarCliente()
+{
+    if (isSelectingProduct) return;
+    isSelectingProduct = true;
+
+    try
+    {
+        if (LinhaAtual < 0 || LinhaAtual >= dataGridPesquisar.Rows.Count)
         {
-            if (isSelectingProduct) return;
-            isSelectingProduct = true;
-
-            try
-            {
-                if (LinhaAtual < 0 || LinhaAtual >= dataGridPesquisar.Rows.Count)
-                {
-                    MessageBox.Show("Linha inválida.");
-                    return;
-                }
-
-                if (dataGridPesquisar["ClienteID", LinhaAtual]?.Value == null ||
-                    dataGridPesquisar["NomeCliente", LinhaAtual]?.Value == null)
-                {
-                    MessageBox.Show("Dados do cliente inválidos.");
-                    return;
-                }
-
-                _clienteID = int.Parse(dataGridPesquisar["ClienteID", LinhaAtual].Value.ToString());
-                nomeCliente = dataGridPesquisar["NomeCliente", LinhaAtual].Value.ToString();
-
-                if (this.Owner is FrmPedidoVendaNovo frmPedidoVendaNovo)
-                {
-                    frmPedidoVendaNovo.ClienteID = _clienteID;
-                    frmPedidoVendaNovo.txtNomeCliente.Text = nomeCliente;
-                }
-                else if (this.Owner is FrmContaReceberr frmContaReceberr)
-                {
-                    frmContaReceberr.clienteID = _clienteID;
-                    frmContaReceberr.txtNomeCliente.Text = nomeCliente;
-                }
-                else if (this.Owner is FrmRelatorios frmRelatorios)
-                {
-                    frmRelatorios.txtClienteID.Text = _clienteID.ToString();
-                    frmRelatorios.txtNomeCliente.Text = nomeCliente;
-                }
-                else if (this.Owner is RelClienteContaAberta frmRelGeralContasAbertas)
-                {
-                    //frmRelGeralContasAbertas.txtClienteID.Text = ClienteID.ToString();
-                    frmRelGeralContasAbertas.txtNomeCliente.Text = nomeCliente;
-                }
-                else
-                {
-                    MessageBox.Show("O formulário chamador não é reconhecido.");
-                }
-
-                this.Close();
-            }
-            finally
-            {
-                isSelectingProduct = false;
-            }
+            MessageBox.Show("Linha inválida.");
+            return;
         }
+
+        if (dataGridPesquisar["ClienteID", LinhaAtual]?.Value == null ||
+            dataGridPesquisar["NomeCliente", LinhaAtual]?.Value == null)
+        {
+            MessageBox.Show("Dados do cliente inválidos.");
+            return;
+        }
+
+        _clienteID = int.Parse(dataGridPesquisar["ClienteID", LinhaAtual].Value.ToString());
+        ClienteSelecionado = dataGridPesquisar["NomeCliente", LinhaAtual].Value.ToString();
+
+        if (this.Owner is FrmPedidoVendaNovo frmPedidoVendaNovo)
+        {
+            frmPedidoVendaNovo.ClienteID = _clienteID;
+            frmPedidoVendaNovo.txtNomeCliente.Text = ClienteSelecionado;
+        }
+        else if (this.Owner is FrmContaReceberr frmContaReceberr)
+        {
+            frmContaReceberr.clienteID = _clienteID;
+            frmContaReceberr.txtNomeCliente.Text = ClienteSelecionado;
+        }
+        else if (this.Owner is FrmRelatorios frmRelatorios)
+        {
+            frmRelatorios.txtClienteID.Text = _clienteID.ToString();
+            frmRelatorios.txtNomeCliente.Text = ClienteSelecionado;
+        }
+        else if (this.Owner is RelClienteContaAberta frmRelGeralContasAbertas)
+        {
+            frmRelGeralContasAbertas.txtNomeCliente.Text = ClienteSelecionado;
+        }
+        else
+        {
+            MessageBox.Show("O formulário chamador não é reconhecido.");
+        }
+
+        this.DialogResult = DialogResult.OK; // Confirma que um cliente foi selecionado
+        this.Close();
+    }
+    finally
+    {
+        isSelectingProduct = false;
+    }
+}
+        //private void SelecionarCliente()
+        //{
+        //    if (isSelectingProduct) return;
+        //    isSelectingProduct = true;
+
+        //    try
+        //    {
+        //        if (LinhaAtual < 0 || LinhaAtual >= dataGridPesquisar.Rows.Count)
+        //        {
+        //            MessageBox.Show("Cliente não encontrado!.");
+        //            return;
+        //        }
+
+        //        if (dataGridPesquisar["ClienteID", LinhaAtual]?.Value == null ||
+        //            dataGridPesquisar["NomeCliente", LinhaAtual]?.Value == null)
+        //        {
+        //            MessageBox.Show("Dados do cliente inválidos.");
+        //            return;
+        //        }
+
+        //        _clienteID = int.Parse(dataGridPesquisar["ClienteID", LinhaAtual].Value.ToString());
+        //        ClienteSelecionado = dataGridPesquisar["NomeCliente", LinhaAtual].Value.ToString();
+
+        //        if (this.Owner is FrmPedidoVendaNovo frmPedidoVendaNovo)
+        //        {
+        //            frmPedidoVendaNovo.ClienteID = _clienteID;
+        //            frmPedidoVendaNovo.txtNomeCliente.Text = ClienteSelecionado;
+        //        }
+        //        else if (this.Owner is FrmContaReceberr frmContaReceberr)
+        //        {
+        //            frmContaReceberr.clienteID = _clienteID;
+        //            frmContaReceberr.txtNomeCliente.Text = ClienteSelecionado;
+        //        }
+        //        else if (this.Owner is FrmRelatorios frmRelatorios)
+        //        {
+        //            frmRelatorios.txtClienteID.Text = _clienteID.ToString();
+        //            frmRelatorios.txtNomeCliente.Text = ClienteSelecionado;
+        //        }
+        //        else if (this.Owner is RelClienteContaAberta frmRelGeralContasAbertas)
+        //        {
+        //            //frmRelGeralContasAbertas.txtClienteID.Text = ClienteID.ToString();
+        //            frmRelGeralContasAbertas.txtNomeCliente.Text = ClienteSelecionado;
+        //        }
+        //        else
+        //        {
+        //            MessageBox.Show("O formulário chamador não é reconhecido.");
+        //        }
+
+        //        this.Close();
+        //    }
+        //    finally
+        //    {
+        //        isSelectingProduct = false;
+        //    }
+        //}
 
 
 
@@ -168,7 +244,13 @@ namespace SisControl.View
 
         private void dataGridPesquisar_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            this.Close();
+            if (e.RowIndex >= 0)
+            {
+                ClienteSelecionado = dataGridPesquisar.Rows[e.RowIndex].Cells["NomeCliente"].Value.ToString();
+
+                this.DialogResult = DialogResult.OK; // Indica que a seleção foi feita corretamente
+                this.Close();
+            }
         }
 
         private void txtPesquisa_KeyDown(object sender, KeyEventArgs e)

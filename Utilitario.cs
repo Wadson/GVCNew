@@ -1,6 +1,6 @@
 using System;
 using System.Collections.Generic;
-using System.Data.SqlClient;
+using System.Data.SqlServerCe;
 using System.Data;
 using System.Linq;
 using System.Text;
@@ -19,7 +19,7 @@ namespace SisControl
     public static class Utilitario
     {
         
-        private static readonly SqlConnection conn = Conexao.Conex();
+        private static readonly SqlCeConnection conn = Conexao.Conex();
         public static string RemoverZerosAEsquerda(string valor)
         {
             if (string.IsNullOrEmpty(valor))
@@ -95,7 +95,7 @@ namespace SisControl
 
             using (var connection = Conexao.Conex())
             {
-                SqlCommand command = new SqlCommand(query, connection);
+                SqlCeCommand command = new SqlCeCommand(query, connection);
                 command.Parameters.AddWithValue("@Codigo", codigo);
 
                 try
@@ -104,7 +104,7 @@ namespace SisControl
                     Console.WriteLine("Conexão aberta com sucesso.");
                     Console.WriteLine($"Executando a query: {query}");
 
-                    SqlDataReader reader = command.ExecuteReader();
+                    SqlCeDataReader reader = command.ExecuteReader();
                     if (reader.Read())
                     {
                         resultado = reader[0].ToString(); // Acessando o primeiro resultado da consulta
@@ -136,12 +136,12 @@ namespace SisControl
         {
             int proximoCodigo = 1; // Valor inicial padrão
 
-            using (SqlConnection conn = Conexao.Conex()) // Inicializando a conexão aqui
+            using (SqlCeConnection conn = Conexao.Conex()) // Inicializando a conexão aqui
             {
                 try
                 {
                     conn.Open();
-                    using (SqlCommand cmd = new SqlCommand(query, conn))
+                    using (SqlCeCommand cmd = new SqlCeCommand(query, conn))
                     {
                         var result = cmd.ExecuteScalar();
                         if (result != DBNull.Value)
@@ -150,7 +150,7 @@ namespace SisControl
                         }
                     }
                 }
-                catch (SqlException sqlEx)
+                catch (SqlCeException sqlEx)
                 {
                     // Tratar exceção de SQL
                     Console.WriteLine($"Erro de SQL: {sqlEx.Message}");
@@ -191,7 +191,7 @@ namespace SisControl
             {
                 string query = $"SELECT MAX({nomeCampo}) FROM {nomeDaTabela}";
 
-                SqlCommand command = new SqlCommand(query, connection);
+                SqlCeCommand command = new SqlCeCommand(query, connection);
 
                 connection.Open();
                 object result = command.ExecuteScalar();
@@ -261,10 +261,10 @@ namespace SisControl
         // Método para preencher ComboBox
         public static void PreencherComboBox(ComboBox comboBox, string query, string nome, string Id)
         {            
-            using (SqlCommand cmd = new SqlCommand(query, conn))
+            using (SqlCeCommand cmd = new SqlCeCommand(query, conn))
             {
                 conn.Open();
-                using (SqlDataReader reader = cmd.ExecuteReader())
+                using (SqlCeDataReader reader = cmd.ExecuteReader())
                 {
                     DataTable dt = new DataTable();
                     dt.Load(reader);
@@ -278,10 +278,10 @@ namespace SisControl
         }
         public static void PreencherComboBoxKrypton(KryptonComboBox comboBox, string query, string nome, string Id)
         {
-            using (SqlCommand cmd = new SqlCommand(query, conn))
+            using (SqlCeCommand cmd = new SqlCeCommand(query, conn))
             {
                 conn.Open();
-                using (SqlDataReader reader = cmd.ExecuteReader())
+                using (SqlCeDataReader reader = cmd.ExecuteReader())
                 {
                     DataTable dt = new DataTable();
                     dt.Load(reader);
@@ -299,7 +299,7 @@ namespace SisControl
             using (var connection = Conexao.Conex())
             {
                 //string query = "SELECT CategoriaID FROM Categoria WHERE NomeCategoria = @NomeCategoria";
-                SqlCommand command = new SqlCommand(query, connection);
+                SqlCeCommand command = new SqlCeCommand(query, connection);
                 command.Parameters.AddWithValue(NomeParametro, nomePesquisar);
 
                 try
@@ -322,13 +322,13 @@ namespace SisControl
         {
             using (var connection = Conexao.Conex())
             {
-                SqlCommand command = new SqlCommand(query, connection);
+                SqlCeCommand command = new SqlCeCommand(query, connection);
                 command.Parameters.AddWithValue(nomeParametro, nomePesquisar);
 
                 try
                 {
                     connection.Open();
-                    SqlDataAdapter dataAdapter = new SqlDataAdapter(command);
+                    SqlCeDataAdapter dataAdapter = new SqlCeDataAdapter(command);
                     DataTable dataTable = new DataTable();
                     dataAdapter.Fill(dataTable);
 
@@ -352,13 +352,13 @@ namespace SisControl
         {
             using (var connection = Conexao.Conex())
             {
-                SqlCommand command = new SqlCommand(query, connection);
+                SqlCeCommand command = new SqlCeCommand(query, connection);
                 command.Parameters.AddWithValue(nomeParametro, valorParametro);
 
                 try
                 {
                     connection.Open();
-                    SqlDataAdapter dataAdapter = new SqlDataAdapter(command);
+                    SqlCeDataAdapter dataAdapter = new SqlCeDataAdapter(command);
                     DataTable dataTable = new DataTable();
                     dataAdapter.Fill(dataTable);
 
@@ -383,13 +383,13 @@ namespace SisControl
         {
             using (var connection = Conexao.Conex())
             {
-                SqlCommand command = new SqlCommand(query, connection);
+                SqlCeCommand command = new SqlCeCommand(query, connection);
                 command.Parameters.AddWithValue(parametroCodigo, codigoPesquisar);
 
                 try
                 {
                     connection.Open();
-                    SqlDataReader reader = command.ExecuteReader();
+                    SqlCeDataReader reader = command.ExecuteReader();
 
                     if (reader.Read())
                     {
@@ -412,13 +412,13 @@ namespace SisControl
         {
             using (var connection = Conexao.Conex())
             {
-                SqlCommand command = new SqlCommand(query, connection);
+                SqlCeCommand command = new SqlCeCommand(query, connection);
                 command.Parameters.AddWithValue(nomeParametro, parametro);
 
                 try
                 {
                     connection.Open();
-                    SqlDataReader reader = command.ExecuteReader();
+                    SqlCeDataReader reader = command.ExecuteReader();
 
                     if (reader.Read())
                     {
@@ -441,14 +441,14 @@ namespace SisControl
         {
             try
             {
-                using (SqlConnection conn = Conexao.Conex())
+                using (SqlCeConnection conn = Conexao.Conex())
                 {
                     conn.Open();
-                    using (SqlCommand cmd = new SqlCommand(query, conn))
+                    using (SqlCeCommand cmd = new SqlCeCommand(query, conn))
                     {
                         cmd.Parameters.AddWithValue(nomeParametro, valorParametro);
 
-                        using (SqlDataReader reader = cmd.ExecuteReader())
+                        using (SqlCeDataReader reader = cmd.ExecuteReader())
                         {
                             DataTable dt = new DataTable();
                             dt.Load(reader);
@@ -476,14 +476,14 @@ namespace SisControl
         {
             using (var connection = Conexao.Conex())
             {
-                SqlCommand command = new SqlCommand(query, connection);
+                SqlCeCommand command = new SqlCeCommand(query, connection);
                 command.Parameters.AddWithValue(nomeParametroInicio, dataVencimentoInicio);
                 command.Parameters.AddWithValue(nomeParametroFim, dataVencimentoFim);
 
                 try
                 {
                     connection.Open();
-                    SqlDataAdapter dataAdapter = new SqlDataAdapter(command);
+                    SqlCeDataAdapter dataAdapter = new SqlCeDataAdapter(command);
                     DataTable dataTable = new DataTable();
                     dataAdapter.Fill(dataTable);
 
@@ -610,7 +610,7 @@ private void FrmMeuFormulario_Load(object sender, EventArgs e)
         {                      
             using (conn)
             {
-                using (SqlCommand comando = new SqlCommand(query, conn))
+                using (SqlCeCommand comando = new SqlCeCommand(query, conn))
                 {
                     try
                     {
@@ -623,7 +623,7 @@ private void FrmMeuFormulario_Load(object sender, EventArgs e)
                         }
 
                         // Configuração do DataAdapter
-                        SqlDataAdapter da = new SqlDataAdapter
+                        SqlCeDataAdapter da = new SqlCeDataAdapter
                         {
                             SelectCommand = comando
                         };
@@ -641,7 +641,7 @@ private void FrmMeuFormulario_Load(object sender, EventArgs e)
                         // Atribuição dos dados ao DataGridView
                         dataGridView.DataSource = dtGeral;
                     }
-                    catch (SqlException sqlEx)
+                    catch (SqlCeException sqlEx)
                     {
                         MessageBox.Show($"Erro de SQL: {sqlEx.Message}", "Erro de SQL", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
@@ -773,14 +773,14 @@ private void FrmMeuFormulario_Load(object sender, EventArgs e)
             decimal soma = 0;            
             using (conn)
             {
-                using (SqlCommand comando = new SqlCommand(query, conn))
+                using (SqlCeCommand comando = new SqlCeCommand(query, conn))
                 {
                     try
                     {
                         conn.Open();
                         soma = Convert.ToDecimal(comando.ExecuteScalar());
                     }
-                    catch (SqlException sqlEx)
+                    catch (SqlCeException sqlEx)
                     {
                         MessageBox.Show($"Erro de SQL: {sqlEx.Message}", "Erro de SQL", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
@@ -807,7 +807,7 @@ private void FrmMeuFormulario_Load(object sender, EventArgs e)
         {
             using (conn)
             {
-                using (SqlCommand comando = new SqlCommand(query, conn))
+                using (SqlCeCommand comando = new SqlCeCommand(query, conn))
                 {
                     foreach (var parametro in parametros)
                     {
@@ -820,7 +820,7 @@ private void FrmMeuFormulario_Load(object sender, EventArgs e)
                         var result = comando.ExecuteScalar();
                         return result != null && result != DBNull.Value;
                     }
-                    catch (SqlException sqlEx)
+                    catch (SqlCeException sqlEx)
                     {
                         // Trate a exceção de SQL conforme necessário
                         Console.WriteLine($"Erro de SQL: {sqlEx.Message}");
@@ -933,7 +933,7 @@ private void FrmMeuFormulario_Load(object sender, EventArgs e)
 
             using (conn)
             {
-                using (SqlCommand comando = new SqlCommand(query, conn))
+                using (SqlCeCommand comando = new SqlCeCommand(query, conn))
                 {
                     comando.Parameters.AddWithValue("@valor", valor);
 
@@ -943,7 +943,7 @@ private void FrmMeuFormulario_Load(object sender, EventArgs e)
                         var result = comando.ExecuteScalar();
                         return result != null && Convert.ToInt32(result) > 0;
                     }
-                    catch (SqlException sqlEx)
+                    catch (SqlCeException sqlEx)
                     {
                         // Trate a exceção de SQL conforme necessário
                         Console.WriteLine($"Erro de SQL: {sqlEx.Message}");
@@ -1298,7 +1298,7 @@ private void FrmMeuFormulario_Load(object sender, EventArgs e)
         {
             using (var connection = Conexao.Conex())
             {
-                using (var command = new SqlCommand(query, connection))
+                using (var command = new SqlCeCommand(query, connection))
                 {
                     if (parametros != null)
                     {
@@ -1308,7 +1308,7 @@ private void FrmMeuFormulario_Load(object sender, EventArgs e)
                         }
                     }
 
-                    var adapter = new SqlDataAdapter(command);
+                    var adapter = new SqlCeDataAdapter(command);
                     var dataTable = new DataTable();
                     adapter.Fill(dataTable);
                     grid.DataSource = dataTable;
@@ -1328,12 +1328,12 @@ private void FrmMeuFormulario_Load(object sender, EventArgs e)
                 try
                 {
                     DataTable dt = new DataTable();
-                    SqlCommand comando = new SqlCommand("SELECT NomeProduto, PrecoDeVenda FROM Produtos WHERE Referencia = @Referencia", conn);
+                    SqlCeCommand comando = new SqlCeCommand("SELECT NomeProduto, PrecoDeVenda FROM Produtos WHERE Referencia = @Referencia", conn);
                     comando.Parameters.AddWithValue("@Referencia", referencia);
 
                     conn.Open();
 
-                    SqlDataAdapter da = new SqlDataAdapter(comando);
+                    SqlCeDataAdapter da = new SqlCeDataAdapter(comando);
                     da.Fill(dt);
 
                     if (dt.Rows.Count > 0)
@@ -1376,14 +1376,14 @@ private void FrmMeuFormulario_Load(object sender, EventArgs e)
 
             try
             {
-                using (SqlConnection conexao = Conexao.Conex())
+                using (SqlCeConnection conexao = Conexao.Conex())
                 {
                     conexao.Open();
-                    SqlCommand comando = new SqlCommand(query, conexao);
+                    SqlCeCommand comando = new SqlCeCommand(query, conexao);
                     comando.Parameters.AddWithValue("@Referencia", referencia);
 
                     // Executa a consulta e obtém o resultado
-                    using (SqlDataReader reader = comando.ExecuteReader())
+                    using (SqlCeDataReader reader = comando.ExecuteReader())
                     {
                         if (reader.Read())
                         {

@@ -1,17 +1,22 @@
 ﻿using System;
 using System.Data;
-using System.Data.SqlClient;
-using System.Configuration; // Adicione este namespace
+using System.Data.SqlServerCe;
+using System.Configuration;
+using System.IO; // Adicione este namespace
 
 namespace SisControl
 {
     internal class Conexao
     {
         // Método para obter a string de conexão dinamicamente
+
         private static string GetConnectionString()
         {
-            string nomeServidor = Environment.MachineName + @"\SQLEXPRESS"; // Obtém o nome do computador
-            string connString = $@"Data Source={nomeServidor};Initial Catalog=bdsiscontrol;Integrated Security=True;";
+            // Define o caminho do banco de dados SQL Compact (.sdf)
+            string dbFilePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "bdsiscontrol.sdf");
+
+            // Monta a string de conexão para SQL Compact 4.0
+            string connString = $@"Data Source={dbFilePath};Persist Security Info=False;";
 
             // Verifica se a string de conexão no App.config precisa ser atualizada
             var config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
@@ -19,7 +24,7 @@ namespace SisControl
 
             if (settings == null)
             {
-                config.ConnectionStrings.ConnectionStrings.Add(new ConnectionStringSettings("ConexaoDB", connString, "Microsoft.Data.SqlClient"));
+                config.ConnectionStrings.ConnectionStrings.Add(new ConnectionStringSettings("ConexaoDB", connString, "System.Data.SqlServerCe.4.0"));
             }
             else if (settings.ConnectionString != connString)
             {
@@ -32,27 +37,29 @@ namespace SisControl
             return connString;
         }
 
-        public static SqlConnection Conex()
+
+
+        public static SqlCeConnection Conex()
         {
             try
             {
                 string conn = GetConnectionString(); // Obtém a string de conexão
-                SqlConnection myConn = new SqlConnection(conn);
+                SqlCeConnection myConn = new SqlCeConnection(conn);
                 return myConn;
             }
-            catch (SqlException ex)
+            catch (SqlCeException ex)
             {
                 throw new Exception("Erro ao conectar ao banco de dados: " + ex.Message);
             }
         }
 
-        public static SqlDataReader Sql_DataReader(string queryString)
+        public static SqlCeDataReader Sql_DataReader(string queryString)
         {
             var conexao = Conex();
             conexao.Open();
 
-            SqlCommand comando = new SqlCommand(queryString, conexao);
-            SqlDataReader reader = comando.ExecuteReader();
+            SqlCeCommand comando = new SqlCeCommand(queryString, conexao);
+            SqlCeDataReader reader = comando.ExecuteReader();
 
             return reader;
         }
@@ -65,7 +72,7 @@ namespace SisControl
             try
             {
                 conexao.Open();
-                SqlDataAdapter adapter = new SqlDataAdapter(query_String, conexao);
+                SqlCeDataAdapter adapter = new SqlCeDataAdapter(query_String, conexao);
                 adapter.Fill(DataTableC);
             }
             catch (Exception ex)
@@ -87,7 +94,7 @@ namespace SisControl
                 using (var conexao = Conex())
                 {
                     conexao.Open();
-                    using (SqlCommand comando = new SqlCommand(query_String, conexao))
+                    using (SqlCeCommand comando = new SqlCeCommand(query_String, conexao))
                     {
                         comando.Parameters.AddWithValue(ParametroBase, parametroReal);
                         comando.ExecuteNonQuery();

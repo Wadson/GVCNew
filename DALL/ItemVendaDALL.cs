@@ -1,7 +1,7 @@
 ﻿using SisControl.MODEL;
 using System;
 using System.Collections.Generic;
-using System.Data.SqlClient;
+using System.Data.SqlServerCe;
 using System.Data;
 using System.Linq;
 using System.Text;
@@ -19,7 +19,7 @@ namespace SisControl.DALL
             {
                 string query = @"INSERT INTO ItemVenda (VendaID, ProdutoID, Quantidade, PrecoUnitario, ItemVendaID) 
                              VALUES (@VendaID, @ProdutoID, @Quantidade, @PrecoUnitario, @ItemVendaID)";
-                SqlCommand command = new SqlCommand(query, connection);
+                SqlCeCommand command = new SqlCeCommand(query, connection);
                 command.Parameters.AddWithValue("@VendaID", itemVenda.VendaID);
                 command.Parameters.AddWithValue("@ProdutoID", itemVenda.ProdutoID);
                 command.Parameters.AddWithValue("@Quantidade", itemVenda.Quantidade);
@@ -37,7 +37,7 @@ namespace SisControl.DALL
             {
                 string query = @"UPDATE ItemVenda SET ProdutoID = @ProdutoID, Quantidade = @Quantidade, PrecoUnitario = @PrecoUnitario 
                              WHERE ItemVendaID = @ItemVendaID";
-                SqlCommand command = new SqlCommand(query, connection);
+                SqlCeCommand command = new SqlCeCommand(query, connection);
                 command.Parameters.AddWithValue("@ProdutoID", itemVenda.ProdutoID);
                 command.Parameters.AddWithValue("@Quantidade", itemVenda.Quantidade);
                 command.Parameters.AddWithValue("@PrecoUnitario", itemVenda.PrecoUnitario);
@@ -53,7 +53,7 @@ namespace SisControl.DALL
             using (var connection = Conexao.Conex())
             {
                 string query = "DELETE FROM ItemVenda WHERE ItemVendaID = @ItemVendaID";
-                SqlCommand command = new SqlCommand(query, connection);
+                SqlCeCommand command = new SqlCeCommand(query, connection);
                 command.Parameters.AddWithValue("@ItemVendaID", itemVendaId);
 
                 connection.Open();
@@ -67,11 +67,11 @@ namespace SisControl.DALL
             using (var connection = Conexao.Conex())
             {
                 string query = "SELECT * FROM ItemVenda WHERE VendaID = @VendaID";
-                SqlCommand command = new SqlCommand(query, connection);
+                SqlCeCommand command = new SqlCeCommand(query, connection);
                 command.Parameters.AddWithValue("@VendaID", vendaId);
 
                 connection.Open();
-                using (SqlDataReader reader = command.ExecuteReader())
+                using (SqlCeDataReader reader = command.ExecuteReader())
                 {
                     while (reader.Read())
                     {
@@ -96,7 +96,7 @@ namespace SisControl.DALL
             string query = "DELETE FROM ItemVenda WHERE VendaID = @VendaID";
             using (var conn = Conexao.Conex())
             {
-                SqlCommand cmd = new SqlCommand(query, conn);
+                SqlCeCommand cmd = new SqlCeCommand(query, conn);
                 cmd.Parameters.AddWithValue("@VendaID", vendaID);
                 conn.Open();
                 cmd.ExecuteNonQuery();
@@ -107,9 +107,9 @@ namespace SisControl.DALL
             var conn = Conexao.Conex();
             try
             {
-                SqlCommand comando = new SqlCommand("SELECT * FROM ItemVenda", conn);
+                SqlCeCommand comando = new SqlCeCommand("SELECT * FROM ItemVenda", conn);
 
-                SqlDataAdapter daUsuario = new SqlDataAdapter();
+                SqlCeDataAdapter daUsuario = new SqlCeDataAdapter();
                 daUsuario.SelectCommand = comando;
 
                 DataTable dtUsuario = new DataTable();

@@ -28,11 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmPedidoVendaNovo));
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.dtpVencimento = new Guna.UI2.WinForms.Guna2DateTimePicker();
             this.radiobtnParcelado = new ComponentFactory.Krypton.Toolkit.KryptonRadioButton();
             this.radiobtnAVista = new ComponentFactory.Krypton.Toolkit.KryptonRadioButton();
             this.btnLocalizarProduto = new ComponentFactory.Krypton.Toolkit.KryptonButton();
-            this.dtpVencimento = new ComponentFactory.Krypton.Toolkit.KryptonDateTimePicker();
             this.txtNomeProduto = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
             this.label12 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
@@ -67,6 +69,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.btnSair = new ComponentFactory.Krypton.Toolkit.KryptonButton();
+            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.groupBox4.SuspendLayout();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvItensVenda)).BeginInit();
@@ -81,10 +84,10 @@
             this.groupBox4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox4.BackColor = System.Drawing.Color.White;
+            this.groupBox4.Controls.Add(this.dtpVencimento);
             this.groupBox4.Controls.Add(this.radiobtnParcelado);
             this.groupBox4.Controls.Add(this.radiobtnAVista);
             this.groupBox4.Controls.Add(this.btnLocalizarProduto);
-            this.groupBox4.Controls.Add(this.dtpVencimento);
             this.groupBox4.Controls.Add(this.txtNomeProduto);
             this.groupBox4.Controls.Add(this.label12);
             this.groupBox4.Controls.Add(this.label6);
@@ -106,10 +109,34 @@
             this.groupBox4.TabIndex = 575;
             this.groupBox4.TabStop = false;
             // 
+            // dtpVencimento
+            // 
+            this.dtpVencimento.Animated = true;
+            this.dtpVencimento.AutoRoundedCorners = true;
+            this.dtpVencimento.BackColor = System.Drawing.Color.Transparent;
+            this.dtpVencimento.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
+            this.dtpVencimento.BorderRadius = 17;
+            this.dtpVencimento.BorderStyle = System.Drawing.Drawing2D.DashStyle.Custom;
+            this.dtpVencimento.Checked = true;
+            this.dtpVencimento.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
+            this.dtpVencimento.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.dtpVencimento.ForeColor = System.Drawing.Color.White;
+            this.dtpVencimento.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpVencimento.IndicateFocus = true;
+            this.dtpVencimento.Location = new System.Drawing.Point(4, 70);
+            this.dtpVencimento.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
+            this.dtpVencimento.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
+            this.dtpVencimento.Name = "dtpVencimento";
+            this.dtpVencimento.Size = new System.Drawing.Size(128, 36);
+            this.dtpVencimento.TabIndex = 628;
+            this.dtpVencimento.UseTransparentBackground = true;
+            this.dtpVencimento.Value = new System.DateTime(2025, 2, 19, 7, 9, 15, 860);
+            this.dtpVencimento.ValueChanged += new System.EventHandler(this.dtpVencimento_ValueChanged);
+            // 
             // radiobtnParcelado
             // 
             this.radiobtnParcelado.LabelStyle = ComponentFactory.Krypton.Toolkit.LabelStyle.BoldControl;
-            this.radiobtnParcelado.Location = new System.Drawing.Point(208, 81);
+            this.radiobtnParcelado.Location = new System.Drawing.Point(210, 79);
             this.radiobtnParcelado.Name = "radiobtnParcelado";
             this.radiobtnParcelado.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.ProfessionalOffice2003;
             this.radiobtnParcelado.Size = new System.Drawing.Size(81, 22);
@@ -121,7 +148,7 @@
             // 
             this.radiobtnAVista.Checked = true;
             this.radiobtnAVista.LabelStyle = ComponentFactory.Krypton.Toolkit.LabelStyle.BoldControl;
-            this.radiobtnAVista.Location = new System.Drawing.Point(133, 81);
+            this.radiobtnAVista.Location = new System.Drawing.Point(140, 80);
             this.radiobtnAVista.Name = "radiobtnAVista";
             this.radiobtnAVista.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.ProfessionalSystem;
             this.radiobtnAVista.Size = new System.Drawing.Size(64, 22);
@@ -189,24 +216,9 @@
             this.btnLocalizarProduto.StateTracking.Border.Rounding = 1;
             this.btnLocalizarProduto.StateTracking.Border.Width = 1;
             this.btnLocalizarProduto.TabIndex = 2;
-            this.btnLocalizarProduto.Values.Text = "&Localizar (F5)";
+            this.btnLocalizarProduto.Values.Image = global::SisControl.Properties.Resources.Pesquisar;
+            this.btnLocalizarProduto.Values.Text = "&(F5)";
             this.btnLocalizarProduto.Click += new System.EventHandler(this.btnLocalizarProduto_Click);
-            // 
-            // dtpVencimento
-            // 
-            this.dtpVencimento.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpVencimento.Location = new System.Drawing.Point(7, 78);
-            this.dtpVencimento.Name = "dtpVencimento";
-            this.dtpVencimento.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Blue;
-            this.dtpVencimento.Size = new System.Drawing.Size(116, 25);
-            this.dtpVencimento.StateCommon.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
-            this.dtpVencimento.StateCommon.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
-            this.dtpVencimento.StateCommon.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
-            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
-            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
-            this.dtpVencimento.StateCommon.Content.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtpVencimento.TabIndex = 606;
-            this.dtpVencimento.TabStop = false;
             // 
             // txtNomeProduto
             // 
@@ -231,7 +243,7 @@
             this.txtNomeProduto.StateCommon.Content.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.25F);
             this.txtNomeProduto.StateCommon.Content.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
             this.txtNomeProduto.TabIndex = 1;
-            this.txtNomeProduto.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtNomeProduto_KeyUp_1);
+            this.txtNomeProduto.TextChanged += new System.EventHandler(this.txtNomeProduto_TextChanged);
             // 
             // label12
             // 
@@ -249,7 +261,7 @@
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(100)))), ((int)(((byte)(255)))));
-            this.label6.Location = new System.Drawing.Point(4, 57);
+            this.label6.Location = new System.Drawing.Point(10, 55);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(119, 15);
             this.label6.TabIndex = 545;
@@ -363,6 +375,7 @@
             this.btnIncluir.StateTracking.Border.Rounding = 1;
             this.btnIncluir.StateTracking.Border.Width = 1;
             this.btnIncluir.TabIndex = 619;
+            this.btnIncluir.Values.Image = global::SisControl.Properties.Resources.Adicionar;
             this.btnIncluir.Values.Text = "&Incluir Item";
             this.btnIncluir.Click += new System.EventHandler(this.btnIncluir_Click);
             // 
@@ -565,7 +578,8 @@
             this.btnLocalizarCliente.StateTracking.Border.Rounding = 1;
             this.btnLocalizarCliente.StateTracking.Border.Width = 1;
             this.btnLocalizarCliente.TabIndex = 1002;
-            this.btnLocalizarCliente.Values.Text = "&Localizar (F4)";
+            this.btnLocalizarCliente.Values.Image = global::SisControl.Properties.Resources.Pesquisar;
+            this.btnLocalizarCliente.Values.Text = "&(F4)";
             this.btnLocalizarCliente.Click += new System.EventHandler(this.btnLocalizarCliente_Click);
             // 
             // txtNomeCliente
@@ -591,6 +605,7 @@
             this.txtNomeCliente.StateCommon.Content.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.25F);
             this.txtNomeCliente.StateCommon.Content.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
             this.txtNomeCliente.TabIndex = 0;
+            this.txtNomeCliente.TextChanged += new System.EventHandler(this.txtNomeCliente_TextChanged);
             this.txtNomeCliente.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtNomeCliente_KeyUp);
             // 
             // dtpDataVenda
@@ -810,6 +825,7 @@
             this.btnNovo.StateTracking.Border.Width = 1;
             this.btnNovo.StateTracking.Content.ShortText.Color1 = System.Drawing.Color.White;
             this.btnNovo.TabIndex = 620;
+            this.btnNovo.Values.Image = global::SisControl.Properties.Resources.Novo;
             this.btnNovo.Values.Text = "&Novo";
             this.btnNovo.Click += new System.EventHandler(this.btnNovo_Click);
             // 
@@ -873,7 +889,8 @@
             this.btnFinalizarVenda.StateTracking.Border.Rounding = 1;
             this.btnFinalizarVenda.StateTracking.Border.Width = 1;
             this.btnFinalizarVenda.TabIndex = 621;
-            this.btnFinalizarVenda.Values.Text = "&Finalizar Venda";
+            this.btnFinalizarVenda.Values.Image = global::SisControl.Properties.Resources.FinalizarVenda;
+            this.btnFinalizarVenda.Values.Text = "&Finalizar";
             this.btnFinalizarVenda.Click += new System.EventHandler(this.btnFinalizarVenda_Click);
             // 
             // btnParcelar
@@ -937,6 +954,7 @@
             this.btnParcelar.StateTracking.Border.Width = 1;
             this.btnParcelar.StateTracking.Content.ShortText.Color1 = System.Drawing.Color.White;
             this.btnParcelar.TabIndex = 622;
+            this.btnParcelar.Values.Image = global::SisControl.Properties.Resources.Parcelar;
             this.btnParcelar.Values.Text = "&Parcelar";
             this.btnParcelar.Click += new System.EventHandler(this.btnParcelar_Click_1);
             // 
@@ -1053,8 +1071,16 @@
             this.btnSair.StateTracking.Border.Rounding = 1;
             this.btnSair.StateTracking.Border.Width = 1;
             this.btnSair.TabIndex = 626;
+            this.btnSair.Values.Image = global::SisControl.Properties.Resources.sair;
             this.btnSair.Values.Text = "&Sair";
             this.btnSair.Click += new System.EventHandler(this.btnSair_Click);
+            // 
+            // imageList1
+            // 
+            this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
+            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
+            this.imageList1.Images.SetKeyName(0, "Parcelar.png");
+            this.imageList1.Images.SetKeyName(1, "Adicionar.png");
             // 
             // FrmPedidoVendaNovo
             // 
@@ -1121,7 +1147,6 @@
         public ComponentFactory.Krypton.Toolkit.KryptonTextBox txtValorRecebido;
         public ComponentFactory.Krypton.Toolkit.KryptonTextBox txtValorProduto;
         public ComponentFactory.Krypton.Toolkit.KryptonTextBox txtQuantidade;
-        public ComponentFactory.Krypton.Toolkit.KryptonDateTimePicker dtpVencimento;
         public ComponentFactory.Krypton.Toolkit.KryptonDateTimePicker dtpDataVenda;
         public ComponentFactory.Krypton.Toolkit.KryptonTextBox txtVendaID;
         public ComponentFactory.Krypton.Toolkit.KryptonTextBox txtValorTotal;
@@ -1140,5 +1165,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private ComponentFactory.Krypton.Toolkit.KryptonButton btnSair;
+        private System.Windows.Forms.ImageList imageList1;
+        public Guna.UI2.WinForms.Guna2DateTimePicker dtpVencimento;
     }
 }

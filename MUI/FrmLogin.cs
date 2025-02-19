@@ -6,7 +6,7 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
-using System.Data.SqlClient;
+using System.Data.SqlServerCe;
 using System.Security.Cryptography;
 
 namespace SisControl.MUI
@@ -117,14 +117,14 @@ namespace SisControl.MUI
 
             using (var con = Conexao.Conex())  // A conexão com o banco de dados
             {
-                using (SqlCommand cmd = new SqlCommand(query, con))
+                using (SqlCeCommand cmd = new SqlCeCommand(query, con))
                 {
                     // Adicionando parâmetros para evitar SQL Injection
                     cmd.Parameters.AddWithValue("@Email", email);
                     cmd.Parameters.AddWithValue("@Senha", senhaHash);
 
                     con.Open();
-                    SqlDataReader reader = cmd.ExecuteReader();
+                    SqlCeDataReader reader = cmd.ExecuteReader();
 
                     if (reader.Read())  // Se o usuário for encontrado
                     {
@@ -151,14 +151,14 @@ namespace SisControl.MUI
 
             using (var con = Conexao.Conex())  // A conexão com o banco de dados
             {
-                using (SqlCommand cmd = new SqlCommand(query, con))
+                using (SqlCeCommand cmd = new SqlCeCommand(query, con))
                 {
                     // Adicionando parâmetros para evitar SQL Injection
                     cmd.Parameters.AddWithValue("@Email", email);
                     cmd.Parameters.AddWithValue("@Senha", senhaHash);
 
                     con.Open();
-                    SqlDataReader reader = cmd.ExecuteReader();
+                    SqlCeDataReader reader = cmd.ExecuteReader();
 
                     if (reader.Read())  // Se o usuário for encontrado
                     {

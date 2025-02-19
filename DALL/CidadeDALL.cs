@@ -1,7 +1,7 @@
 ﻿using SisControl.MODEL;
 using System;
 using System.Collections.Generic;
-using System.Data.SqlClient;
+using System.Data.SqlServerCe;
 using System.Data;
 using System.Linq;
 using System.Text;
@@ -18,8 +18,8 @@ namespace SisControl.DALL
             try
             {
                 conn.Open();
-                SqlCommand sqlcomando = new SqlCommand("SELECT TOP (30) Cidade.CidadeID, Cidade.Nome, Cidade.EstadoID, Estado.Nome AS Expr1, Estado.Uf FROM Cidade INNER JOIN Estado ON Cidade.EstadoID = Estado.EstadoID", conn);
-                SqlDataAdapter daReceitas = new SqlDataAdapter();
+                SqlCeCommand sqlcomando = new SqlCeCommand("SELECT TOP (30) Cidade.CidadeID, Cidade.NomeCidade, Cidade.EstadoID, Estado.NomeEstado FROM Cidade INNER JOIN Estado ON Cidade.EstadoID = Estado.EstadoID", conn);
+                SqlCeDataAdapter daReceitas = new SqlCeDataAdapter();
                 daReceitas.SelectCommand = sqlcomando;
                 DataTable dtReceitas = new DataTable();
                 daReceitas.Fill(dtReceitas);
@@ -40,17 +40,16 @@ namespace SisControl.DALL
             var conn = Conexao.Conex();
             try
             {
-                SqlCommand sqlcomando = new SqlCommand("INSERT INTO Cidade (CidadeID, NomeCidade, EstadoID, Ibge) VALUES  (@CidadeID, @NomeCidade, @EstadoID, @Ibge)", conn);
+                SqlCeCommand sqlcomando = new SqlCeCommand("INSERT INTO Cidade (CidadeID, NomeCidade, EstadoID) VALUES  (@CidadeID, @NomeCidade, @EstadoID )", conn);
                                 
                 sqlcomando.Parameters.AddWithValue("@CidadeID", Cidades.CidadeID);
                 sqlcomando.Parameters.AddWithValue("@NomeCidade", Cidades.NomeCidade);
-                sqlcomando.Parameters.AddWithValue("@EstadoID", Cidades.EstadoID);
-                sqlcomando.Parameters.AddWithValue("@Ibge", Cidades.Ibge);
+                sqlcomando.Parameters.AddWithValue("@EstadoID", Cidades.EstadoID);                
 
                 conn.Open();
                 sqlcomando.ExecuteNonQuery();
             }
-            catch (SqlException ex)
+            catch (SqlCeException ex)
             {
                 throw new ApplicationException(ex.ToString());
             }
@@ -65,7 +64,7 @@ namespace SisControl.DALL
             var conn = Conexao.Conex();
             try
             {
-                SqlCommand sqlcomando = new SqlCommand("DELETE FROM Cidade WHERE CidadeID = @CidadeID", conn);
+                SqlCeCommand sqlcomando = new SqlCeCommand("DELETE FROM Cidade WHERE CidadeID = @CidadeID", conn);
                 sqlcomando.Parameters.AddWithValue("@Id", Cidades.CidadeID);
                 conn.Open();
                 sqlcomando.ExecuteNonQuery();
@@ -85,12 +84,11 @@ namespace SisControl.DALL
             var conn = Conexao.Conex();
             try
             {
-                SqlCommand sqlcomando = new SqlCommand("UPDATE Cidade SET CidadeID = @CidadeID, NomeCidade = @NomeCidade, EstadoID = @EstadoID, Ibge = @Ibge", conn);
-
-                sqlcomando.Parameters.AddWithValue("@CidadeID", Cidades.CidadeID);
+                SqlCeCommand sqlcomando = new SqlCeCommand("UPDATE Cidade SET NomeCidade = @NomeCidade, EstadoID = @EstadoID WHERE CidadeID = @CidadeID", conn);
+                
                 sqlcomando.Parameters.AddWithValue("@NomeCidade", Cidades.NomeCidade);
                 sqlcomando.Parameters.AddWithValue("@EstadoID", Cidades.EstadoID);
-                sqlcomando.Parameters.AddWithValue("@Ibge", Cidades.Ibge);
+                sqlcomando.Parameters.AddWithValue("@CidadeID", Cidades.CidadeID);
 
                 conn.Open();
                 sqlcomando.ExecuteNonQuery();
@@ -112,11 +110,11 @@ namespace SisControl.DALL
                 DataTable dt = new DataTable();
 
                 string sqlconn = "SELECT TOP (30) Cidade.CidadeID, Cidade.NomeCidade, Cidade.EstadoID, Estado.NomeEstado FROM  Cidade INNER JOIN Estado ON Cidade.EstadoID = Estado.EstadoID WHERE NomeCidade LIKE @NomeCidade";
-                SqlCommand cmd = new SqlCommand(sqlconn, conn);
+                SqlCeCommand cmd = new SqlCeCommand(sqlconn, conn);
                 cmd.Parameters.AddWithValue("@NomeCidade", nome);
                 conn.Open();
                 cmd.ExecuteNonQuery();
-                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                SqlCeDataAdapter da = new SqlCeDataAdapter(cmd);
                 da.Fill(dt);
                 conn.Close();
                 conn.Dispose();
@@ -136,11 +134,11 @@ namespace SisControl.DALL
                 DataTable dt = new DataTable();
 
                 string sqlconn = "SELECT TOP (30) Cidade.CidadeID, Cidade.NomeCidade, Cidade.EstadoID, Estado.NomeEstado FROM  Cidade INNER JOIN Estado ON Cidade.EstadoID = Estado.EstadoID WHERE CidadeID  LIKE @CidadeID";
-                SqlCommand cmd = new SqlCommand(sqlconn, conn);
+                SqlCeCommand cmd = new SqlCeCommand(sqlconn, conn);
                 cmd.Parameters.AddWithValue("@CidadeID", nome);
                 conn.Open();
                 cmd.ExecuteNonQuery();
-                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                SqlCeDataAdapter da = new SqlCeDataAdapter(cmd);
                 da.Fill(dt);
                 conn.Close();
                 conn.Dispose();
@@ -161,11 +159,11 @@ namespace SisControl.DALL
                 string sqlconn = "SELECT TOP (30) Cidade.CidadeID, Cidade.NomeCidade, Cidade.EstadoID, Estado.NomeEstado FROM  Cidade INNER JOIN Estado ON Cidade.EstadoID = Estado.EstadoID";
                                  //WHERE Cidade.NomeCidade = @NomeCidade);
                                 
-                SqlCommand cmd = new SqlCommand(sqlconn, conn);
+                SqlCeCommand cmd = new SqlCeCommand(sqlconn, conn);
                 //cmd.Parameters.AddWithValue("@NomeCidade", nome);
                 conn.Open();
                 cmd.ExecuteNonQuery();
-                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                SqlCeDataAdapter da = new SqlCeDataAdapter(cmd);
                 da.Fill(dt);
                 conn.Close();
                 conn.Dispose();

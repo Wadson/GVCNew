@@ -12,7 +12,6 @@ using System.Text;
 using System.Windows.Forms;
 using static System.Net.Mime.MediaTypeNames;
 using Image = System.Drawing.Image;
-using ComponentFactory.Krypton.Toolkit;
 
 namespace SisControl.View
 {

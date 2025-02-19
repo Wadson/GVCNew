@@ -2,7 +2,7 @@
 using SisControl.MODEL;
 using System;
 using System.Collections.Generic;
-using System.Data.SqlClient;
+using System.Data.SqlServerCe;
 using System.Data;
 using System.Linq;
 using System.Text;
@@ -38,7 +38,7 @@ namespace SisControl.BLL
             {
                
             }
-            catch (SqlException erro)
+            catch (SqlCeException erro)
             {
                 throw erro;
             }
@@ -50,7 +50,7 @@ namespace SisControl.BLL
                 clienteDAL = new ClienteDALL();
                 clienteDAL.atualiza_Cliente(clienteS);
             }
-            catch (SqlException erro)
+            catch (SqlCeException erro)
             {
                 throw erro;
             }
@@ -62,7 +62,7 @@ namespace SisControl.BLL
                 clienteDAL = new ClienteDALL();
                 clienteDAL.excluiCliente(clienteS);
             }
-            catch (SqlException erro)
+            catch (SqlCeException erro)
             {
                 throw erro;
             }
@@ -73,9 +73,9 @@ namespace SisControl.BLL
             try
             {
 
-                SqlCommand sql = new SqlCommand("SELECT * FROM Cliente WHERE ClienteID LIKE '" + pesquisa + "%' ", conn);
+                SqlCeCommand sql = new SqlCeCommand("SELECT * FROM Cliente WHERE ClienteID LIKE '" + pesquisa + "%' ", conn);
                 conn.Open();
-                SqlDataReader datareader;
+                SqlCeDataReader datareader;
                 ClienteMODEL obj_cliente = new ClienteMODEL();
 
                 datareader = sql.ExecuteReader(CommandBehavior.CloseConnection);

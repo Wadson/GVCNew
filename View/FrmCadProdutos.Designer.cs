@@ -44,21 +44,20 @@
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
-            this.cmbStatus = new ComponentFactory.Krypton.Toolkit.KryptonComboBox();
             this.txtEstoque = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
             this.txtPrecoDeVenda = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
             this.txtLucro = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
             this.txtPrecoCusto = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
             this.txtReferencia = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
             this.txtNomeProduto = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
+            this.cmbStatus = new Guna.UI2.WinForms.Guna2ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
             this.kryptonPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.cmbStatus)).BeginInit();
             this.SuspendLayout();
             // 
             // btnSair
             // 
-            this.btnSair.Location = new System.Drawing.Point(385, 241);
+            this.btnSair.Location = new System.Drawing.Point(402, 243);
             this.btnSair.Name = "btnSair";
             this.btnSair.OverrideDefault.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(174)))), ((int)(((byte)(244)))));
             this.btnSair.OverrideDefault.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
@@ -111,13 +110,13 @@
             this.btnSair.StateTracking.Border.GraphicsHint = ComponentFactory.Krypton.Toolkit.PaletteGraphicsHint.AntiAlias;
             this.btnSair.StateTracking.Border.Rounding = 20;
             this.btnSair.StateTracking.Border.Width = 1;
-            this.btnSair.TabIndex = 11;
+            this.btnSair.TabIndex = 9;
             this.btnSair.Values.Text = "&Sair";
             this.btnSair.Click += new System.EventHandler(this.btnSair_Click);
             // 
             // btnNovo
             // 
-            this.btnNovo.Location = new System.Drawing.Point(221, 241);
+            this.btnNovo.Location = new System.Drawing.Point(238, 243);
             this.btnNovo.Name = "btnNovo";
             this.btnNovo.OverrideDefault.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(252)))), ((int)(((byte)(252)))));
             this.btnNovo.OverrideDefault.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(252)))), ((int)(((byte)(252)))));
@@ -171,13 +170,13 @@
             this.btnNovo.StateTracking.Border.Rounding = 20;
             this.btnNovo.StateTracking.Border.Width = 1;
             this.btnNovo.StateTracking.Content.ShortText.Color1 = System.Drawing.Color.White;
-            this.btnNovo.TabIndex = 10;
+            this.btnNovo.TabIndex = 8;
             this.btnNovo.Values.Text = "&Novo";
             this.btnNovo.Click += new System.EventHandler(this.btnNovo_Click);
             // 
             // btnSalva
             // 
-            this.btnSalva.Location = new System.Drawing.Point(57, 241);
+            this.btnSalva.Location = new System.Drawing.Point(74, 243);
             this.btnSalva.Name = "btnSalva";
             this.btnSalva.OverrideDefault.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(174)))), ((int)(((byte)(244)))));
             this.btnSalva.OverrideDefault.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
@@ -230,7 +229,7 @@
             this.btnSalva.StateTracking.Border.GraphicsHint = ComponentFactory.Krypton.Toolkit.PaletteGraphicsHint.AntiAlias;
             this.btnSalva.StateTracking.Border.Rounding = 20;
             this.btnSalva.StateTracking.Border.Width = 1;
-            this.btnSalva.TabIndex = 9;
+            this.btnSalva.TabIndex = 7;
             this.btnSalva.Values.Text = "Salvar";
             this.btnSalva.Click += new System.EventHandler(this.btnSalva_Click);
             // 
@@ -312,7 +311,7 @@
             this.kryptonPanel1.Name = "kryptonPanel1";
             this.kryptonPanel1.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Blue;
             this.kryptonPanel1.PanelBackStyle = ComponentFactory.Krypton.Toolkit.PaletteBackStyle.TabDock;
-            this.kryptonPanel1.Size = new System.Drawing.Size(590, 71);
+            this.kryptonPanel1.Size = new System.Drawing.Size(610, 71);
             this.kryptonPanel1.TabIndex = 245;
             // 
             // lblStatus
@@ -333,7 +332,7 @@
             this.label29.BackColor = System.Drawing.Color.Transparent;
             this.label29.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.25F);
             this.label29.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(76)))), ((int)(((byte)(172)))));
-            this.label29.Location = new System.Drawing.Point(465, 8);
+            this.label29.Location = new System.Drawing.Point(486, 8);
             this.label29.Name = "label29";
             this.label29.Size = new System.Drawing.Size(107, 16);
             this.label29.TabIndex = 246;
@@ -342,7 +341,7 @@
             // dtpDataDeEntrada
             // 
             this.dtpDataDeEntrada.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpDataDeEntrada.Location = new System.Drawing.Point(463, 27);
+            this.dtpDataDeEntrada.Location = new System.Drawing.Point(484, 27);
             this.dtpDataDeEntrada.Name = "dtpDataDeEntrada";
             this.dtpDataDeEntrada.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Blue;
             this.dtpDataDeEntrada.Size = new System.Drawing.Size(115, 25);
@@ -360,7 +359,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.25F);
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(76)))), ((int)(((byte)(172)))));
-            this.label1.Location = new System.Drawing.Point(437, 168);
+            this.label1.Location = new System.Drawing.Point(439, 159);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(65, 16);
             this.label1.TabIndex = 590;
@@ -398,24 +397,6 @@
             this.label11.Size = new System.Drawing.Size(73, 16);
             this.label11.TabIndex = 600;
             this.label11.Text = "ESTOQUE";
-            // 
-            // cmbStatus
-            // 
-            this.cmbStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbStatus.DropDownWidth = 244;
-            this.cmbStatus.InputControlStyle = ComponentFactory.Krypton.Toolkit.InputControlStyle.Ribbon;
-            this.cmbStatus.Items.AddRange(new object[] {
-            "Descontinuado",
-            "Disponível",
-            "Em Espera",
-            "Em Produção",
-            "Indisponível"});
-            this.cmbStatus.Location = new System.Drawing.Point(434, 188);
-            this.cmbStatus.Name = "cmbStatus";
-            this.cmbStatus.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.ProfessionalOffice2003;
-            this.cmbStatus.Size = new System.Drawing.Size(107, 21);
-            this.cmbStatus.TabIndex = 143;
-            this.cmbStatus.TabStop = false;
             // 
             // txtEstoque
             // 
@@ -503,7 +484,7 @@
             this.txtReferencia.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtReferencia.Location = new System.Drawing.Point(403, 108);
             this.txtReferencia.Name = "txtReferencia";
-            this.txtReferencia.Size = new System.Drawing.Size(140, 30);
+            this.txtReferencia.Size = new System.Drawing.Size(189, 30);
             this.txtReferencia.StateCommon.Back.Color1 = System.Drawing.Color.White;
             this.txtReferencia.StateCommon.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
             this.txtReferencia.StateCommon.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
@@ -538,16 +519,42 @@
             this.txtNomeProduto.StateCommon.Content.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
             this.txtNomeProduto.TabIndex = 0;
             // 
+            // cmbStatus
+            // 
+            this.cmbStatus.BackColor = System.Drawing.Color.Transparent;
+            this.cmbStatus.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
+            this.cmbStatus.BorderRadius = 20;
+            this.cmbStatus.BorderStyle = System.Drawing.Drawing2D.DashStyle.Dot;
+            this.cmbStatus.BorderThickness = 0;
+            this.cmbStatus.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cmbStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbStatus.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(174)))), ((int)(((byte)(244)))));
+            this.cmbStatus.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.cmbStatus.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.cmbStatus.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.cmbStatus.ForeColor = System.Drawing.Color.White;
+            this.cmbStatus.ItemHeight = 30;
+            this.cmbStatus.Items.AddRange(new object[] {
+            "Descontinuado",
+            "Disponível",
+            "Em Espera",
+            "Em Produção",
+            "Indisponível"});
+            this.cmbStatus.Location = new System.Drawing.Point(431, 179);
+            this.cmbStatus.Name = "cmbStatus";
+            this.cmbStatus.Size = new System.Drawing.Size(161, 36);
+            this.cmbStatus.TabIndex = 6;
+            // 
             // FrmCadProdutos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(575, 298);
+            this.ClientSize = new System.Drawing.Size(598, 298);
+            this.Controls.Add(this.cmbStatus);
             this.Controls.Add(this.txtEstoque);
             this.Controls.Add(this.txtPrecoDeVenda);
             this.Controls.Add(this.txtLucro);
             this.Controls.Add(this.txtPrecoCusto);
-            this.Controls.Add(this.cmbStatus);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtReferencia);
             this.Controls.Add(this.txtNomeProduto);
@@ -575,7 +582,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).EndInit();
             this.kryptonPanel1.ResumeLayout(false);
             this.kryptonPanel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.cmbStatus)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -597,7 +603,6 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label11;
         public ComponentFactory.Krypton.Toolkit.KryptonDateTimePicker dtpDataDeEntrada;
-        public ComponentFactory.Krypton.Toolkit.KryptonComboBox cmbStatus;
         public ComponentFactory.Krypton.Toolkit.KryptonTextBox txtEstoque;
         public ComponentFactory.Krypton.Toolkit.KryptonTextBox txtPrecoDeVenda;
         public ComponentFactory.Krypton.Toolkit.KryptonTextBox txtLucro;
@@ -605,5 +610,6 @@
         public ComponentFactory.Krypton.Toolkit.KryptonTextBox txtReferencia;
         public ComponentFactory.Krypton.Toolkit.KryptonTextBox txtNomeProduto;
         public System.Windows.Forms.Label lblStatus;
+        public Guna.UI2.WinForms.Guna2ComboBox cmbStatus;
     }
 }

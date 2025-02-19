@@ -2,7 +2,7 @@
 using SisControl.MODEL;
 using System;
 using System.Collections.Generic;
-using System.Data.SqlClient;
+using System.Data.SqlServerCe;
 using System.Data;
 using System.Linq;
 using System.Text;
@@ -43,18 +43,6 @@ namespace SisControl.BLL
             }
         }
 
-        //public void Excluir(FornecedorMODEL fornecedor)
-        //{
-        //    try
-        //    {
-        //        fornecedordal = new FornecedorDALL();
-        //        fornecedordal.excluiFornecedor(fornecedor);
-        //    }
-        //    catch (Exception erro)
-        //    {
-        //        throw erro;
-        //    }
-        //}
         private void Log(string message)
         {
             File.AppendAllText("logExcluirFornecedor.txt", $"{DateTime.Now}: {message}\n");
@@ -95,9 +83,9 @@ namespace SisControl.BLL
 
             try
             {
-                SqlCommand sql = new SqlCommand("SELECT * FROM Fornecedor WHERE NomeFornecedor LIKE '" + pesquisa + "%'", conn);
+                SqlCeCommand sql = new SqlCeCommand("SELECT * FROM Fornecedor WHERE NomeFornecedor LIKE '" + pesquisa + "%'", conn);
                 conn.Open();
-                SqlDataReader datareader;
+                SqlCeDataReader datareader;
                 FornecedorMODEL obj_fornecedor = new FornecedorMODEL();
                 datareader = sql.ExecuteReader(CommandBehavior.CloseConnection);
                 while (datareader.Read())
@@ -130,9 +118,9 @@ namespace SisControl.BLL
             var conn = Conexao.Conex();
             try
             {
-                SqlCommand sql = new SqlCommand("SELECT Fornecedor FROM Fornecedor WHERE Fornecedo LIKE '" + pesquisa + "%'", conn);
+                SqlCeCommand sql = new SqlCeCommand("SELECT Fornecedor FROM Fornecedor WHERE Fornecedo LIKE '" + pesquisa + "%'", conn);
                 conn.Open();
-                SqlDataReader datareader;
+                SqlCeDataReader datareader;
                 FornecedorMODEL obj_fornecedor = new FornecedorMODEL();
                 datareader = sql.ExecuteReader(CommandBehavior.CloseConnection);
                 while (datareader.Read())
@@ -165,9 +153,9 @@ namespace SisControl.BLL
 
             try
             {
-                SqlCommand sql = new SqlCommand("SELECT Fornecedor FROM Fornecedor  WHERE FornecedorID LIKE '" + pesquisa + "%' ", conn);//AND Pago = false
+                SqlCeCommand sql = new SqlCeCommand("SELECT Fornecedor FROM Fornecedor  WHERE FornecedorID LIKE '" + pesquisa + "%' ", conn);//AND Pago = false
                 conn.Open();
-                SqlDataReader datareader;
+                SqlCeDataReader datareader;
 
                 FornecedorMODEL obj_fornecedor = new FornecedorMODEL();
 

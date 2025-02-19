@@ -5,12 +5,11 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
-using System.Data.SqlClient;
+using System.Data.SqlServerCe;
 using System.Drawing;
 using System.Security.Policy;
 using System.Text;
 using System.Windows.Forms;
-using ComponentFactory.Krypton.Toolkit;
 
 namespace SisControl
 {

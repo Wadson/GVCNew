@@ -34,6 +34,7 @@
             this.btnRelatorio = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.btnSair = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.btnRelProdutos = new ComponentFactory.Krypton.Toolkit.KryptonButton();
+            this.InsertBanco = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.SuspendLayout();
             // 
             // btnExcluirRegistrosOrfao
@@ -414,10 +415,71 @@
             this.btnRelProdutos.Values.Text = "Relatório de Produtos";
             this.btnRelProdutos.Click += new System.EventHandler(this.btnRelProdutos_Click);
             // 
+            // InsertBanco
+            // 
+            this.InsertBanco.Location = new System.Drawing.Point(21, 292);
+            this.InsertBanco.Name = "InsertBanco";
+            this.InsertBanco.OverrideDefault.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(252)))), ((int)(((byte)(252)))));
+            this.InsertBanco.OverrideDefault.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(252)))), ((int)(((byte)(252)))));
+            this.InsertBanco.OverrideDefault.Back.ColorAngle = 45F;
+            this.InsertBanco.OverrideDefault.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
+            this.InsertBanco.OverrideDefault.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
+            this.InsertBanco.OverrideDefault.Border.ColorAngle = 45F;
+            this.InsertBanco.OverrideDefault.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
+            this.InsertBanco.OverrideDefault.Border.GraphicsHint = ComponentFactory.Krypton.Toolkit.PaletteGraphicsHint.AntiAlias;
+            this.InsertBanco.OverrideDefault.Border.Rounding = 20;
+            this.InsertBanco.OverrideDefault.Border.Width = 1;
+            this.InsertBanco.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.ProfessionalSystem;
+            this.InsertBanco.Size = new System.Drawing.Size(232, 43);
+            this.InsertBanco.StateCommon.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(252)))), ((int)(((byte)(252)))));
+            this.InsertBanco.StateCommon.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(252)))), ((int)(((byte)(252)))));
+            this.InsertBanco.StateCommon.Back.ColorAngle = 45F;
+            this.InsertBanco.StateCommon.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(174)))), ((int)(((byte)(244)))));
+            this.InsertBanco.StateCommon.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
+            this.InsertBanco.StateCommon.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
+            this.InsertBanco.StateCommon.Border.GraphicsHint = ComponentFactory.Krypton.Toolkit.PaletteGraphicsHint.AntiAlias;
+            this.InsertBanco.StateCommon.Border.Rounding = 1;
+            this.InsertBanco.StateCommon.Border.Width = 1;
+            this.InsertBanco.StateCommon.Content.ShortText.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
+            this.InsertBanco.StateCommon.Content.ShortText.Color2 = System.Drawing.Color.White;
+            this.InsertBanco.StateCommon.Content.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.InsertBanco.StatePressed.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(145)))), ((int)(((byte)(198)))));
+            this.InsertBanco.StatePressed.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
+            this.InsertBanco.StatePressed.Back.ColorAngle = 135F;
+            this.InsertBanco.StatePressed.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(145)))), ((int)(((byte)(198)))));
+            this.InsertBanco.StatePressed.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(121)))), ((int)(((byte)(206)))));
+            this.InsertBanco.StatePressed.Border.ColorAngle = 135F;
+            this.InsertBanco.StatePressed.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
+            this.InsertBanco.StatePressed.Border.Rounding = 20;
+            this.InsertBanco.StatePressed.Border.Width = 1;
+            this.InsertBanco.StateTracking.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
+            this.InsertBanco.StateTracking.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(174)))), ((int)(((byte)(244)))));
+            this.InsertBanco.StateTracking.Back.ColorAngle = 45F;
+            this.InsertBanco.StateTracking.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(174)))), ((int)(((byte)(244)))));
+            this.InsertBanco.StateTracking.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
+            this.InsertBanco.StateTracking.Border.ColorAngle = 45F;
+            this.InsertBanco.StateTracking.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
+            this.InsertBanco.StateTracking.Border.GraphicsHint = ComponentFactory.Krypton.Toolkit.PaletteGraphicsHint.AntiAlias;
+            this.InsertBanco.StateTracking.Border.Rounding = 20;
+            this.InsertBanco.StateTracking.Border.Width = 1;
+            this.InsertBanco.StateTracking.Content.ShortText.Color1 = System.Drawing.Color.White;
+            this.InsertBanco.TabIndex = 1021;
+            this.InsertBanco.Values.Text = "Insert Banco";
+            this.InsertBanco.Click += new System.EventHandler(this.InsertBanco_Click);
+            // 
             // FrmFerramentas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.ClientSize = new System.Drawing.Size(919, 504);
+            this.Controls.Add(this.InsertBanco);
             this.Controls.Add(this.btnRelProdutos);
             this.Controls.Add(this.btnSair);
             this.Controls.Add(this.btnRelatorio);
@@ -444,5 +506,6 @@
         private ComponentFactory.Krypton.Toolkit.KryptonButton btnRelatorio;
         private ComponentFactory.Krypton.Toolkit.KryptonButton btnSair;
         private ComponentFactory.Krypton.Toolkit.KryptonButton btnRelProdutos;
+        private ComponentFactory.Krypton.Toolkit.KryptonButton InsertBanco;
     }
 }

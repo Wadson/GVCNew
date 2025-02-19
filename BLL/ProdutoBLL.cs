@@ -2,7 +2,7 @@
 using SisControl.MODEL;
 using System;
 using System.Collections.Generic;
-using System.Data.SqlClient;
+using System.Data.SqlServerCe;
 using System.Data;
 using System.Linq;
 using System.Text;
@@ -38,7 +38,7 @@ namespace SisControl.BLL
             {
                
             }
-            catch (SqlException erro)
+            catch (SqlCeException erro)
             {
                 throw erro;
             }
@@ -50,7 +50,7 @@ namespace SisControl.BLL
                 produtodall = new ProdutosDal();
                 produtodall.AlterarProduto(produto);
             }
-            catch (SqlException erro)
+            catch (SqlCeException erro)
             {
                 throw erro;
             }
@@ -62,7 +62,7 @@ namespace SisControl.BLL
                 produtodall = new ProdutosDal();
                 produtodall.ExcluirProduto(produto);
             }
-            catch (SqlException erro)
+            catch (SqlCeException erro)
             {
                 throw erro;
             }
@@ -74,7 +74,7 @@ namespace SisControl.BLL
                 produtodall = new ProdutosDal();
                 produtodall.PesquisarProdutoPorNome(ParametroNome);
             }
-            catch (SqlException erro)
+            catch (SqlCeException erro)
             {
                 throw erro;
             }
@@ -86,7 +86,7 @@ namespace SisControl.BLL
                 produtodall = new ProdutosDal();
                 produtodall.PesquisarProdutoPorCodido(ParametroCodigo);
             }
-            catch (SqlException erro)
+            catch (SqlCeException erro)
             {
                 throw erro;
             }

@@ -13,6 +13,7 @@ namespace SisControl.View
 {
     public partial class FrmEntradaEstoque : SisControl.FrmModeloForm
     {
+        public string produtoSelecionado { get; set; }
         public FrmEntradaEstoque()
         {
             InitializeComponent();
@@ -22,9 +23,10 @@ namespace SisControl.View
               
         private void AbrirFrmLocalizarProduto()
         {
-            FrmLocalizarProduto frmLocalizarProduto = new FrmLocalizarProduto()
+            FrmLocalizarProduto frmLocalizarProduto = new FrmLocalizarProduto(this, txtNomeProduto.Text)
             {
-                Owner = this
+                Owner = this,
+                produtoSelecionado = txtNomeProduto.Text
             };
             frmLocalizarProduto.ShowDialog();
             frmLocalizarProduto.Text = "Localizar Produtos";
@@ -42,9 +44,10 @@ namespace SisControl.View
         private void LocalizarProduto()
         {
             // Cria uma instância do FrmLocalizarProduto e define o Owner como o FrmVendas
-            FrmLocalizarProduto frmLocalizarProduto = new FrmLocalizarProduto
+            FrmLocalizarProduto frmLocalizarProduto = new FrmLocalizarProduto(this, txtNomeProduto.Text)
             {
-                Owner = this
+                Owner = this,
+                produtoSelecionado = txtNomeProduto.Text
             };
             frmLocalizarProduto.ShowDialog();
             frmLocalizarProduto.Text = "Localizar Produtos";

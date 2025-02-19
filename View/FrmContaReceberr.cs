@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
-using System.Data.SqlClient;
+using System.Data.SqlServerCe;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -26,7 +26,7 @@ namespace SisControl.View
         public int clienteID { get; set; }
         private FrmBaixarConta frmBaixarConta;
         public int vendaID { get; set; }
-
+        public string clienteSelecionado { get; set; }//não serve para nada neste formulário só para preencher o parâmetro do construtor 
         public FrmContaReceberr(Parcela parcela)
         {
             InitializeComponent();
@@ -69,31 +69,28 @@ namespace SisControl.View
                 MessageBox.Show("Erro ao listar pagamentos parciais: " + ex.Message);
             }
         }
-        private void PersonalizarColunas()
+
+        private void PersonalizarColunas(KryptonDataGridView dgv)
         {
             // Verifica se há colunas no DataGridView antes de tentar personalizá-las
-            if (dgvContaAgrupada.Columns.Count > 0)
+            if (dgv.Columns.Count > 0)
             {
                 // Verifica se a coluna 'SaldoRestante' existe antes de tentar personalizá-la
-                if (dgvContaAgrupada.Columns.Contains("SaldoRestante"))
+                if (dgv.Columns.Contains("SaldoRestante"))
                 {
-                    dgvContaAgrupada.Columns["SaldoRestante"].DefaultCellStyle.BackColor = Color.LightBlue;
+                    dgv.Columns["SaldoRestante"].DefaultCellStyle.BackColor = Color.LightBlue;
                 }
 
-                // Redimensionar as colunas manualmente
-                dgvContaAgrupada.Columns["NomeCliente"].Width = 300;
-                dgvContaAgrupada.Columns["ValorParcela"].Width = 90;
-                dgvContaAgrupada.Columns["SaldoRestante"].Width = 90;
-                dgvContaAgrupada.Columns["ValorRecebido"].Width = 90;
+                dgv.Columns["NomeCliente"].Width = 300;
+                dgv.Columns["ValorParcela"].Width = 90;
+                dgv.Columns["SaldoRestante"].Width = 90;
+                dgv.Columns["ValorRecebido"].Width = 90;
 
-                // Centralizar cabeçalhos das colunas
-                foreach (DataGridViewColumn column in dgvContaAgrupada.Columns)
+                foreach (DataGridViewColumn column in dgv.Columns)
                 {
-                    column.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                    column.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;                    
                 }
 
-                // Ajustar colunas automaticamente para o conteúdo se necessário
-                // dgvContaAgrupada.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
             }
         }
 
@@ -123,17 +120,13 @@ namespace SisControl.View
                 Utilitario.PesquisarGeralComParametro(queryConsulta, "@ParcelaID", parcelaID, dgvContaAgrupada);
 
                 // Personalizar as colunas após carregar os dados
-                PersonalizarColunas();
+                PersonalizarColunas(dgvContasReceber);
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Erro ao listar pagamentos parciais: " + ex.Message);
             }
         }
-
-
-
-
 
 
         public void PersonalizarDataGridViewPagParciais()
@@ -232,9 +225,6 @@ namespace SisControl.View
             dgvContasReceber.ReadOnly = true;
         }
 
-
-
-
         private ComponentFactory.Krypton.Toolkit.KryptonTextBox txtProdutoID;
         private ComponentFactory.Krypton.Toolkit.KryptonTextBox txtNomeProduto;
 
@@ -266,7 +256,7 @@ namespace SisControl.View
         private void AbrirFrmLocalizarCliente()
         {
             // Cria uma instância do frmLocalizarCliente e define o Owner como o FrmPedidoVendaNovo
-            FrmLocalizarCliente frmLocalizarCliente = new FrmLocalizarCliente(this)
+            FrmLocalizarCliente frmLocalizarCliente = new FrmLocalizarCliente(this, clienteSelecionado)
             {
                 Owner = this
             };
@@ -331,21 +321,21 @@ namespace SisControl.View
         public void ListarContaReceber()
         {
             string query = @"
-    SELECT
-        Cliente.NomeCliente,
-        Parcela.ParcelaID,   
-        Parcela.ValorParcela, 
-        Parcela.NumeroParcela,   
-        Parcela.SaldoRestante,     
-        Parcela.DataVencimento, 
-        Parcela.VendaID,           
-        Parcela.Pago,              
-        Parcela.ValorRecebido,         
-        Cliente.ClienteID             
-    FROM Parcela                          
-    INNER JOIN Venda ON Parcela.VendaID = Venda.VendaID
-    INNER JOIN Cliente ON Venda.ClienteID = Cliente.ClienteID
-    WHERE Parcela.Pago = @Pago";
+                            SELECT
+                                Cliente.NomeCliente,
+                                Parcela.ParcelaID,   
+                                Parcela.ValorParcela, 
+                                Parcela.NumeroParcela,   
+                                Parcela.SaldoRestante,     
+                                Parcela.DataVencimento, 
+                                Parcela.VendaID,           
+                                Parcela.Pago,              
+                                Parcela.ValorRecebido,         
+                                Cliente.ClienteID             
+                            FROM Parcela                          
+                            INNER JOIN Venda ON Parcela.VendaID = Venda.VendaID
+                            INNER JOIN Cliente ON Venda.ClienteID = Cliente.ClienteID
+                            WHERE Parcela.Pago = @Pago";
 
             int pago = 0;
 
@@ -367,12 +357,12 @@ namespace SisControl.View
                 string query = @"SELECT * Parcela;
 ";
 
-                SqlCommand command = new SqlCommand(query, connection);
+                SqlCeCommand command = new SqlCeCommand(query, connection);
                 command.Parameters.AddWithValue("@Cliente", cliente);
                 command.Parameters.AddWithValue("@DataVencimentoInicio", dataVencimentoInicio.HasValue ? (object)dataVencimentoInicio.Value : DBNull.Value);
                 command.Parameters.AddWithValue("@DataVencimentoFim", dataVencimentoFim.HasValue ? (object)dataVencimentoFim.Value : DBNull.Value);
 
-                SqlDataAdapter dataAdapter = new SqlDataAdapter(command);
+                SqlCeDataAdapter dataAdapter = new SqlCeDataAdapter(command);
                 DataTable dataTable = new DataTable();
                 dataAdapter.Fill(dataTable);
                 dgvContasReceber.DataSource = dataTable;
@@ -381,12 +371,12 @@ namespace SisControl.View
         public void BaixarParcelaEContaReceber(int parcelaID, decimal valorRecebido, DateTime dataRecebimento, int formaPgtoID)
         {
             string connectionString = "sua_connection_string";
-            using (SqlConnection conn = new SqlConnection(connectionString))
+            using (SqlCeConnection conn = new SqlCeConnection(connectionString))
             {
                 conn.Open();
 
                 // Iniciar uma transação para garantir a integridade das atualizações
-                using (SqlTransaction transaction = conn.BeginTransaction())
+                using (SqlCeTransaction transaction = conn.BeginTransaction())
                 {
                     try
                     {
@@ -396,7 +386,7 @@ namespace SisControl.View
                                              Pago = CASE WHEN ValorRecebido >= ValorParcela THEN 1 ELSE 0 END
                                          WHERE ParcelaID = @ParcelaID";
 
-                        using (SqlCommand cmdParcelas = new SqlCommand(queryParcelas, conn, transaction))
+                        using (SqlCeCommand cmdParcelas = new SqlCeCommand(queryParcelas, conn, transaction))
                         {
                             cmdParcelas.Parameters.AddWithValue("@ParcelaID", parcelaID);
                             cmdParcelas.Parameters.AddWithValue("@ValorRecebido", valorRecebido);
@@ -412,7 +402,7 @@ namespace SisControl.View
                                             FormaPagamento = @FormaPgtoID
                                         WHERE ParcelaID = @ParcelaID;";
 
-                        using (SqlCommand cmdContaReceber = new SqlCommand(queryContaReceber, conn, transaction))
+                        using (SqlCeCommand cmdContaReceber = new SqlCeCommand(queryContaReceber, conn, transaction))
                         {
                             cmdContaReceber.Parameters.AddWithValue("@ParcelaID", parcelaID);
                             cmdContaReceber.Parameters.AddWithValue("@DataRecebimento", dataRecebimento);
@@ -459,10 +449,10 @@ namespace SisControl.View
 
             CarregarContasAReceber(cliente, dataVencimentoInicio, dataVencimentoFim);
         }
-
         private void FrmContaReceber_Load(object sender, EventArgs e)
         {
             ListarContaReceber();
+            PersonalizarColunas(dgvContasReceber);
         }
 
         private void txtClienteID_TextChanged(object sender, EventArgs e)
@@ -483,7 +473,7 @@ namespace SisControl.View
                 gbStatus.Visible = true;
                 gbNome.Visible = false;
                 gbPeriodo.Visible = false;
-                btnFiltrar.Location = new Point(353, 76);                
+                btnFiltrar.Location = new Point(355, 59);                
             }
             else if (selectedText == "Período")
             {
@@ -713,16 +703,16 @@ namespace SisControl.View
         }
         private void LocalizarContaPorStatus()
         {
-            string StatusConta = "";
+            bool StatusConta = false;
             string nomeParametro = "@Pago";
 
             if (radioBtnAberto.Checked == true)
             {
-                StatusConta = "0";
+                StatusConta = false;
             }
             if (radioBtnPago.Checked == true)
             {
-                StatusConta = "1";
+                StatusConta = true;
             }
             string clausulaWhere = "Parcela.Pago = @Pago";
             var parametros = new Dictionary<string, object>
@@ -772,7 +762,7 @@ namespace SisControl.View
                     try
                     {
                         string updateParcela = "UPDATE Parcela SET ValorRecebido += @ValorPago, SaldoRestante -= @ValorPago, Pago = CASE WHEN SaldoRestante = 0 THEN 1 ELSE 0 END WHERE ParcelaID = @ParcelaID";
-                        using (SqlCommand cmd = new SqlCommand(updateParcela, connection, transaction))
+                        using (SqlCeCommand cmd = new SqlCeCommand(updateParcela, connection, transaction))
                         {
                             cmd.Parameters.Add("@ParcelaID", SqlDbType.Int).Value = parcelaID;
                             cmd.Parameters.Add("@ValorPago", SqlDbType.Decimal).Value = valorPago;

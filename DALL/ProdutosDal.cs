@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Data.SqlClient;
+using System.Data.SqlServerCe;
 using System.Data;
 using System.Windows.Forms;
 
@@ -21,7 +21,7 @@ namespace SisControl.DALL
         //    using (connection)
         //    {
         //        var query = "SELECT * FROM Produtos";
-        //        using (var command = new SqlCommand(query, connection))
+        //        using (var command = new SqlCeCommand(query, connection))
         //        {
         //            connection.Open();
         //            using (var reader = command.ExecuteReader())
@@ -55,9 +55,9 @@ namespace SisControl.DALL
             var conn = Conexao.Conex();
             try
             {
-                SqlCommand comando = new SqlCommand("SELECT TOP (30) ProdutoID, Referencia, NomeProduto, PrecoCusto, Lucro, PrecoDeVenda, Estoque, DataDeEntrada, Status FROM Produtos", conn);              
+                SqlCeCommand comando = new SqlCeCommand("SELECT TOP (30) ProdutoID, Referencia, NomeProduto, PrecoCusto, Lucro, PrecoDeVenda, Estoque, DataDeEntrada, Status FROM Produtos", conn);              
 
-                SqlDataAdapter daProduto = new SqlDataAdapter();
+                SqlCeDataAdapter daProduto = new SqlCeDataAdapter();
                 daProduto.SelectCommand = comando;
 
                 DataTable dtProduto= new DataTable();
@@ -80,7 +80,7 @@ namespace SisControl.DALL
             using (connection)
             {
                 var query = "INSERT INTO Produtos (ProdutoID, NomeProduto, PrecoCusto, Lucro, PrecoDeVenda, Estoque, DataDeEntrada, Status, Referencia) VALUES (@ProdutoID, @NomeProduto, @PrecoCusto, @Lucro, @PrecoDeVenda, @Estoque, @DataDeEntrada, @Status, @Referencia)";
-                using (var command = new SqlCommand(query, connection))
+                using (var command = new SqlCeCommand(query, connection))
                 {
                     command.Parameters.AddWithValue("@ProdutoID", produto.ProdutoID);
                     command.Parameters.AddWithValue("@NomeProduto", produto.NomeProduto);
@@ -105,7 +105,7 @@ namespace SisControl.DALL
             using (var conn = Conexao.Conex())
             {
                 string sql = "UPDATE Produtos SET Estoque = Estoque - @QuantidadeEmVendida WHERE ProdutoID = @ProdutoID";
-                SqlCommand cmd = new SqlCommand(sql, conn);
+                SqlCeCommand cmd = new SqlCeCommand(sql, conn);
                 cmd.Parameters.AddWithValue("@QuantidadeEmVendida", quantidadeVendida);
                 cmd.Parameters.AddWithValue("@ProdutoID", produtoID);
 
@@ -123,7 +123,7 @@ namespace SisControl.DALL
             using (connection)
             {
                 var query = "UPDATE Produtos SET NomeProduto = @NomeProduto, PrecoCusto = @PrecoCusto, Lucro = @Lucro, PrecoDeVenda = @PrecoDeVenda, Estoque = @Estoque, DataDeEntrada = @DataDeEntrada, Status = @Status, Referencia = @Referencia WHERE ProdutoID = @ProdutoID";
-                using (var command = new SqlCommand(query, connection))
+                using (var command = new SqlCeCommand(query, connection))
                 {
                     command.Parameters.AddWithValue("@ProdutoID", produto.ProdutoID);
                     command.Parameters.AddWithValue("@NomeProduto", produto.NomeProduto);
@@ -150,7 +150,7 @@ namespace SisControl.DALL
             using (connection)
             {
                 var query = "DELETE FROM Produtos WHERE ProdutoID = @ProdutoID";
-                using (var command = new SqlCommand(query, connection))
+                using (var command = new SqlCeCommand(query, connection))
                 {
                     command.Parameters.AddWithValue("@ProdutoID", produto.ProdutoID);
                     
@@ -165,9 +165,9 @@ namespace SisControl.DALL
             try
             {
 
-                SqlCommand sql = new SqlCommand("SELECT * FROM Produtos WHERE Referencia LIKE '" + pesquisa + "%' ", conn);
+                SqlCeCommand sql = new SqlCeCommand("SELECT * FROM Produtos WHERE Referencia LIKE '" + pesquisa + "%' ", conn);
                 conn.Open();
-                SqlDataReader datareader;
+                SqlCeDataReader datareader;
                 ProdutosModel obj_Produto = new ProdutosModel();
 
                 datareader = sql.ExecuteReader(CommandBehavior.CloseConnection);
@@ -200,7 +200,7 @@ namespace SisControl.DALL
             using (var conn = Conexao.Conex())
             {
                 string sql = "UPDATE Produtos SET Estoque = Estoque + @Quantidade WHERE ProdutoID = @ProdutoID";
-                SqlCommand cmd = new SqlCommand(sql, conn);
+                SqlCeCommand cmd = new SqlCeCommand(sql, conn);
                 cmd.Parameters.AddWithValue("@Quantidade", quantidade);
                 cmd.Parameters.AddWithValue("@ProdutoID", produtoID);
 
@@ -220,11 +220,11 @@ namespace SisControl.DALL
 
 
                 //string sqlconn = "SELECT TOP (30) * FROM Cliente WHERE NomeCliente LIKE @NomeCliente";
-                SqlCommand cmd = new SqlCommand(sqlconn, conn);
+                SqlCeCommand cmd = new SqlCeCommand(sqlconn, conn);
                 cmd.Parameters.AddWithValue("@NomeProduto", nome);
                 conn.Open();
                 cmd.ExecuteNonQuery();
-                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                SqlCeDataAdapter da = new SqlCeDataAdapter(cmd);
                 da.Fill(dt);
                 conn.Close();
                 conn.Dispose();
@@ -247,11 +247,11 @@ namespace SisControl.DALL
                 string sqlconn = "SELECT TOP (30) ProdutoID, Referencia, NomeProduto, PrecoCusto, Lucro, PrecoDeVenda, Estoque, DataDeEntrada, Status FROM Produtos WHERE Referencia LIKE @Referencia";
 
                 //string sqlconn = "SELECT TOP (30) * FROM Cliente WHERE NomeCliente LIKE @NomeCliente";
-                SqlCommand cmd = new SqlCommand(sqlconn, conn);
+                SqlCeCommand cmd = new SqlCeCommand(sqlconn, conn);
                 cmd.Parameters.AddWithValue("@Referencia", codigo);
                 conn.Open();
                 cmd.ExecuteNonQuery();
-                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                SqlCeDataAdapter da = new SqlCeDataAdapter(cmd);
                 da.Fill(dt);
                 conn.Close();
                 conn.Dispose();

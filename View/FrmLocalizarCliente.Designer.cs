@@ -40,13 +40,13 @@
             this.btnSair.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnSair.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(57)))), ((int)(((byte)(80)))));
             this.btnSair.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(57)))), ((int)(((byte)(80)))));
-            this.btnSair.Location = new System.Drawing.Point(449, 331);
+            this.btnSair.Location = new System.Drawing.Point(866, 342);
             this.btnSair.Click += new System.EventHandler(this.btnSair_Click);
             // 
             // txtPesquisa
             // 
             this.txtPesquisa.Location = new System.Drawing.Point(199, 56);
-            this.txtPesquisa.Size = new System.Drawing.Size(368, 20);
+            this.txtPesquisa.Size = new System.Drawing.Size(784, 20);
             this.txtPesquisa.TextChanged += new System.EventHandler(this.txtPesquisa_TextChanged);
             this.txtPesquisa.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtPesquisa_KeyDown);
             // 
@@ -62,12 +62,12 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridPesquisar.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridPesquisar.Location = new System.Drawing.Point(12, 84);
+            this.dataGridPesquisar.Location = new System.Drawing.Point(2, 78);
             this.dataGridPesquisar.MultiSelect = false;
             this.dataGridPesquisar.Name = "dataGridPesquisar";
             this.dataGridPesquisar.ReadOnly = true;
             this.dataGridPesquisar.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridPesquisar.Size = new System.Drawing.Size(555, 239);
+            this.dataGridPesquisar.Size = new System.Drawing.Size(984, 260);
             this.dataGridPesquisar.TabIndex = 598;
             this.dataGridPesquisar.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridPesquisar_CellDoubleClick);
             this.dataGridPesquisar.SelectionChanged += new System.EventHandler(this.dataGridPesquisar_SelectionChanged);
@@ -78,7 +78,7 @@
             this.label28.AutoSize = true;
             this.label28.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
             this.label28.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(76)))), ((int)(((byte)(172)))));
-            this.label28.Location = new System.Drawing.Point(195, 3);
+            this.label28.Location = new System.Drawing.Point(377, 5);
             this.label28.Name = "label28";
             this.label28.Size = new System.Drawing.Size(212, 24);
             this.label28.TabIndex = 601;
@@ -87,7 +87,7 @@
             // FrmLocalizarCliente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.ClientSize = new System.Drawing.Size(588, 369);
+            this.ClientSize = new System.Drawing.Size(988, 369);
             this.Controls.Add(this.label28);
             this.Controls.Add(this.dataGridPesquisar);
             this.Name = "FrmLocalizarCliente";

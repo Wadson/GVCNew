@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
-using System.Data.SqlClient;
+using System.Data.SqlServerCe;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
@@ -18,6 +18,7 @@ using Microsoft.IdentityModel.Tokens;
 using OfficeOpenXml.FormulaParsing.Excel.Functions.RefAndLookup;
 using SisControl.DALL;
 using SisControl.BLL;
+using System.Threading;
 
 
 
@@ -40,11 +41,12 @@ namespace SisControl.View
         public int ParcelaID { get; set; }
         public int ProdutoID { get; set; }
         public string connectionString { get; set; }   //implementado 10/01/2025 
-
+        public string clienteSelecionado { get; set; }//não serve para nada só para preencher o parametro do construtor
         public decimal valorTotal { get; set; }
         public int numeroParcelas = 1;
+        private bool bloqueiaPesquisa = false;
 
-        
+
         public FrmPedidoVendaNovo()
         {
             InitializeComponent();
@@ -380,9 +382,10 @@ namespace SisControl.View
         private void LocalizarProduto()
         {
             // Cria uma instância do FrmLocalizarProduto e define o Owner como o FrmVendas
-            FrmLocalizarProduto frmLocalizarProduto = new FrmLocalizarProduto
+            FrmLocalizarProduto frmLocalizarProduto = new FrmLocalizarProduto(this, txtNomeProduto.Text)
             {
-                Owner = this
+                Owner = this,
+                produtoSelecionado = txtNomeProduto.Text
             };
             frmLocalizarProduto.ShowDialog();
             frmLocalizarProduto.Text = "Localizar Produtos";
@@ -415,10 +418,10 @@ namespace SisControl.View
         {
         }
 
-        private void AbrirFrmLocalizarCliente()
+        private void AbrirFrmLocalizarClienteDinamico()
         {
             // Cria uma instância do frmLocalizarCliente e define o Owner como o FrmPedidoVendaNovo
-            FrmLocalizarCliente frmLocalizarCliente = new FrmLocalizarCliente(this)
+            FrmLocalizarCliente frmLocalizarCliente = new FrmLocalizarCliente(this, clienteSelecionado)
             {
                 Owner = this
             };
@@ -531,28 +534,6 @@ namespace SisControl.View
             CalcularSubtotal();
         }
 
-        private void txtNomeProduto_KeyUp_1(object sender, KeyEventArgs e)
-        {
-            string textoDigitado = txtNomeProduto.Text;
-
-            // Abre o formulário de pesquisa se ao menos uma letra for digitada
-            if (!string.IsNullOrWhiteSpace(textoDigitado))
-            {
-                FrmLocalizarProduto frmLocalizar = new FrmLocalizarProduto
-                {
-                    txtPesquisa = { Text = textoDigitado } // Passa as letras digitadas
-                };
-
-                frmLocalizar.ShowDialog(); // Exibe o formulário como modal
-
-                // Atualiza o campo com o cliente selecionado
-                if (!string.IsNullOrWhiteSpace(frmLocalizar.NomeProduto))
-                {
-                    txtNomeCliente.Text = frmLocalizar.NomeProduto;
-                    ProdutoID = Convert.ToInt16(frmLocalizar.ProdutoID);
-                }
-            }
-        }       
         private void txtQuantidade_Leave(object sender, EventArgs e)
         {
             CalcularSubtotal();
@@ -597,7 +578,7 @@ namespace SisControl.View
 
         private void btnLocalizarCliente_Click(object sender, EventArgs e)
         {
-            AbrirFrmLocalizarCliente();
+            AbrirFrmLocalizarClienteDinamico();
         }
 
         private void btnLocalizarProduto_Click(object sender, EventArgs e)
@@ -609,7 +590,7 @@ namespace SisControl.View
         {
             if (e.KeyCode == Keys.F4)
             {
-                AbrirFrmLocalizarCliente();
+                AbrirFrmLocalizarClienteDinamico();
             }
             if (e.KeyCode == Keys.F5)
             {
@@ -629,10 +610,10 @@ namespace SisControl.View
             }
         }
 
-        private int ObterUltimaParcelaID(SqlConnection connection, SqlTransaction transaction)
+        private int ObterUltimaParcelaID(SqlCeConnection connection, SqlCeTransaction transaction)
         {
             string query = "SELECT MAX(ParcelaID) FROM Parcela WHERE VendaID = @VendaID";
-            using (SqlCommand cmd = new SqlCommand(query, connection, transaction))
+            using (SqlCeCommand cmd = new SqlCeCommand(query, connection, transaction))
             {
                 cmd.Parameters.Add("@VendaID", SqlDbType.Int).Value = VendaID;
                 return Convert.ToInt32(cmd.ExecuteScalar());
@@ -882,6 +863,54 @@ namespace SisControl.View
         private void btnSair_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void txtNomeCliente_TextChanged(object sender, EventArgs e)
+        {
+            if (bloqueiaPesquisa || string.IsNullOrEmpty(txtNomeCliente.Text))
+                return;
+
+            bloqueiaPesquisa = true; // Impede reabertura do formulário 
+
+            using (FrmLocalizarCliente pesquisaCliente = new FrmLocalizarCliente(this, txtNomeCliente.Text))
+            {
+                pesquisaCliente.Owner = this; // Define o formulário principal como "dono"
+
+                if (pesquisaCliente.ShowDialog() == DialogResult.OK)
+                {
+                    txtNomeCliente.Text = pesquisaCliente.ClienteSelecionado;
+                }
+            }
+
+            bloqueiaPesquisa = false; // Libera a pesquisa novamente
+        }
+
+        private void txtNomeProduto_TextChanged(object sender, EventArgs e)
+        {
+            if (bloqueiaPesquisa || string.IsNullOrEmpty(txtNomeProduto.Text))
+                return;
+
+            bloqueiaPesquisa = true; // Bloqueia novas pesquisas para evitar loops
+
+            using (FrmLocalizarProduto pesquisaProduto = new FrmLocalizarProduto(this, txtNomeProduto.Text))
+            {
+                pesquisaProduto.Owner = this; // Define o formulário principal como "dono"
+
+                if (pesquisaProduto.ShowDialog() == DialogResult.OK)
+                {
+                    // Atualiza somente se o texto mudou
+                    if (txtNomeProduto.Text != pesquisaProduto.produtoSelecionado)
+                    {
+                        txtNomeProduto.Text = pesquisaProduto.produtoSelecionado;
+                    }
+                }
+            }
+
+            bloqueiaPesquisa = false; // Libera a pesquisa novamente
+        }
+
+        private void dtpVencimento_ValueChanged(object sender, EventArgs e)
+        {
         }
     }
 }

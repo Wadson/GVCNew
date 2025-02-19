@@ -41,7 +41,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.cmbTipoUsuario = new ComponentFactory.Krypton.Toolkit.KryptonComboBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.txtRepitaSenha = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
@@ -50,8 +49,8 @@
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.txtCPF = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
-            this.dtpDataNascimento = new ComponentFactory.Krypton.Toolkit.KryptonDateTimePicker();
-            ((System.ComponentModel.ISupportInitialize)(this.cmbTipoUsuario)).BeginInit();
+            this.cmbTipoUsuario = new Guna.UI2.WinForms.Guna2ComboBox();
+            this.dtpDataNascimento = new Guna.UI2.WinForms.Guna2DateTimePicker();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
             this.kryptonPanel1.SuspendLayout();
             this.SuspendLayout();
@@ -305,7 +304,7 @@
             // 
             this.txtNomeUsuario.Location = new System.Drawing.Point(24, 113);
             this.txtNomeUsuario.Name = "txtNomeUsuario";
-            this.txtNomeUsuario.Size = new System.Drawing.Size(581, 30);
+            this.txtNomeUsuario.Size = new System.Drawing.Size(616, 30);
             this.txtNomeUsuario.StateCommon.Back.Color1 = System.Drawing.Color.White;
             this.txtNomeUsuario.StateCommon.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
             this.txtNomeUsuario.StateCommon.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
@@ -324,7 +323,7 @@
             // 
             this.txtEmail.Location = new System.Drawing.Point(24, 169);
             this.txtEmail.Name = "txtEmail";
-            this.txtEmail.Size = new System.Drawing.Size(245, 30);
+            this.txtEmail.Size = new System.Drawing.Size(261, 30);
             this.txtEmail.StateCommon.Back.Color1 = System.Drawing.Color.White;
             this.txtEmail.StateCommon.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
             this.txtEmail.StateCommon.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
@@ -341,9 +340,9 @@
             // 
             // txtSenha
             // 
-            this.txtSenha.Location = new System.Drawing.Point(273, 169);
+            this.txtSenha.Location = new System.Drawing.Point(291, 169);
             this.txtSenha.Name = "txtSenha";
-            this.txtSenha.Size = new System.Drawing.Size(162, 30);
+            this.txtSenha.Size = new System.Drawing.Size(170, 30);
             this.txtSenha.StateCommon.Back.Color1 = System.Drawing.Color.White;
             this.txtSenha.StateCommon.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
             this.txtSenha.StateCommon.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
@@ -382,31 +381,17 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
-            this.label4.Location = new System.Drawing.Point(291, 149);
+            this.label4.Location = new System.Drawing.Point(309, 149);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(53, 17);
             this.label4.TabIndex = 10;
             this.label4.Text = "Senha:";
             // 
-            // cmbTipoUsuario
-            // 
-            this.cmbTipoUsuario.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbTipoUsuario.DropDownWidth = 244;
-            this.cmbTipoUsuario.InputControlStyle = ComponentFactory.Krypton.Toolkit.InputControlStyle.Custom1;
-            this.cmbTipoUsuario.Items.AddRange(new object[] {
-            "Administrador",
-            "Operador"});
-            this.cmbTipoUsuario.Location = new System.Drawing.Point(406, 232);
-            this.cmbTipoUsuario.Name = "cmbTipoUsuario";
-            this.cmbTipoUsuario.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.SparklePurple;
-            this.cmbTipoUsuario.Size = new System.Drawing.Size(199, 21);
-            this.cmbTipoUsuario.TabIndex = 7;
-            // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
-            this.label5.Location = new System.Drawing.Point(406, 212);
+            this.label5.Location = new System.Drawing.Point(443, 207);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(93, 17);
             this.label5.TabIndex = 12;
@@ -416,7 +401,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
-            this.label6.Location = new System.Drawing.Point(459, 149);
+            this.label6.Location = new System.Drawing.Point(482, 149);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(98, 17);
             this.label6.TabIndex = 14;
@@ -424,9 +409,9 @@
             // 
             // txtRepitaSenha
             // 
-            this.txtRepitaSenha.Location = new System.Drawing.Point(441, 169);
+            this.txtRepitaSenha.Location = new System.Drawing.Point(464, 169);
             this.txtRepitaSenha.Name = "txtRepitaSenha";
-            this.txtRepitaSenha.Size = new System.Drawing.Size(162, 30);
+            this.txtRepitaSenha.Size = new System.Drawing.Size(170, 30);
             this.txtRepitaSenha.StateCommon.Back.Color1 = System.Drawing.Color.White;
             this.txtRepitaSenha.StateCommon.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
             this.txtRepitaSenha.StateCommon.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
@@ -450,7 +435,7 @@
             this.kryptonPanel1.Name = "kryptonPanel1";
             this.kryptonPanel1.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Blue;
             this.kryptonPanel1.PanelBackStyle = ComponentFactory.Krypton.Toolkit.PaletteBackStyle.SeparatorHighProfile;
-            this.kryptonPanel1.Size = new System.Drawing.Size(646, 66);
+            this.kryptonPanel1.Size = new System.Drawing.Size(667, 66);
             this.kryptonPanel1.TabIndex = 15;
             // 
             // lblStatus
@@ -469,7 +454,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
-            this.label7.Location = new System.Drawing.Point(270, 212);
+            this.label7.Location = new System.Drawing.Point(284, 207);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(120, 17);
             this.label7.TabIndex = 19;
@@ -479,7 +464,7 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
-            this.label8.Location = new System.Drawing.Point(24, 203);
+            this.label8.Location = new System.Drawing.Point(24, 207);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(33, 17);
             this.label8.TabIndex = 18;
@@ -487,7 +472,7 @@
             // 
             // txtCPF
             // 
-            this.txtCPF.Location = new System.Drawing.Point(24, 223);
+            this.txtCPF.Location = new System.Drawing.Point(24, 233);
             this.txtCPF.Name = "txtCPF";
             this.txtCPF.Size = new System.Drawing.Size(233, 30);
             this.txtCPF.StateCommon.Back.Color1 = System.Drawing.Color.White;
@@ -504,21 +489,59 @@
             this.txtCPF.StateCommon.Content.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
             this.txtCPF.TabIndex = 6;
             // 
+            // cmbTipoUsuario
+            // 
+            this.cmbTipoUsuario.BackColor = System.Drawing.Color.Transparent;
+            this.cmbTipoUsuario.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
+            this.cmbTipoUsuario.BorderRadius = 20;
+            this.cmbTipoUsuario.BorderStyle = System.Drawing.Drawing2D.DashStyle.Dot;
+            this.cmbTipoUsuario.BorderThickness = 0;
+            this.cmbTipoUsuario.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cmbTipoUsuario.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbTipoUsuario.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(174)))), ((int)(((byte)(244)))));
+            this.cmbTipoUsuario.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.cmbTipoUsuario.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.cmbTipoUsuario.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.cmbTipoUsuario.ForeColor = System.Drawing.Color.White;
+            this.cmbTipoUsuario.ItemHeight = 30;
+            this.cmbTipoUsuario.Items.AddRange(new object[] {
+            "Administrador",
+            "Operador"});
+            this.cmbTipoUsuario.Location = new System.Drawing.Point(433, 227);
+            this.cmbTipoUsuario.Name = "cmbTipoUsuario";
+            this.cmbTipoUsuario.Size = new System.Drawing.Size(199, 36);
+            this.cmbTipoUsuario.TabIndex = 21;
+            // 
             // dtpDataNascimento
             // 
+            this.dtpDataNascimento.Animated = true;
+            this.dtpDataNascimento.AutoRoundedCorners = true;
+            this.dtpDataNascimento.BackColor = System.Drawing.Color.Transparent;
+            this.dtpDataNascimento.BorderColor = System.Drawing.Color.White;
+            this.dtpDataNascimento.BorderRadius = 17;
+            this.dtpDataNascimento.Checked = true;
+            this.dtpDataNascimento.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(174)))), ((int)(((byte)(244)))));
+            this.dtpDataNascimento.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.dtpDataNascimento.ForeColor = System.Drawing.Color.White;
             this.dtpDataNascimento.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpDataNascimento.Location = new System.Drawing.Point(273, 232);
+            this.dtpDataNascimento.IndicateFocus = true;
+            this.dtpDataNascimento.Location = new System.Drawing.Point(265, 227);
+            this.dtpDataNascimento.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
+            this.dtpDataNascimento.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
             this.dtpDataNascimento.Name = "dtpDataNascimento";
-            this.dtpDataNascimento.Size = new System.Drawing.Size(117, 21);
-            this.dtpDataNascimento.TabIndex = 20;
+            this.dtpDataNascimento.Size = new System.Drawing.Size(162, 36);
+            this.dtpDataNascimento.TabIndex = 22;
+            this.dtpDataNascimento.UseTransparentBackground = true;
+            this.dtpDataNascimento.Value = new System.DateTime(2025, 2, 19, 7, 9, 15, 860);
             // 
             // FrmCadUser
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(252)))), ((int)(((byte)(252)))));
-            this.ClientSize = new System.Drawing.Size(630, 355);
+            this.ClientSize = new System.Drawing.Size(655, 355);
             this.Controls.Add(this.dtpDataNascimento);
+            this.Controls.Add(this.cmbTipoUsuario);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.txtCPF);
@@ -526,7 +549,6 @@
             this.Controls.Add(this.label6);
             this.Controls.Add(this.txtRepitaSenha);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.cmbTipoUsuario);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -536,15 +558,21 @@
             this.Controls.Add(this.btnSair);
             this.Controls.Add(this.btnNovo);
             this.Controls.Add(this.btnSalvar);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.KeyPreview = true;
+            this.MaximizeBox = false;
             this.Name = "FrmCadUser";
             this.Palette = this.kryptonPalette1;
             this.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Custom;
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.StateCommon.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
+            this.StateCommon.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
+            this.StateCommon.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
+            | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
             this.Load += new System.EventHandler(this.FrmCadUser_Load);
             this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.FrmCadUser_KeyPress);
-            ((System.ComponentModel.ISupportInitialize)(this.cmbTipoUsuario)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).EndInit();
             this.kryptonPanel1.ResumeLayout(false);
             this.kryptonPanel1.PerformLayout();
@@ -567,7 +595,6 @@
         public ComponentFactory.Krypton.Toolkit.KryptonTextBox txtNomeUsuario;
         public ComponentFactory.Krypton.Toolkit.KryptonTextBox txtEmail;
         public ComponentFactory.Krypton.Toolkit.KryptonTextBox txtSenha;
-        public ComponentFactory.Krypton.Toolkit.KryptonComboBox cmbTipoUsuario;
         public ComponentFactory.Krypton.Toolkit.KryptonButton btnSalvar;
         public ComponentFactory.Krypton.Toolkit.KryptonButton btnNovo;
         public ComponentFactory.Krypton.Toolkit.KryptonButton btnSair;
@@ -576,6 +603,7 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
         public ComponentFactory.Krypton.Toolkit.KryptonTextBox txtCPF;
-        public ComponentFactory.Krypton.Toolkit.KryptonDateTimePicker dtpDataNascimento;
+        public Guna.UI2.WinForms.Guna2ComboBox cmbTipoUsuario;
+        public Guna.UI2.WinForms.Guna2DateTimePicker dtpDataNascimento;
     }
 }

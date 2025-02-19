@@ -1,7 +1,7 @@
 ﻿using SisControl.MODEL;
 using System;
 using System.Collections.Generic;
-using System.Data.SqlClient;
+using System.Data.SqlServerCe;
 using System.Data;
 using System.Linq;
 using System.Text;
@@ -73,11 +73,11 @@ namespace SisControl.BLL
             var conn = Conexao.Conex();
             try
             {
-                SqlCommand sql = new SqlCommand("SELECT * FROM ItemVenda WHERE ItemVendaID like @Pesquisa + '%'", conn);
+                SqlCeCommand sql = new SqlCeCommand("SELECT * FROM ItemVenda WHERE ItemVendaID like @Pesquisa + '%'", conn);
                 sql.Parameters.AddWithValue("@Pesquisa", pesquisa);
 
                 conn.Open();
-                SqlDataReader datareader;
+                SqlCeDataReader datareader;
                 ItemVendaModel obj_Itensvenda = new ItemVendaModel();
                 datareader = sql.ExecuteReader(CommandBehavior.CloseConnection);
 

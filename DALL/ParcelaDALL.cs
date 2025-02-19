@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Configuration;
 using System.Data;
-using System.Data.SqlClient;
+using System.Data.SqlServerCe;
 
 
 namespace SisControl.DALL
@@ -24,7 +24,7 @@ namespace SisControl.DALL
                 string query = @"UPDATE Parcela SET DataVencimento = @DataVencimento, ValorParcela = @ValorParcela, 
                              ValorRecebido = @ValorRecebido, SaldoRestante = @SaldoRestante, Pago = @Pago 
                              WHERE ParcelaID = @ParcelaID";
-                SqlCommand command = new SqlCommand(query, connection);
+                SqlCeCommand command = new SqlCeCommand(query, connection);
                 command.Parameters.AddWithValue("@DataVencimento", parcela.DataVencimento);
                 command.Parameters.AddWithValue("@ValorParcela", parcela.ValorParcela);
                 command.Parameters.AddWithValue("@ValorRecebido", parcela.ValorRecebido);
@@ -43,7 +43,7 @@ namespace SisControl.DALL
             using (var connection = Conexao.Conex())
             {
                 string query = "DELETE FROM Parcela WHERE ParcelaID = @ParcelaID";
-                SqlCommand command = new SqlCommand(query, connection);
+                SqlCeCommand command = new SqlCeCommand(query, connection);
                 command.Parameters.AddWithValue("@ParcelaID", parcelaId);
 
                 connection.Open();
@@ -58,11 +58,11 @@ namespace SisControl.DALL
             using (var connection = Conexao.Conex())
             {
                 string query = "SELECT * FROM Parcela WHERE VendaID = @VendaID";
-                SqlCommand command = new SqlCommand(query, connection);
+                SqlCeCommand command = new SqlCeCommand(query, connection);
                 command.Parameters.AddWithValue("@VendaID", vendaId);
 
                 connection.Open();
-                using (SqlDataReader reader = command.ExecuteReader())
+                using (SqlCeDataReader reader = command.ExecuteReader())
                 {
                     while (reader.Read())
                     {
@@ -88,8 +88,8 @@ namespace SisControl.DALL
         {
             using (var conn = Conexao.Conex())
             {
-                SqlCommand comando = new SqlCommand("SELECT * FROM Parcela", conn);
-                SqlDataAdapter daParcela = new SqlDataAdapter(comando);
+                SqlCeCommand comando = new SqlCeCommand("SELECT * FROM Parcela", conn);
+                SqlCeDataAdapter daParcela = new SqlCeDataAdapter(comando);
                 DataTable dtParcela = new DataTable();
                 daParcela.Fill(dtParcela);
                 return dtParcela;
@@ -102,10 +102,10 @@ namespace SisControl.DALL
         {
             try
             {
-                using (SqlConnection connection = Conexao.Conex()) // Obtém a conexão do SQL Server Express
+                using (SqlCeConnection connection = Conexao.Conex()) // Obtém a conexão do SQL Server Express
                 {
                     connection.Open();
-                    using (SqlCommand cmd = new SqlCommand(@"
+                    using (SqlCeCommand cmd = new SqlCeCommand(@"
                 INSERT INTO Parcela 
                 (ParcelaID, VendaID, NumeroParcela, DataVencimento, ValorParcela, ValorRecebido, SaldoRestante, Pago) 
                 VALUES 

@@ -26,79 +26,10 @@ namespace SisControl.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=DESKTOP-WR\\SQLEXPRESS;AttachDbFilename=\"C:\\Program Files\\Microsoft SQ" +
-            "L Server\\MSSQL10.SQLEXPRESS\\MSSQL\\DATA\\money.mdf\";Integrated Security=True;Trust" +
-            "ServerCertificate=True")]
-        public string moneyConnectionString {
+        [global::System.Configuration.DefaultSettingValueAttribute("\"Data Source=|DataDirectory|\\bdsiscontrol.sdf;Persist Security Info=False;\"")]
+        public string connectionString {
             get {
-                return ((string)(this["moneyConnectionString"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=DESKTOP-WR\\SQLEXPRESS;Initial Catalog=bdsiscontrol;Integrated Securit" +
-            "y=True;TrustServerCertificate=True")]
-        public string bdsiscontrolConnectionString {
-            get {
-                return ((string)(this["bdsiscontrolConnectionString"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=NOTEBOOK-DELL\\SQLEXPRESS;AttachDbFilename=\"C:\\Program Files\\Microsoft" +
-            " SQL Server\\MSSQL16.SQLEXPRESS\\MSSQL\\DATA\\bdsiscontrol.mdf\";Integrated Security=" +
-            "True;TrustServerCertificate=True")]
-        public string bdsiscontrolConnectionString1 {
-            get {
-                return ((string)(this["bdsiscontrolConnectionString1"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=NOTEBOOK-DELL\\SQLEXPRESS;Initial Catalog=bdsiscontrol;Integrated Secu" +
-            "rity=True;TrustServerCertificate=True")]
-        public string bdsiscontrolConnectionString2 {
-            get {
-                return ((string)(this["bdsiscontrolConnectionString2"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\\bdsiscontrol." +
-            "mdf;Integrated Security=True;Connect Timeout=30")]
-        public string bdsiscontrolConnectionString3 {
-            get {
-                return ((string)(this["bdsiscontrolConnectionString3"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\\Data\\Backup\\B" +
-            "ackup\\bdsiscontrol.mdf;Integrated Security=True;Connect Timeout=30")]
-        public string bdsiscontrolConnectionString4 {
-            get {
-                return ((string)(this["bdsiscontrolConnectionString4"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=DESKTOP-WR\\SQLEXPRESS;Initial Catalog=bdsiscontrol;Integrated Securit" +
-            "y=True;TrustServerCertificate=True")]
-        public string bdsiscontrolConnectionString5 {
-            get {
-                return ((string)(this["bdsiscontrolConnectionString5"]));
+                return ((string)(this["connectionString"]));
             }
         }
     }

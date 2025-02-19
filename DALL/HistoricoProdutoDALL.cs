@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Data.SqlClient;
+using System.Data.SqlServerCe;
 
 namespace SisControl.DALL
 {
@@ -19,7 +19,7 @@ namespace SisControl.DALL
                 string sql = "INSERT INTO HistoricoPreco (ProdutoID, DataRegistro, PrecoCusto, Lucro, PrecoVenda) " +
                              "VALUES (@ProdutoID, @DataRegistro, @PrecoCusto, @Lucro, @PrecoVenda)";
 
-                SqlCommand cmd = new SqlCommand(sql, conn);
+                SqlCeCommand cmd = new SqlCeCommand(sql, conn);
                 cmd.Parameters.AddWithValue("@ProdutoID", historico.ProdutoID);
                 cmd.Parameters.AddWithValue("@DataRegistro", historico.DataRegistro);
                 cmd.Parameters.AddWithValue("@PrecoCusto", historico.PrecoCusto);
@@ -42,11 +42,11 @@ namespace SisControl.DALL
                 string sql = "SELECT HistoricoID, ProdutoID, DataRegistro, PrecoCusto, Lucro, PrecoVenda " +
                              "FROM HistoricoPreco WHERE ProdutoID = @ProdutoID ORDER BY DataRegistro DESC";
 
-                SqlCommand cmd = new SqlCommand(sql, conn);
+                SqlCeCommand cmd = new SqlCeCommand(sql, conn);
                 cmd.Parameters.AddWithValue("@ProdutoID", produtoID);
 
                 conn.Open();
-                using (SqlDataReader dr = cmd.ExecuteReader())
+                using (SqlCeDataReader dr = cmd.ExecuteReader())
                 {
                     while (dr.Read())
                     {

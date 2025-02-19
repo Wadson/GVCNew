@@ -2,7 +2,7 @@
 using SisControl.MODEL;
 using System;
 using System.Collections.Generic;
-using System.Data.SqlClient;
+using System.Data.SqlServerCe;
 using System.Data;
 using System.Linq;
 using System.Text;
@@ -74,9 +74,9 @@ namespace SisControl.BLL
             var conn = Conexao.Conex();
             try
             {
-                SqlCommand sql = new SqlCommand("SELECT * FROM Cidade WHERE NomeCidade like '" + pesquisa + "%'", conn);
+                SqlCeCommand sql = new SqlCeCommand("SELECT * FROM Cidade WHERE NomeCidade like '" + pesquisa + "%'", conn);
                 conn.Open();
-                SqlDataReader datareader;
+                SqlCeDataReader datareader;
                 CidadeMODEL obj_cidade = new CidadeMODEL();
                 datareader = sql.ExecuteReader(CommandBehavior.CloseConnection);
 

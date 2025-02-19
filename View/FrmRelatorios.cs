@@ -6,13 +6,11 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
-using System.Data.SqlClient;
+using System.Data.SqlServerCe;
 using iTextSharp.text.pdf;
 using iTextSharp.text;
 using System.IO;
 using OfficeOpenXml; 
-using iTextSharp.text;
-using iTextSharp.text.pdf;
 using ComponentFactory.Krypton.Toolkit;
 
 namespace SisControl.View
@@ -27,7 +25,7 @@ namespace SisControl.View
             //ExcelPackage.LicenseContext = LicenseContext.NonCommercial; // Para uso não comercial
                                                                         // ExcelPackage.LicenseContext = LicenseContext.Commercial; // Para uso comercial
         }
-
+        public string clienteSelecionado { get; set; }//não serve para nada, só para preencher o parametro do construtor
         private void CalcularTotalDataGrid()
         {
             try
@@ -126,10 +124,10 @@ namespace SisControl.View
 
             using (var connection = Conexao.Conex())
             {
-                using (SqlCommand command = new SqlCommand(query, connection))
+                using (SqlCeCommand command = new SqlCeCommand(query, connection))
                 {
                     command.Parameters.AddWithValue("@Pago", pago);
-                    using (SqlDataAdapter adapter = new SqlDataAdapter(command))
+                    using (SqlCeDataAdapter adapter = new SqlCeDataAdapter(command))
                     {
                         DataTable dataTable = new DataTable();
                         adapter.Fill(dataTable);
@@ -165,11 +163,11 @@ namespace SisControl.View
 
             using (var connection = Conexao.Conex())
             {
-                using (SqlCommand command = new SqlCommand(query, connection))
+                using (SqlCeCommand command = new SqlCeCommand(query, connection))
                 {
                     command.Parameters.AddWithValue("@NomeCliente", nomeCliente);
                     command.Parameters.AddWithValue("@Pago", pago);
-                    using (SqlDataAdapter adapter = new SqlDataAdapter(command))
+                    using (SqlCeDataAdapter adapter = new SqlCeDataAdapter(command))
                     {
                         DataTable dataTable = new DataTable();
                         adapter.Fill(dataTable);
@@ -203,12 +201,12 @@ namespace SisControl.View
 
             using (var connection = Conexao.Conex())
             {
-                using (SqlCommand command = new SqlCommand(query, connection))
+                using (SqlCeCommand command = new SqlCeCommand(query, connection))
                 {
                     command.Parameters.AddWithValue("@DataInicial", dataInicial);
                     command.Parameters.AddWithValue("@DataFinal", dataFinal);
                     command.Parameters.AddWithValue("@Pago", pago);
-                    using (SqlDataAdapter adapter = new SqlDataAdapter(command))
+                    using (SqlCeDataAdapter adapter = new SqlCeDataAdapter(command))
                     {
                         DataTable dataTable = new DataTable();
                         adapter.Fill(dataTable);
@@ -243,10 +241,10 @@ namespace SisControl.View
 
             using (var connection = Conexao.Conex())
             {
-                using (SqlCommand command = new SqlCommand(query, connection))
+                using (SqlCeCommand command = new SqlCeCommand(query, connection))
                 {
                     command.Parameters.AddWithValue("@DataVencimento", dataVencimento);
-                    using (SqlDataAdapter adapter = new SqlDataAdapter(command))
+                    using (SqlCeDataAdapter adapter = new SqlCeDataAdapter(command))
                     {
                         DataTable dataTable = new DataTable();
                         adapter.Fill(dataTable);
@@ -282,10 +280,10 @@ namespace SisControl.View
 
             using (var connection = Conexao.Conex())
             {
-                using (SqlCommand command = new SqlCommand(query, connection))
+                using (SqlCeCommand command = new SqlCeCommand(query, connection))
                 {
                     command.Parameters.AddWithValue("@DataVencimento", dataVencimento);
-                    using (SqlDataAdapter adapter = new SqlDataAdapter(command))
+                    using (SqlCeDataAdapter adapter = new SqlCeDataAdapter(command))
                     {
                         DataTable dataTable = new DataTable();
                         adapter.Fill(dataTable);
@@ -460,7 +458,7 @@ namespace SisControl.View
         private void AbrirFrmLocalizarCliente()
         {
                  // Cria uma instância do frmLocalizarCliente e define o Owner como o FrmPedidoVendaNovo
-            FrmLocalizarCliente frmLocalizarCliente = new FrmLocalizarCliente(this)
+            FrmLocalizarCliente frmLocalizarCliente = new FrmLocalizarCliente(this, clienteSelecionado)
             {
                 Owner = this
             };
@@ -565,16 +563,18 @@ namespace SisControl.View
         private void CarregarItensVenda(int vendaID)
         {
             string query = @"SELECT Produtos.Referencia, Produtos.NomeProduto, ItemVenda.Quantidade, 
-                            ItemVenda.PrecoUnitario, ItemVenda.Subtotal
-                     FROM ItemVenda 
-                     INNER JOIN Produtos ON ItemVenda.ProdutoID = Produtos.ProdutoID 
-                     WHERE VendaID = @VendaID";
+                        ItemVenda.PrecoUnitario, 
+                        (ItemVenda.Quantidade * ItemVenda.PrecoUnitario) AS Subtotal
+                 FROM ItemVenda 
+                 INNER JOIN Produtos ON ItemVenda.ProdutoID = Produtos.ProdutoID 
+                 WHERE VendaID = @VendaID";
+
 
             using (var connection = Conexao.Conex())
-            using (SqlCommand command = new SqlCommand(query, connection))
+            using (SqlCeCommand command = new SqlCeCommand(query, connection))
             {
                 command.Parameters.AddWithValue("@VendaID", vendaID);
-                SqlDataAdapter adapter = new SqlDataAdapter(command);
+                SqlCeDataAdapter adapter = new SqlCeDataAdapter(command);
                 DataTable dataTable = new DataTable();
                 adapter.Fill(dataTable);
                 dgvItensVenda.DataSource = dataTable;

@@ -1,11 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using System;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
-using System.Data.SqlClient;
+using System.Data.SqlServerCe;
 
 namespace SisControl.View
 {
@@ -54,14 +54,14 @@ namespace SisControl.View
         {
             string connectionString = $"Server={servidor};Database=master;Integrated Security=True;";
 
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            using (SqlCeConnection connection = new SqlCeConnection(connectionString))
             {
                 string restoreQuery = $@"
                 ALTER DATABASE {bancoDeDados} SET SINGLE_USER WITH ROLLBACK IMMEDIATE;
                 RESTORE DATABASE {bancoDeDados} FROM DISK = '{caminhoBackup}' WITH REPLACE;
                 ALTER DATABASE {bancoDeDados} SET MULTI_USER;";
 
-                SqlCommand command = new SqlCommand(restoreQuery, connection);
+                SqlCeCommand command = new SqlCeCommand(restoreQuery, connection);
 
                 try
                 {

@@ -50,5 +50,11 @@ namespace SisControl.View
             FrmRelProdutos frm = new FrmRelProdutos();
             frm.ShowDialog();
         }
+
+        private void InsertBanco_Click(object sender, EventArgs e)
+        {
+            FrmInsertBancoSqlCompact frm = new FrmInsertBancoSqlCompact();
+            frm.ShowDialog();
+        }
     }
 }

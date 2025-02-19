@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Data.SqlClient;
+using System.Data.SqlServerCe;
 using System.Data;
 
 namespace SisControl.DALL
@@ -18,7 +18,7 @@ namespace SisControl.DALL
                 conn.Open();
                 string query = "INSERT INTO PagamentosParciais (ParcelaID, ValorPago, DataPagamento) VALUES (@ParcelaID, @ValorPago, @DataPagamento)";
 
-                using (SqlCommand cmd = new SqlCommand(query, conn))
+                using (SqlCeCommand cmd = new SqlCeCommand(query, conn))
                 {
                     cmd.Parameters.AddWithValue("@ParcelaID", pagamentoParcial.ParcelaID);
                     cmd.Parameters.AddWithValue("@ValorPago", pagamentoParcial.ValorPago);
@@ -32,7 +32,7 @@ namespace SisControl.DALL
             using (var connection = Conexao.Conex())
             {
                 string query = "DELETE FROM PagamentosParciais WHERE ParcelaID = @ParcelaID";
-                SqlCommand command = new SqlCommand(query, connection);
+                SqlCeCommand command = new SqlCeCommand(query, connection);
                 command.Parameters.AddWithValue("@ParcelaID", pagamentoParcialID);
 
                 connection.Open();
@@ -48,10 +48,10 @@ namespace SisControl.DALL
                 conn.Open();
                 string query = "SELECT PagamentoParcialID, ParcelaID, ValorPago, DataPagamento FROM PagamentosParciais WHERE ParcelaID = @ParcelaID";
 
-                using (SqlCommand cmd = new SqlCommand(query, conn))
+                using (SqlCeCommand cmd = new SqlCeCommand(query, conn))
                 {
                     cmd.Parameters.AddWithValue("@ParcelaID", parcelaID);
-                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    using (SqlCeDataReader reader = cmd.ExecuteReader())
                     {
                         while (reader.Read())
                         {
@@ -75,7 +75,7 @@ namespace SisControl.DALL
             string query = "DELETE FROM PagamentosParciais WHERE ParcelaID = @ParcelaID";
             using (var conn = Conexao.Conex())
             {
-                SqlCommand cmd = new SqlCommand(query, conn);
+                SqlCeCommand cmd = new SqlCeCommand(query, conn);
                 cmd.Parameters.AddWithValue("@ParcelaID", parcelaID);
                 conn.Open();
                 cmd.ExecuteNonQuery();
@@ -86,9 +86,9 @@ namespace SisControl.DALL
             var conn = Conexao.Conex();
             try
             {
-                SqlCommand comando = new SqlCommand("SELECT * FROM PagamentosParciais", conn);
+                SqlCeCommand comando = new SqlCeCommand("SELECT * FROM PagamentosParciais", conn);
 
-                SqlDataAdapter daUsuario = new SqlDataAdapter();
+                SqlCeDataAdapter daUsuario = new SqlCeDataAdapter();
                 daUsuario.SelectCommand = comando;
 
                 DataTable dtUsuario = new DataTable();

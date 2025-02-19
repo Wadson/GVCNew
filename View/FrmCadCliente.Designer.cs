@@ -606,7 +606,7 @@
             this.btnLocalizar.StateTracking.Border.GraphicsHint = ComponentFactory.Krypton.Toolkit.PaletteGraphicsHint.AntiAlias;
             this.btnLocalizar.StateTracking.Border.Rounding = 20;
             this.btnLocalizar.StateTracking.Border.Width = 1;
-            this.btnLocalizar.TabIndex = 7;           
+            this.btnLocalizar.TabIndex = 7;
             this.btnLocalizar.Values.Text = "&Localizar...";
             this.btnLocalizar.Click += new System.EventHandler(this.btnLocalizar_Click);
             // 
@@ -683,7 +683,8 @@
             this.Controls.Add(this.txtCpf);
             this.Controls.Add(this.txtTelefone);
             this.Controls.Add(this.txtNomeCliente);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.MaximizeBox = false;
             this.Name = "FrmCadCliente";
             this.StateCommon.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
             this.StateCommon.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));

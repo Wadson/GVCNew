@@ -20,12 +20,23 @@ namespace SisControl.View
         public string NomeProduto { get; set; }
         private decimal PrecoUnitario;
         private String referencia;
+        public string produtoSelecionado { get; set; }
         public Form FormChamador { get; set; }        
 
-        public FrmLocalizarProduto()
+        public FrmLocalizarProduto(Form formChamador, string textoDigitado)
         {
             InitializeComponent();
-            
+            // Verifica se o formulário chamador é válido
+            if (formChamador != null)
+            {
+                this.FormChamador = formChamador;
+            }
+            this.Owner = formChamador;
+
+            txtPesquisa.Text = textoDigitado; // Define a letra pressionada no campo de pesquisa
+            txtPesquisa.SelectionStart = txtPesquisa.Text.Length; // Coloca o cursor no final
+            txtPesquisa.Focus(); // Foca o campo para continuar digitando
+
             // Configurar o TextBox para capturar o evento KeyDown
             this.txtPesquisa.KeyDown += new KeyEventHandler(dataGridPesquisar_KeyDown);            
             this.dataGridPesquisar.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dataGridPesquisar_KeyDown);
@@ -47,7 +58,6 @@ namespace SisControl.View
             dgv.Columns[7].Name = "Dta. Entrada";
             dgv.Columns[8].Name = "Status";
 
-
             // Ajustar colunas automaticamente
             dgv.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
 
@@ -58,17 +68,29 @@ namespace SisControl.View
             dgv.Columns["ProdutoID"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dgv.Columns["Estoque"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
 
-            dgv.Columns["Preco De Venda"].DefaultCellStyle.Font = new Font("Arial", 10F, FontStyle.Italic); // Fonte Arial, 12, Negrito
+            dgv.Columns["Preco De Venda"].DefaultCellStyle.Font = new Font("Arial", 10F, FontStyle.Italic); // Fonte Arial, 10, Italic
             dgv.Columns["Preco De Venda"].DefaultCellStyle.ForeColor = System.Drawing.Color.DarkGreen; // Cor da fonte: Verde Escuro
             dgv.Columns["Preco De Venda"].DefaultCellStyle.Format = "N2"; // Formato de moeda
             dgv.Columns["Preco De Venda"].DefaultCellStyle.BackColor = System.Drawing.Color.LightBlue; // Cor de fundo Azul Claro
             dgv.Columns["Preco De Venda"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight; // Alinhamento à direita
 
-
-
             // Ocultar a coluna ProdutoID
             dgv.Columns["ProdutoID"].Visible = false;
+
+            // Configurar fundo amarelo claro
+            dgv.DefaultCellStyle.BackColor = System.Drawing.Color.LightYellow; // Fundo amarelo claro
+
+            // Ajustar largura do cabeçalho da linha
+            dgv.RowHeadersWidth = 10; // Definir largura do cabeçalho da linha
+                                                    // Ajustar largura dos cabeçalhos das colunas
+            foreach (DataGridViewColumn column in dgv.Columns)
+            {
+                column.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter; // Centralizar cabeçalho da coluna
+                column.HeaderCell.Style.WrapMode = DataGridViewTriState.False; // Evitar quebra de texto no cabeçalho
+                column.Width = 100; // Definir largura específica para cada coluna
+            }
         }
+
         public new int ObterLinhaAtual()
         {
             return LinhaAtual;
@@ -107,6 +129,7 @@ namespace SisControl.View
 
         // No FrmLocalizarProduto, após selecionar o produto e fechar o formulário
         private bool isSelectingProduct = false;
+        private Form formChamador;
 
         private void SelecionarProduto()
         {
@@ -176,30 +199,7 @@ namespace SisControl.View
 
         private void dataGridPesquisa_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            // Verifica se a linha clicada é válida
-            if (e.RowIndex >= 0)
-            {
-                DataGridViewRow row = dataGridPesquisar.Rows[e.RowIndex];
-                string produtoId = row.Cells["ProdutoID"].Value.ToString();
-                string nomeProduto = row.Cells["NomeProduto"].Value.ToString();
-                string precoUnitario = row.Cells["PrecoUnitario"].Value.ToString();
-
-                // Obter a instância do FrmVendas (Owner)
-                if (this.Owner is FrmPedidoVendaNovo frmPedidoVendaNovo)
-                {
-                    // Preencher os campos do FrmVendas
-                    frmPedidoVendaNovo.ProdutoID = int.Parse(produtoId);
-                    frmPedidoVendaNovo.txtNomeProduto.Text = nomeProduto;
-                    frmPedidoVendaNovo.txtValorProduto.Text = precoUnitario;
-                    frmPedidoVendaNovo.txtQuantidade.Text = "1"; // Define a quantidade padrão como 1
-
-                    // Calcular o subtotal
-                    frmPedidoVendaNovo.CalcularSubtotal();
-                }
-
-                // Fecha o FrmLocalizarProduto
-                this.Close();
-            }
+            SelecionarProduto();       
         }
 
         private void dataGridPesquisar_KeyDown(object sender, KeyEventArgs e)
@@ -248,7 +248,7 @@ namespace SisControl.View
 
         private void dataGridPesquisar_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            this.Close();
+            SelecionarProduto();
         }
 
         private void txtPesquisa_KeyDown(object sender, KeyEventArgs e)
