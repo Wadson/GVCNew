@@ -13,7 +13,7 @@ using System.Windows.Forms;
 
 namespace SisControl.View
 {
-    public partial class FrmInsertBancoSqlCompact : Form
+    public partial class FrmInsertBancoSqlCompact : FrmModeloForm
     {
         public FrmInsertBancoSqlCompact()
         {
@@ -33,6 +33,8 @@ namespace SisControl.View
                     listBoxScripts.Items.Add(item);
                 }
             }
+            // Atualiza a label com a quantidade de itens no ListBox
+            lblQuantidade.Text = $"Quantidade: {listBoxScripts.Items.Count}";
         }
         private void InsertBancoSqlCompact()
         {
@@ -42,8 +44,11 @@ namespace SisControl.View
                 {
                     connection.Open();
                     using (var transaction = connection.BeginTransaction())
-                    {  
+                    {
                         var erros = new List<string>(); // Lista para registrar erros
+                        progressBar1.Minimum = 0;
+                        progressBar1.Maximum = listBoxScripts.Items.Count;
+                        progressBar1.Value = 0;
 
                         foreach (var item in listBoxScripts.Items)
                         {
@@ -67,6 +72,9 @@ namespace SisControl.View
                             {
                                 erros.Add($"Erro ao executar o comando: {query}\n{ex.Message}");
                             }
+                            // Atualiza a progressBar após cada inserção
+                            progressBar1.Value++;
+                            Application.DoEvents(); // Mantém a interface responsiva
                         }
 
                         // Confirmar a transação se todos os comandos forem executados com sucesso
@@ -81,6 +89,8 @@ namespace SisControl.View
                         {
                             MessageBox.Show("Todos os scripts foram executados com sucesso!");
                         }
+                        // Reseta a progressBar após a execução
+                        progressBar1.Value = 0;
                     }
                 }
                 catch (Exception ex)
@@ -156,5 +166,11 @@ namespace SisControl.View
             }
         }
 
+        private void btnLimpar_Click(object sender, EventArgs e)
+        {
+            listBoxScripts.Items.Clear(); // Limpa todos os itens do ListView
+            lblQuantidade.Text = "Quantidade: 0"; // Atualiza a label de quantidade, se aplicável
+            progressBar1.Value = 0; // Reseta a progressBar, se estiver sendo usada
+        }
     }
 }

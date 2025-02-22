@@ -38,38 +38,110 @@ namespace SisControl.DALL
             }
         }
 
-        public void salvaCliente(ClienteMODEL cliente)
+
+
+
+
+        public bool ClienteExiste(string nomeCliente, string cpf)
         {
-            var conn = Conexao.Conex();
+            var connection = Conexao.Conex();
+            using (connection)
+            {
+                var query = @"SELECT COUNT(*) FROM Cliente 
+                      WHERE (@NomeCliente <> '' AND NomeCliente = @NomeCliente) 
+                      OR (@Cpf <> '' AND Cpf = @Cpf)";
 
-            SqlCeCommand sql = new SqlCeCommand("INSERT INTO Cliente (ClienteID, NomeCliente, Cpf, Endereco, Telefone, Email, CidadeID) VALUES (@ClienteID, @NomeCliente, @Cpf, @Endereco, @Telefone, @Email, @CidadeID)", conn);
+                using (var command = new SqlCeCommand(query, connection))
+                {
+                    command.Parameters.Add("@NomeCliente", SqlDbType.NVarChar, 100).Value = nomeCliente ?? string.Empty;
+                    command.Parameters.Add("@Cpf", SqlDbType.NVarChar, 14).Value = cpf ?? string.Empty;
 
-
-            sql.Parameters.AddWithValue("@ClienteID", cliente.ClienteID);
-            sql.Parameters.AddWithValue("@NomeCliente", cliente.NomeCliente);
-            sql.Parameters.AddWithValue("@Cpf", cliente.Cpf);
-            sql.Parameters.AddWithValue("@Endereco", cliente.Endereco);
-            sql.Parameters.AddWithValue("@Telefone", cliente.Telefone);
-            sql.Parameters.AddWithValue("@Email", cliente.Email);
-            sql.Parameters.AddWithValue("@CidadeID", cliente.CidadeID);
-
-            conn.Open();
-            sql.ExecuteNonQuery();
-
-            //try
-            //{
-
-            //}
-            //catch (SqlCeException ex)
-            //{
-            //    throw new ApplicationException(ex.ToString());
-            //}
-            //finally
-            //{
-            //    conn.Close();
-            //}
-
+                    connection.Open();
+                    int count = Convert.ToInt32(command.ExecuteScalar());
+                    return count > 0;
+                }
+            }
         }
+
+        public void SalvarCliente(ClienteMODEL cliente)
+        {
+            var connection = Conexao.Conex();
+
+            using (connection)
+            {
+                connection.Open();
+
+                // Verificação de duplicidade
+                var verificarQuery = @"SELECT COUNT(*) FROM Cliente 
+                              WHERE (@NomeCliente <> '' AND NomeCliente = @NomeCliente) 
+                              OR (@Cpf <> '' AND Cpf = @Cpf)";
+
+                using (var verificarCommand = new SqlCeCommand(verificarQuery, connection))
+                {
+                    verificarCommand.Parameters.Add("@NomeCliente", SqlDbType.NVarChar, 100).Value = cliente.NomeCliente ?? string.Empty;
+                    verificarCommand.Parameters.Add("@Cpf", SqlDbType.NVarChar, 14).Value = cliente.Cpf ?? string.Empty;
+
+                    int count = Convert.ToInt32(verificarCommand.ExecuteScalar());
+
+                    if (count > 0)
+                    {
+                        throw new Exception("Já existe um cliente cadastrado com o mesmo nome ou CPF.");
+                    }
+                }
+
+                // Inserção do cliente
+                var insertQuery = @"INSERT INTO Cliente (ClienteID, NomeCliente, Cpf, Endereco, Telefone, Email, CidadeID) 
+                           VALUES (@ClienteID, @NomeCliente, @Cpf, @Endereco, @Telefone, @Email, @CidadeID)";
+
+                using (var insertCommand = new SqlCeCommand(insertQuery, connection))
+                {
+                    insertCommand.Parameters.Add("@ClienteID", SqlDbType.Int).Value = cliente.ClienteID;
+                    insertCommand.Parameters.Add("@NomeCliente", SqlDbType.NVarChar, 100).Value = cliente.NomeCliente ?? string.Empty;
+                    insertCommand.Parameters.Add("@Cpf", SqlDbType.NVarChar, 14).Value = cliente.Cpf ?? string.Empty;
+                    insertCommand.Parameters.Add("@Endereco", SqlDbType.NVarChar, 200).Value = cliente.Endereco ?? string.Empty;
+                    insertCommand.Parameters.Add("@Telefone", SqlDbType.NVarChar, 20).Value = cliente.Telefone ?? string.Empty;
+                    insertCommand.Parameters.Add("@Email", SqlDbType.NVarChar, 100).Value = cliente.Email ?? string.Empty;
+                    insertCommand.Parameters.Add("@CidadeID", SqlDbType.Int).Value = cliente.CidadeID;
+
+                    insertCommand.ExecuteNonQuery();
+                }
+            }
+        }
+
+
+
+
+
+
+
+
+        //public void salvaCliente(ClienteMODEL cliente)
+        //{
+        //    var conn = Conexao.Conex();
+        //    try
+        //    {
+        //        SqlCeCommand sql = new SqlCeCommand("INSERT INTO Cliente (ClienteID, NomeCliente, Cpf, Endereco, Telefone, Email, CidadeID) VALUES (@ClienteID, @NomeCliente, @Cpf, @Endereco, @Telefone, @Email, @CidadeID)", conn);
+
+
+        //        sql.Parameters.AddWithValue("@ClienteID", cliente.ClienteID);
+        //        sql.Parameters.AddWithValue("@NomeCliente", cliente.NomeCliente);
+        //        sql.Parameters.AddWithValue("@Cpf", cliente.Cpf);
+        //        sql.Parameters.AddWithValue("@Endereco", cliente.Endereco);
+        //        sql.Parameters.AddWithValue("@Telefone", cliente.Telefone);
+        //        sql.Parameters.AddWithValue("@Email", cliente.Email);
+        //        sql.Parameters.AddWithValue("@CidadeID", cliente.CidadeID);
+        //        conn.Open();
+        //        sql.ExecuteNonQuery();
+        //    }
+        //    catch (SqlCeException ex)
+        //    {
+        //        throw new ApplicationException(ex.ToString());
+        //    }
+        //    finally
+        //    {
+        //        conn.Close();
+        //    }
+        //}
         public void excluiCliente(ClienteMODEL cliente)
         {
             var conn = Conexao.Conex();

@@ -516,11 +516,6 @@ namespace SisControl.View
 
             CalcularTotalDataGrid();
         }
-
-        private void btnSair_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
         private void dgvContasReceber_SelectionChanged(object sender, EventArgs e)
         {
             try
@@ -631,10 +626,6 @@ namespace SisControl.View
                 MessageBox.Show("Selecione uma parcela para baixar.", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
-        private void btnReceberConta_Click(object sender, EventArgs e)
-        {
-            AbrirFormBaixrConta();
-        }
         private void ExcluirTudo()
         {
             VendaDAL vendaDAL = new VendaDAL();
@@ -677,11 +668,6 @@ namespace SisControl.View
             }
         }
 
-
-        private void btnExcluirConta_Click(object sender, EventArgs e)
-        {
-            ExcluirTudo();
-        }
 
         private void LimparDataGrid()
         {
@@ -811,7 +797,22 @@ namespace SisControl.View
                 // Concatena os valores na Label
                 lblNomeCliente.Text = $"{nomeCliente} | Valor Total: {saldoRestante}";
             }
-        }      
+        }
+
+        private void btnSair_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btnExcluir_Click(object sender, EventArgs e)
+        {
+            ExcluirTudo();
+        }
+
+        private void btnReceber_Click(object sender, EventArgs e)
+        {
+            AbrirFormBaixrConta();
+        }
     }
 }
 

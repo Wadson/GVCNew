@@ -18,7 +18,7 @@ namespace SisControl.View
 
         private void btnExcluirRegistrosOrfao_Click(object sender, EventArgs e)
         {
-            FrmExclusaoOrfao frmExclusaoOrfao = new FrmExclusaoOrfao();
+            FrmExclusaoOrfaos frmExclusaoOrfao = new FrmExclusaoOrfaos();
             frmExclusaoOrfao.ShowDialog();
         }
 

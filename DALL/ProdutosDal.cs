@@ -12,44 +12,7 @@ namespace SisControl.DALL
 {
     internal class ProdutosDal
     {
-
-        //public List<ProdutosModel> Listar()
-        //{
-        //    var connection = Conexao.Conex();
-
-        //    var produtos = new List<ProdutosModel>();
-        //    using (connection)
-        //    {
-        //        var query = "SELECT * FROM Produtos";
-        //        using (var command = new SqlCeCommand(query, connection))
-        //        {
-        //            connection.Open();
-        //            using (var reader = command.ExecuteReader())
-        //            {
-        //                while (reader.Read())
-        //                {
-        //                    var produto = new ProdutosModel
-        //                    {
-        //                        ProdutoID = reader.GetInt32(reader.GetOrdinal("ProdutoID")),
-        //                        NomeProduto = reader.GetString(reader.GetOrdinal("NomeProduto")),                               
-        //                        PrecoCusto = reader.GetDecimal(reader.GetOrdinal("PrecoCusto")),
-        //                        Lucro = reader.GetDecimal(reader.GetOrdinal("Lucro")),
-        //                        PrecoDeVenda = reader.GetDecimal(reader.GetOrdinal("PrecoDeVenda")),
-        //                        Estoque = reader.GetInt32(reader.GetOrdinal("Estoque")),
-        //                        DataDeEntrada = reader.GetDateTime(reader.GetOrdinal("DataDeEntrada")),                              
-        //                        Status = reader.GetString(reader.GetOrdinal("Status")),                                                               
-        //                        Referencia = reader.GetString(reader.GetOrdinal("Referencia")), 
-                                
-        //                    };
-        //                    produtos.Add(produto);
-        //                }
-        //            }
-        //        }
-
-              
-        //    }
-        //    return produtos;
-        //}
+        
         public DataTable listarProdutos()
         {
             var conn = Conexao.Conex();
@@ -73,32 +36,68 @@ namespace SisControl.DALL
                 conn.Close();
             }
         }
-
-        public void SalvarProduto(ProdutosModel produto)
+        public bool ProdutoExiste(string nomeProduto, string referencia)
         {
             var connection = Conexao.Conex();
             using (connection)
             {
-                var query = "INSERT INTO Produtos (ProdutoID, NomeProduto, PrecoCusto, Lucro, PrecoDeVenda, Estoque, DataDeEntrada, Status, Referencia) VALUES (@ProdutoID, @NomeProduto, @PrecoCusto, @Lucro, @PrecoDeVenda, @Estoque, @DataDeEntrada, @Status, @Referencia)";
+                var query = "SELECT COUNT(*) FROM Produtos WHERE NomeProduto = @NomeProduto OR Referencia = @Referencia";
                 using (var command = new SqlCeCommand(query, connection))
                 {
-                    command.Parameters.AddWithValue("@ProdutoID", produto.ProdutoID);
-                    command.Parameters.AddWithValue("@NomeProduto", produto.NomeProduto);
-                    command.Parameters.AddWithValue("@PrecoCusto", produto.PrecoCusto);
-                    command.Parameters.AddWithValue("@Lucro", produto.Lucro);
-                    command.Parameters.AddWithValue("@PrecoDeVenda", produto.PrecoDeVenda);
-                    command.Parameters.AddWithValue("@Estoque", produto.Estoque);
-                    command.Parameters.AddWithValue("@DataDeEntrada", produto.DataDeEntrada);
-                    command.Parameters.AddWithValue("@Status", produto.Status);
-
-
-                    command.Parameters.AddWithValue("@Referencia", produto.Referencia);
+                    command.Parameters.AddWithValue("@NomeProduto", nomeProduto);
+                    command.Parameters.AddWithValue("@Referencia", referencia);
 
                     connection.Open();
-                    command.ExecuteNonQuery();
+                    int count = (int)command.ExecuteScalar(); // Retorna a quantidade de produtos encontrados
+                    return count > 0; // Retorna true se já existir
                 }
             }
         }
+
+        public void SalvarProduto(ProdutosModel produto)
+        {
+            var connection = Conexao.Conex();
+
+            using (connection)
+            {
+                connection.Open();
+
+                // Verificação de duplicidade por NomeProduto ou Referencia
+                var verificarQuery = "SELECT COUNT(*) FROM Produtos WHERE NomeProduto = @NomeProduto OR Referencia = @Referencia";
+                using (var verificarCommand = new SqlCeCommand(verificarQuery, connection))
+                {
+                    verificarCommand.Parameters.AddWithValue("@NomeProduto", produto.NomeProduto);
+                    verificarCommand.Parameters.AddWithValue("@Referencia", produto.Referencia);
+
+                    int count = (int)verificarCommand.ExecuteScalar();
+
+                    if (count > 0)
+                    {
+                        throw new Exception("Já existe um produto cadastrado com o mesmo nome ou referência.");
+                    }
+                }
+
+                // Se não houver duplicidade, salva o produto
+                var insertQuery = @"INSERT INTO Produtos (ProdutoID, NomeProduto, PrecoCusto, Lucro, PrecoDeVenda, Estoque, DataDeEntrada, Status, Referencia)
+                            VALUES (@ProdutoID, @NomeProduto, @PrecoCusto, @Lucro, @PrecoDeVenda, @Estoque, @DataDeEntrada, @Status, @Referencia)";
+
+                using (var insertCommand = new SqlCeCommand(insertQuery, connection))
+                {
+                    insertCommand.Parameters.AddWithValue("@ProdutoID", produto.ProdutoID);
+                    insertCommand.Parameters.AddWithValue("@NomeProduto", produto.NomeProduto);
+                    insertCommand.Parameters.AddWithValue("@PrecoCusto", produto.PrecoCusto);
+                    insertCommand.Parameters.AddWithValue("@Lucro", produto.Lucro);
+                    insertCommand.Parameters.AddWithValue("@PrecoDeVenda", produto.PrecoDeVenda);
+                    insertCommand.Parameters.AddWithValue("@Estoque", produto.Estoque);
+                    insertCommand.Parameters.AddWithValue("@DataDeEntrada", produto.DataDeEntrada);
+                    insertCommand.Parameters.AddWithValue("@Status", produto.Status);
+                    insertCommand.Parameters.AddWithValue("@Referencia", produto.Referencia);
+
+                    insertCommand.ExecuteNonQuery();
+                }
+            }
+        }
+
 
         public void AtualizarEstoqueVenda(int produtoID, int quantidadeVendida)
         {

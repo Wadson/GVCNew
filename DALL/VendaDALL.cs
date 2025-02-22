@@ -182,5 +182,31 @@ namespace SisControl.DALL
                 }
             }
         }
-    }
+
+
+
+        //Criação de Relatórios
+        PagamentoMODEL pagamento = new PagamentoMODEL();
+        public DataTable RelatorioPagamento(int CodigoCliente)
+        {
+            using (var conn = Conexao.Conex())
+            {
+                SqlCeCommand comando = new SqlCeCommand("SELECT * FROM Pagamento WHERE ClienteID=" +CodigoCliente.ToString(), conn);
+                SqlCeDataAdapter daUsuario = new SqlCeDataAdapter(comando);
+                DataTable dtUsuario = new DataTable();
+                daUsuario.Fill(dtUsuario);
+                return dtUsuario;
+            }
+        }
+        public DataTable VendaLocalizarPorCliente(int CodigoCliente) 
+        {
+            using (var conn = Conexao.Conex())
+            {
+                SqlCeCommand comando = new SqlCeCommand("SELECT * FROM Venda WHERE ClienteID=" + CodigoCliente.ToString(), conn);
+                SqlCeDataAdapter daUsuario = new SqlCeDataAdapter(comando);
+                DataTable dtUsuario = new DataTable();
+                daUsuario.Fill(dtUsuario);
+                return dtUsuario;
+            }
+        }
 }

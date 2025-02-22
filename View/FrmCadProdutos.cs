@@ -172,17 +172,24 @@ namespace SisControl.View
                 Referencia = txtReferencia.Text
             };
 
-            // Chamar o método SalvarProduto da BLL
-            ProdutoBLL produtosbll = new ProdutoBLL();
-            produtosbll.Salvar(produto);
+            try
+            {
+                // Chamar o método SalvarProduto da BLL
+                ProdutoBLL produtosbll = new ProdutoBLL();
+                produtosbll.Salvar(produto);
 
-            MessageBox.Show("Produto salvo com sucesso!","Informação!", MessageBoxButtons.OK,MessageBoxIcon.Asterisk);
-            Utilitario.LimpaCampoKrypton(this);           
-            int NovoCodigo = Utilitario.GerarProximoCodigo(QueryProdutos);//RetornaCodigoContaMaisUm(QueryUsuario).ToString();
-            string numeroComZeros = Utilitario.AcrescentarZerosEsquerda(NovoCodigo, 4);
-            txtProdutoID.Text = numeroComZeros;
-            txtNomeProduto.Focus();
-            ((FrmManutProduto)Application.OpenForms["FrmManutProduto"]).HabilitarTimer(true);
+                MessageBox.Show("Produto salvo com sucesso!", "Informação!", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                Utilitario.LimpaCampoKrypton(this);
+                int NovoCodigo = Utilitario.GerarProximoCodigo(QueryProdutos);//RetornaCodigoContaMaisUm(QueryUsuario).ToString();
+                string numeroComZeros = Utilitario.AcrescentarZerosEsquerda(NovoCodigo, 4);
+                txtProdutoID.Text = numeroComZeros;
+                txtNomeProduto.Focus();
+                ((FrmManutProduto)Application.OpenForms["FrmManutProduto"]).HabilitarTimer(true);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
 
         public void Excluir()

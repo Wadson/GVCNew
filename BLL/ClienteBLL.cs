@@ -33,7 +33,7 @@ namespace SisControl.BLL
         {
 
             clienteDAL = new ClienteDALL();
-            clienteDAL.salvaCliente(clienteS);
+            clienteDAL.SalvarCliente(clienteS);
             try
             {
                

@@ -203,6 +203,16 @@ namespace SisControl.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap excluir32 {
+            get {
+                object obj = ResourceManager.GetObject("excluir32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Exit {
             get {
                 object obj = ResourceManager.GetObject("Exit", resourceCulture);
@@ -346,6 +356,16 @@ namespace SisControl.Properties {
         internal static System.Drawing.Bitmap Produtos {
             get {
                 object obj = ResourceManager.GetObject("Produtos", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Receber34 {
+            get {
+                object obj = ResourceManager.GetObject("Receber34", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

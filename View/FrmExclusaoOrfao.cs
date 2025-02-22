@@ -25,7 +25,6 @@ namespace SisControl.View
             ListarParcelas();
             ListarItensVenda();
         }
-
         private void FrmExclusaoOrfao_Load(object sender, EventArgs e)
         {
             CarregarDados();
@@ -101,34 +100,7 @@ namespace SisControl.View
             {
                 MessageBox.Show("Selecione uma conta para excluir.", "Excluir conta", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-        }
-
-        //private void ExcluirRegistro<T>(DataGridView dgv, string colunaID, Action<int> metodoExclusao, Action listarDados)
-        //{
-        //    if (dgv.SelectedRows.Count > 0)
-        //    {
-        //        if (MessageBox.Show("Deseja excluir a conta selecionada?", "Excluir conta", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-        //        {
-        //            try
-        //            {
-        //                int registroID = Convert.ToInt32(dgv.SelectedRows[0].Cells[colunaID].Value);
-        //                metodoExclusao(registroID);
-
-        //                MessageBox.Show("Conta excluída com sucesso.", "Excluir conta", MessageBoxButtons.OK, MessageBoxIcon.Information);
-        //                dgv.Rows.Clear();
-        //                listarDados();
-        //            }
-        //            catch (Exception ex)
-        //            {
-        //                MessageBox.Show("Erro ao excluir a conta: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        //            }
-        //        }
-        //    }
-        //    else
-        //    {
-        //        MessageBox.Show("Selecione uma conta para excluir.", "Excluir conta", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-        //    }
-        //}
+        }     
 
     }
 }

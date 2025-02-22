@@ -71,16 +71,23 @@ namespace SisControl.View
                 objetoCliente.NomeCliente = txtNomeCliente.Text;
                 objetoCliente.Cpf = txtCpf.Text;
                 objetoCliente.Endereco = enDereco;
-                objetoCliente.Telefone = Utilitario.RemoverParentesesETraços(txtTelefone.Text).ToString();
-                
+                objetoCliente.Telefone = Utilitario.RemoverParentesesETraços(txtTelefone.Text).ToString();                
                 objetoCliente.Email = txtEmail.Text;
                 objetoCliente.CidadeID = Convert.ToInt32(txtCidadeID.Text);
 
-                ClienteBLL clienteBll = new ClienteBLL();
-                clienteBll.Salvar(objetoCliente);
+                try
+                {
+                    ClienteBLL clienteBll = new ClienteBLL();
+                    clienteBll.Salvar(objetoCliente);
 
-                MessageBox.Show("REGISTRO gravado com sucesso! ", "Informação!!!", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
-                ((FrmManutCliente)Application.OpenForms["FrmManutCliente"]).HabilitarTimer(true);
+                    MessageBox.Show("REGISTRO gravado com sucesso! ", "Informação!!!", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                    ((FrmManutCliente)Application.OpenForms["FrmManutCliente"]).HabilitarTimer(true);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
 
                 Utilitario.LimpaCampoKrypton(this);
                 txtNomeCliente.Focus();
@@ -92,6 +99,9 @@ namespace SisControl.View
                 string numeroComZeros = Utilitario.AcrescentarZerosEsquerda(NovoCodigo, 6);
                 ClienteID = NovoCodigo;
                 txtClienteID.Text = numeroComZeros;
+
+
+
 
             }
             catch (OverflowException ov)
