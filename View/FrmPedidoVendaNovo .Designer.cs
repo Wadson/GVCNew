@@ -1,4 +1,4 @@
-﻿namespace SisControl.View
+﻿namespace GVC.View
 {
     partial class FrmPedidoVendaNovo
     {
@@ -216,7 +216,7 @@
             this.btnLocalizarProduto.StateTracking.Border.Rounding = 1;
             this.btnLocalizarProduto.StateTracking.Border.Width = 1;
             this.btnLocalizarProduto.TabIndex = 2;
-            this.btnLocalizarProduto.Values.Image = global::SisControl.Properties.Resources.Pesquisar;
+            this.btnLocalizarProduto.Values.Image = global::GVC.Properties.Resources.Pesquisar;
             this.btnLocalizarProduto.Values.Text = "&(F5)";
             this.btnLocalizarProduto.Click += new System.EventHandler(this.btnLocalizarProduto_Click);
             // 
@@ -375,7 +375,7 @@
             this.btnIncluir.StateTracking.Border.Rounding = 1;
             this.btnIncluir.StateTracking.Border.Width = 1;
             this.btnIncluir.TabIndex = 619;
-            this.btnIncluir.Values.Image = global::SisControl.Properties.Resources.Adicionar;
+            this.btnIncluir.Values.Image = global::GVC.Properties.Resources.Adicionar;
             this.btnIncluir.Values.Text = "&Incluir Item";
             this.btnIncluir.Click += new System.EventHandler(this.btnIncluir_Click);
             // 
@@ -578,7 +578,7 @@
             this.btnLocalizarCliente.StateTracking.Border.Rounding = 1;
             this.btnLocalizarCliente.StateTracking.Border.Width = 1;
             this.btnLocalizarCliente.TabIndex = 1002;
-            this.btnLocalizarCliente.Values.Image = global::SisControl.Properties.Resources.Pesquisar;
+            this.btnLocalizarCliente.Values.Image = global::GVC.Properties.Resources.Pesquisar;
             this.btnLocalizarCliente.Values.Text = "&(F4)";
             this.btnLocalizarCliente.Click += new System.EventHandler(this.btnLocalizarCliente_Click);
             // 
@@ -825,7 +825,7 @@
             this.btnNovo.StateTracking.Border.Width = 1;
             this.btnNovo.StateTracking.Content.ShortText.Color1 = System.Drawing.Color.White;
             this.btnNovo.TabIndex = 620;
-            this.btnNovo.Values.Image = global::SisControl.Properties.Resources.Novo;
+            this.btnNovo.Values.Image = global::GVC.Properties.Resources.Novo;
             this.btnNovo.Values.Text = "&Novo";
             this.btnNovo.Click += new System.EventHandler(this.btnNovo_Click);
             // 
@@ -889,7 +889,7 @@
             this.btnFinalizarVenda.StateTracking.Border.Rounding = 1;
             this.btnFinalizarVenda.StateTracking.Border.Width = 1;
             this.btnFinalizarVenda.TabIndex = 621;
-            this.btnFinalizarVenda.Values.Image = global::SisControl.Properties.Resources.FinalizarVenda;
+            this.btnFinalizarVenda.Values.Image = global::GVC.Properties.Resources.FinalizarVenda;
             this.btnFinalizarVenda.Values.Text = "&Finalizar";
             this.btnFinalizarVenda.Click += new System.EventHandler(this.btnFinalizarVenda_Click);
             // 
@@ -954,7 +954,7 @@
             this.btnParcelar.StateTracking.Border.Width = 1;
             this.btnParcelar.StateTracking.Content.ShortText.Color1 = System.Drawing.Color.White;
             this.btnParcelar.TabIndex = 622;
-            this.btnParcelar.Values.Image = global::SisControl.Properties.Resources.Parcelar;
+            this.btnParcelar.Values.Image = global::GVC.Properties.Resources.Parcelar;
             this.btnParcelar.Values.Text = "&Parcelar";
             this.btnParcelar.Click += new System.EventHandler(this.btnParcelar_Click_1);
             // 
@@ -1071,7 +1071,7 @@
             this.btnSair.StateTracking.Border.Rounding = 1;
             this.btnSair.StateTracking.Border.Width = 1;
             this.btnSair.TabIndex = 626;
-            this.btnSair.Values.Image = global::SisControl.Properties.Resources.sair;
+            this.btnSair.Values.Image = global::GVC.Properties.Resources.sair;
             this.btnSair.Values.Text = "&Sair";
             this.btnSair.Click += new System.EventHandler(this.btnSair_Click);
             // 

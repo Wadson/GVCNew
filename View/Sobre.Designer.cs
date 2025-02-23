@@ -1,4 +1,4 @@
-﻿namespace SisControl.View
+﻿namespace GVC.View
 {
     partial class Sobre
     {
@@ -86,7 +86,7 @@
             this.labelProductName.Name = "labelProductName";
             this.labelProductName.Size = new System.Drawing.Size(335, 17);
             this.labelProductName.TabIndex = 19;
-            this.labelProductName.Text = "Nome do Produto: SisControl";
+            this.labelProductName.Text = "Nome do Produto: GVC";
             this.labelProductName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // labelVersion
@@ -137,7 +137,7 @@
             this.textBoxDescription.Size = new System.Drawing.Size(335, 152);
             this.textBoxDescription.TabIndex = 23;
             this.textBoxDescription.TabStop = false;
-            this.textBoxDescription.Text = "Descrição:\r\n\r\nSisControl - Sistema de Controle de Vendas e Contas a Receber, \r\nde" +
+            this.textBoxDescription.Text = "Descrição:\r\n\r\nGVC - Sistema de Controle de Vendas e Contas a Receber, \r\nde" +
     "senvolvido por Wadson R. Lima Analista de Sistemas pela Unopar \r\nUniversidade No" +
     "rte do Paraná-EAD em 2013.\r\n\r\n";
             // 

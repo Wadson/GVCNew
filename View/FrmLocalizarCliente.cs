@@ -1,11 +1,11 @@
-﻿using SisControl.DALL;
-using SisControl.Relatorios;
+﻿using GVC.DALL;
+using GVC.Relatorios;
 using System;
 using System.Windows.Forms;
 
-namespace SisControl.View
+namespace GVC.View
 {
-    public partial class FrmLocalizarCliente : SisControl.FrmBasePesquisa
+    public partial class FrmLocalizarCliente : GVC.FrmBasePesquisa
     {        
         protected int LinhaAtual = -1;
         private int _clienteID;

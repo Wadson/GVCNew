@@ -7,9 +7,9 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Windows.Forms;
 
-namespace SisControl.MUI
+namespace GVC.MUI
 {
-    public partial class FrmRecuperarSenhaOffline : SisControl.FrmModeloForm
+    public partial class FrmRecuperarSenhaOffline : GVC.FrmModeloForm
     {
 
         public FrmRecuperarSenhaOffline()

@@ -1,4 +1,4 @@
-﻿using SisControl.Relatorios;
+﻿using GVC.Relatorios;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,9 +13,9 @@ using System.IO;
 using OfficeOpenXml; 
 using ComponentFactory.Krypton.Toolkit;
 
-namespace SisControl.View
+namespace GVC.View
 {
-    public partial class FrmRelatorios : SisControl.FrmModeloForm
+    public partial class FrmRelatorios : GVC.FrmModeloForm
     {
         public FrmRelatorios()
         {

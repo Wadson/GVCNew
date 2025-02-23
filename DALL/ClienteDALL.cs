@@ -1,4 +1,4 @@
-﻿using SisControl.MODEL;
+﻿using GVC.MODEL;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlServerCe;
@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace SisControl.DALL
+namespace GVC.DALL
 {
     internal class ClienteDALL
     {

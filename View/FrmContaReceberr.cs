@@ -14,13 +14,13 @@ using System.Windows.Forms;
 using ComponentFactory.Krypton.Toolkit;
 using Microsoft.Win32;
 using OfficeOpenXml.FormulaParsing.Excel.Functions.RefAndLookup;
-using SisControl.DALL;
+using GVC.DALL;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
-using static SisControl.View.FrmContaReceberr;
+using static GVC.View.FrmContaReceberr;
 
-namespace SisControl.View
+namespace GVC.View
 {
-    public partial class FrmContaReceberr : SisControl.FrmModeloForm
+    public partial class FrmContaReceberr : GVC.FrmModeloForm
     {
         private Parcela _parcela;
         public int clienteID { get; set; }

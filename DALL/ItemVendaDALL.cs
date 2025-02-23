@@ -1,4 +1,4 @@
-﻿using SisControl.MODEL;
+﻿using GVC.MODEL;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlServerCe;
@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 using System.Configuration;
 
-namespace SisControl.DALL
+namespace GVC.DALL
 {
     public class ItemVendaDAL
     {       

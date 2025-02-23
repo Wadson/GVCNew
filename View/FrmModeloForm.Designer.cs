@@ -1,4 +1,4 @@
-﻿namespace SisControl
+﻿namespace GVC
 {
     partial class FrmModeloForm
     {
@@ -84,7 +84,7 @@
             this.StateCommon.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
             | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
             | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
-            this.Text = "SisControl - Sistema Controle de Vendas";
+            this.Text = "GVC - Sistema Controle de Vendas";
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FrmModeloForm_KeyDown);
             this.ResumeLayout(false);
 

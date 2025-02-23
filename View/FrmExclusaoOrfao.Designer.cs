@@ -1,4 +1,4 @@
-﻿namespace SisControl.View
+﻿namespace GVC.View
 {
     partial class FrmExclusaoOrfao
     {

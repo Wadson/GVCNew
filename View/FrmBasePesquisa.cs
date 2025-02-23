@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using ComponentFactory.Krypton.Toolkit;
 
-namespace SisControl
+namespace GVC
 {
     public partial class FrmBasePesquisa : KryptonForm
     {

@@ -1,4 +1,4 @@
-﻿using SisControl.MODEL;
+﻿using GVC.MODEL;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlServerCe;
@@ -9,9 +9,9 @@ using System.Threading.Tasks;
 using System.Drawing;
 using System.Windows.Forms;
 using OfficeOpenXml.FormulaParsing.Excel.Functions.Math;
-using SisControl.MUI;
+using GVC.MUI;
 
-namespace SisControl.DALL
+namespace GVC.DALL
 {
     internal class EstadoDALL
     {

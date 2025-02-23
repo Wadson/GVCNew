@@ -1,4 +1,4 @@
-﻿using SisControl.MODEL;
+﻿using GVC.MODEL;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using System.Data.SqlServerCe;
 using System.Data;
 
-namespace SisControl.DALL
+namespace GVC.DALL
 {
     internal class PagamentoParcialDal
     {

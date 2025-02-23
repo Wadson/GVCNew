@@ -1,5 +1,5 @@
-﻿using SisControl.BLL;
-using SisControl.MODEL;
+﻿using GVC.BLL;
+using GVC.MODEL;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -11,7 +11,7 @@ using ComponentFactory.Krypton.Toolkit;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.Button;
 
 
-namespace SisControl.View
+namespace GVC.View
 {
     public partial class FrmCadCidade : FrmModeloForm
     {

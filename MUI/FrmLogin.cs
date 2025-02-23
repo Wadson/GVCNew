@@ -1,4 +1,4 @@
-﻿using SisControl.View;
+﻿using GVC.View;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -9,9 +9,9 @@ using System.Windows.Forms;
 using System.Data.SqlServerCe;
 using System.Security.Cryptography;
 
-namespace SisControl.MUI
+namespace GVC.MUI
 {
-    public partial class FrmLogin : SisControl.FrmModeloForm
+    public partial class FrmLogin : GVC.FrmModeloForm
     {
         public FrmLogin()
         {

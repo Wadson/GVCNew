@@ -11,7 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace SisControl.View
+namespace GVC.View
 {
     public partial class FrmInsertBancoSqlCompact : FrmModeloForm
     {

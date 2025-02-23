@@ -1,4 +1,4 @@
-﻿namespace SisControl.View
+﻿namespace GVC.View
 {
     partial class FrmContaReceberr
     {
@@ -738,7 +738,7 @@
             this.btnSair.StateTracking.Border.Rounding = 1;
             this.btnSair.StateTracking.Border.Width = 1;
             this.btnSair.TabIndex = 1013;
-            this.btnSair.Values.Image = global::SisControl.Properties.Resources.sair;
+            this.btnSair.Values.Image = global::GVC.Properties.Resources.sair;
             this.btnSair.Values.Text = "&Sair";
             this.btnSair.Click += new System.EventHandler(this.btnSair_Click);
             // 
@@ -802,7 +802,7 @@
             this.btnExcluir.StateTracking.Border.Rounding = 1;
             this.btnExcluir.StateTracking.Border.Width = 1;
             this.btnExcluir.TabIndex = 1011;
-            this.btnExcluir.Values.Image = global::SisControl.Properties.Resources.excluir32;
+            this.btnExcluir.Values.Image = global::GVC.Properties.Resources.excluir32;
             this.btnExcluir.Values.Text = "&Excluir";
             this.btnExcluir.Click += new System.EventHandler(this.btnExcluir_Click);
             // 
@@ -865,7 +865,7 @@
             this.btnReceber.StateTracking.Border.Rounding = 1;
             this.btnReceber.StateTracking.Border.Width = 1;
             this.btnReceber.TabIndex = 1014;
-            this.btnReceber.Values.Image = global::SisControl.Properties.Resources.Receber34;
+            this.btnReceber.Values.Image = global::GVC.Properties.Resources.Receber34;
             this.btnReceber.Values.Text = "&Receber";
             this.btnReceber.Click += new System.EventHandler(this.btnReceber_Click);
             // 

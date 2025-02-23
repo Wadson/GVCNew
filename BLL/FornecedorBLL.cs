@@ -1,5 +1,5 @@
-﻿using SisControl.DALL;
-using SisControl.MODEL;
+﻿using GVC.DALL;
+using GVC.MODEL;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlServerCe;
@@ -9,7 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 
-namespace SisControl.BLL
+namespace GVC.BLL
 {
     internal class FornecedorBLL
     {

@@ -10,11 +10,11 @@ using System.Globalization;
 using System.ComponentModel;
 using System.Text.RegularExpressions;
 using System.Security.Cryptography;
-using SisControl;
+using GVC;
 using System.Drawing;
 using ComponentFactory.Krypton.Toolkit;
 
-namespace SisControl
+namespace GVC
 {
     public static class Utilitario
     {
@@ -1464,7 +1464,7 @@ public Form1()
 //}
 /*
             COMO IMPLEMENTAR EM QUALQUER FORMULÁRIO
-            using SisControl.Utils;  // Certifique-se de importar o namespace correto
+            using GVC.Utils;  // Certifique-se de importar o namespace correto
 
             // ...
 

@@ -1,6 +1,6 @@
 ﻿using ComponentFactory.Krypton.Toolkit;
-using SisControl.BLL;
-using SisControl.DALL;
+using GVC.BLL;
+using GVC.DALL;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,9 +13,9 @@ using System.Windows.Forms;
 using static System.Net.Mime.MediaTypeNames;
 using Image = System.Drawing.Image;
 
-namespace SisControl.View
+namespace GVC.View
 {
-    public partial class FrmManutProduto : SisControl.FrmBaseManutencao
+    public partial class FrmManutProduto : GVC.FrmBaseManutencao
     {
         private new string StatusOperacao;
        

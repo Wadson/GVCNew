@@ -1,4 +1,4 @@
-﻿using SisControl.MODEL;
+﻿using GVC.MODEL;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -9,10 +9,10 @@ using System.Text;
 using System.Windows.Forms;
 using ComponentFactory.Krypton.Toolkit;
 using System.Data.SqlServerCe;
-using SisControl.DALL;
-using static SisControl.View.FrmContaReceberr;
+using GVC.DALL;
+using static GVC.View.FrmContaReceberr;
 
-namespace SisControl.View
+namespace GVC.View
 {
     public partial class FrmGerarParcelas : FrmModeloForm
     {

@@ -756,7 +756,7 @@
       </Fields>
       <rd:DataSetInfo>
         <rd:DataSetName>bdsiscontrolDataSet</rd:DataSetName>
-        <rd:SchemaPath>D:\SisControl\bdsiscontrolDataSet1.xsd</rd:SchemaPath>
+        <rd:SchemaPath>D:\GVC\bdsiscontrolDataSet1.xsd</rd:SchemaPath>
         <rd:TableName>RelatorioProdutos</rd:TableName>
         <rd:TableAdapterFillMethod>Fill</rd:TableAdapterFillMethod>
         <rd:TableAdapterGetDataMethod>GetData</rd:TableAdapterGetDataMethod>

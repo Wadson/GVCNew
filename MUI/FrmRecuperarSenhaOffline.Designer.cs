@@ -1,4 +1,4 @@
-﻿namespace SisControl.MUI
+﻿namespace GVC.MUI
 {
     partial class FrmRecuperarSenhaOffline
     {
@@ -236,7 +236,7 @@
             // 
             // pictureBoxDataNasc
             // 
-            this.pictureBoxDataNasc.Image = global::SisControl.Properties.Resources.calendarioBranco24;
+            this.pictureBoxDataNasc.Image = global::GVC.Properties.Resources.calendarioBranco24;
             this.pictureBoxDataNasc.Location = new System.Drawing.Point(29, 217);
             this.pictureBoxDataNasc.Name = "pictureBoxDataNasc";
             this.pictureBoxDataNasc.Size = new System.Drawing.Size(20, 25);
@@ -246,7 +246,7 @@
             // 
             // pictureBoxCpf
             // 
-            this.pictureBoxCpf.Image = global::SisControl.Properties.Resources.cpfBranco24;
+            this.pictureBoxCpf.Image = global::GVC.Properties.Resources.cpfBranco24;
             this.pictureBoxCpf.Location = new System.Drawing.Point(31, 181);
             this.pictureBoxCpf.Name = "pictureBoxCpf";
             this.pictureBoxCpf.Size = new System.Drawing.Size(20, 25);
@@ -256,7 +256,7 @@
             // 
             // pictureBoxLogo
             // 
-            this.pictureBoxLogo.Image = global::SisControl.Properties.Resources.redefinir_senha;
+            this.pictureBoxLogo.Image = global::GVC.Properties.Resources.redefinir_senha;
             this.pictureBoxLogo.Location = new System.Drawing.Point(96, 12);
             this.pictureBoxLogo.Name = "pictureBoxLogo";
             this.pictureBoxLogo.Size = new System.Drawing.Size(128, 129);

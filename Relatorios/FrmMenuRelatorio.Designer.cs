@@ -1,4 +1,4 @@
-﻿namespace SisControl.Relatorios
+﻿namespace GVC.Relatorios
 {
     partial class FrmMenuRelatorio
     {

@@ -1,4 +1,4 @@
-﻿using SisControl.MODEL;
+﻿using GVC.MODEL;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -10,21 +10,21 @@ using System.Windows.Forms;
 using System.Configuration;
 using System.Drawing.Text;
 using System.Linq;
-using SisControl;
+using GVC;
 using System.IO;
 using ComponentFactory.Krypton.Toolkit;
 using System.Transactions;
 using Microsoft.IdentityModel.Tokens;
 using OfficeOpenXml.FormulaParsing.Excel.Functions.RefAndLookup;
-using SisControl.DALL;
-using SisControl.BLL;
+using GVC.DALL;
+using GVC.BLL;
 using System.Threading;
 
 
 
-namespace SisControl.View
+namespace GVC.View
 {
-    public partial class FrmPedidoVendaNovo : SisControl.FrmModeloForm
+    public partial class FrmPedidoVendaNovo : GVC.FrmModeloForm
     {
         private string QueryVendas = "SELECT MAX(VendaID) FROM Venda";
         private string QueryItensVenda = "SELECT MAX(ItemVendaID) FROM ItemVenda";

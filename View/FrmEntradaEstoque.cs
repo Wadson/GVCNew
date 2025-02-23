@@ -6,12 +6,12 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 using ComponentFactory.Krypton.Toolkit;
-using SisControl.BLL;
-using SisControl.DALL;
+using GVC.BLL;
+using GVC.DALL;
 
-namespace SisControl.View
+namespace GVC.View
 {
-    public partial class FrmEntradaEstoque : SisControl.FrmModeloForm
+    public partial class FrmEntradaEstoque : GVC.FrmModeloForm
     {
         public string produtoSelecionado { get; set; }
         public FrmEntradaEstoque()

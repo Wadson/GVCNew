@@ -1,4 +1,4 @@
-﻿namespace SisControl.View
+﻿namespace GVC.View
 {
     partial class FrmPrincipal
     {
@@ -84,19 +84,6 @@
             // statusStrip2
             // 
             this.statusStrip2.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.statusStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripStatusLabel7,
-            this.lblEstação,
-            this.toolStripStatusLabel9,
-            this.toolStripStatusLabel10,
-            this.lblData,
-            this.toolStripStatusLabel11,
-            this.lblHoraAtual,
-            this.toolStripStatusLabel1,
-            this.lblUsuarioLogado,
-            this.toolStripStatusLabel2,
-            this.toolStripStatusLabel3,
-            this.lblTipoUsuario});
             this.statusStrip2.Location = new System.Drawing.Point(20, 687);
             this.statusStrip2.Name = "statusStrip2";
             this.statusStrip2.Size = new System.Drawing.Size(968, 22);
@@ -210,7 +197,6 @@
             this.btnLogoff.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
             this.btnLogoff.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.btnLogoff.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnLogoff.Image = global::SisControl.Properties.Resources.Logogg64;
             this.btnLogoff.Location = new System.Drawing.Point(606, 6);
             this.btnLogoff.Name = "btnLogoff";
             this.btnLogoff.Size = new System.Drawing.Size(75, 65);
@@ -227,7 +213,6 @@
             this.btnUsuario.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
             this.btnUsuario.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.btnUsuario.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnUsuario.Image = global::SisControl.Properties.Resources.Usuario64;
             this.btnUsuario.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btnUsuario.Location = new System.Drawing.Point(6, 5);
             this.btnUsuario.Name = "btnUsuario";
@@ -245,7 +230,6 @@
             this.btnFornecedor.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
             this.btnFornecedor.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.btnFornecedor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnFornecedor.Image = global::SisControl.Properties.Resources.Fornecedor64;
             this.btnFornecedor.Location = new System.Drawing.Point(156, 5);
             this.btnFornecedor.Name = "btnFornecedor";
             this.btnFornecedor.Size = new System.Drawing.Size(75, 66);
@@ -262,7 +246,6 @@
             this.btnCliente.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
             this.btnCliente.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.btnCliente.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCliente.Image = global::SisControl.Properties.Resources.Cliente64;
             this.btnCliente.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btnCliente.Location = new System.Drawing.Point(81, 5);
             this.btnCliente.Name = "btnCliente";
@@ -281,7 +264,6 @@
             this.btnSair.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
             this.btnSair.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.btnSair.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSair.Image = global::SisControl.Properties.Resources.Sair64;
             this.btnSair.Location = new System.Drawing.Point(931, 3);
             this.btnSair.Name = "btnSair";
             this.btnSair.Size = new System.Drawing.Size(75, 65);
@@ -297,7 +279,6 @@
             this.btnRelatorios.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
             this.btnRelatorios.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.btnRelatorios.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnRelatorios.Image = global::SisControl.Properties.Resources.Relatorios64;
             this.btnRelatorios.Location = new System.Drawing.Point(531, 5);
             this.btnRelatorios.Name = "btnRelatorios";
             this.btnRelatorios.Size = new System.Drawing.Size(75, 65);
@@ -314,7 +295,6 @@
             this.btnProduto.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
             this.btnProduto.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.btnProduto.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnProduto.Image = global::SisControl.Properties.Resources.Gestao_de_produtos64;
             this.btnProduto.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btnProduto.Location = new System.Drawing.Point(231, 5);
             this.btnProduto.Name = "btnProduto";
@@ -332,7 +312,6 @@
             this.btnContaReceber.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
             this.btnContaReceber.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.btnContaReceber.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnContaReceber.Image = global::SisControl.Properties.Resources.Receber64;
             this.btnContaReceber.Location = new System.Drawing.Point(456, 5);
             this.btnContaReceber.Name = "btnContaReceber";
             this.btnContaReceber.Size = new System.Drawing.Size(75, 65);
@@ -349,7 +328,6 @@
             this.btnVendas.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
             this.btnVendas.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.btnVendas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnVendas.Image = global::SisControl.Properties.Resources.Vendas64;
             this.btnVendas.Location = new System.Drawing.Point(306, 5);
             this.btnVendas.Name = "btnVendas";
             this.btnVendas.Size = new System.Drawing.Size(75, 65);
@@ -366,7 +344,6 @@
             this.btnFerramentas.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
             this.btnFerramentas.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.btnFerramentas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnFerramentas.Image = global::SisControl.Properties.Resources.Ferramenta64;
             this.btnFerramentas.Location = new System.Drawing.Point(381, 5);
             this.btnFerramentas.Name = "btnFerramentas";
             this.btnFerramentas.Size = new System.Drawing.Size(75, 65);
@@ -391,9 +368,6 @@
             // 
             this.menuStrip1.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.menuStrip1.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.cadastrosToolStripMenuItem,
-            this.loginToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(1013, 24);
@@ -453,7 +427,7 @@
             this.Controls.Add(this.panelConteiner);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmPrincipal";
-            this.Text = "SisControl - Sistema de Vendas";
+            this.Text = "GVC - Sistema de Vendas";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.FrmPrincipal_Load);
             this.statusStrip2.ResumeLayout(false);

@@ -1,4 +1,4 @@
-﻿using SisControl.MODEL;
+﻿using GVC.MODEL;
 using System;
 using System.Collections.Generic;
 
@@ -10,7 +10,7 @@ using System.Data;
 using System.Data.SqlServerCe;
 
 
-namespace SisControl.DALL
+namespace GVC.DALL
 {
     public class ParcelaDAL
     {

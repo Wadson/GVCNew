@@ -7,7 +7,7 @@ using System.Text;
 using System.Windows.Forms;
 using ComponentFactory.Krypton.Toolkit;
 
-namespace SisControl.View
+namespace GVC.View
 {
     public partial class FormPrincipal : FrmModeloForm
     {

@@ -7,9 +7,9 @@ using System.Text;
 using System.Windows.Forms;
 using System.Data.SqlServerCe;
 
-namespace SisControl.View
+namespace GVC.View
 {
-    public partial class FrmRestauraBackup : SisControl.FrmModeloForm
+    public partial class FrmRestauraBackup : GVC.FrmModeloForm
     {
         public FrmRestauraBackup()
         {

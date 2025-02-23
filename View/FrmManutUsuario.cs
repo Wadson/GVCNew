@@ -1,6 +1,6 @@
 ﻿using ComponentFactory.Krypton.Toolkit;
-using SisControl.BLL;
-using SisControl.DALL;
+using GVC.BLL;
+using GVC.DALL;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -11,9 +11,9 @@ using System.Security.Policy;
 using System.Text;
 using System.Windows.Forms;
 
-namespace SisControl
+namespace GVC
 {
-    public partial class FrmManutUsuario : SisControl.FrmBaseManutencao
+    public partial class FrmManutUsuario : GVC.FrmBaseManutencao
     {
         private new string StatusOperacao;
         public FrmManutUsuario(string statusOperacao)

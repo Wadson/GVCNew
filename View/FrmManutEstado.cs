@@ -1,14 +1,14 @@
 ﻿using ComponentFactory.Krypton.Toolkit;
-using SisControl.BLL;
-using SisControl.DALL;
+using GVC.BLL;
+using GVC.DALL;
 using System;
 using System.Drawing;
 using System.Windows.Forms;
-using SisControl.View;
+using GVC.View;
 
-namespace SisControl
+namespace GVC
 {
-    public partial class FrmManutEstado : SisControl.FrmBaseManutencao
+    public partial class FrmManutEstado : GVC.FrmBaseManutencao
     {
         private new string StatusOperacao;
         public FrmManutEstado(string statusOperacao)

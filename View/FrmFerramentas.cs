@@ -1,4 +1,4 @@
-﻿using SisControl.Relatorios;
+﻿using GVC.Relatorios;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -7,9 +7,9 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 
-namespace SisControl.View
+namespace GVC.View
 {
-    public partial class FrmFerramentas : SisControl.FrmModeloForm
+    public partial class FrmFerramentas : GVC.FrmModeloForm
     {
         public FrmFerramentas()
         {

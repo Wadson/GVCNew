@@ -9,10 +9,10 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using ComponentFactory.Krypton.Toolkit;
-using SisControl.View;
-using static SisControl.View.FrmContaReceberr;
+using GVC.View;
+using static GVC.View.FrmContaReceberr;
 
-namespace SisControl
+namespace GVC
 {
     public partial class FrmBaixarConta : KryptonForm
     {

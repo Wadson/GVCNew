@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlServerCe;
 
-namespace SisControl.DALL
+namespace GVC.DALL
 {
     internal class HistoricoProdutoDALL
     {

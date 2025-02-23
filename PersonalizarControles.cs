@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace SisControl
+namespace GVC
 {
     internal class PersonalizarControles
     {

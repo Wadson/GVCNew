@@ -9,11 +9,11 @@ using System.Security.Cryptography;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using ComponentFactory.Krypton.Toolkit;
-using SisControl.BLL;
-using SisControl.MODEL;
+using GVC.BLL;
+using GVC.MODEL;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.Button;
 
-namespace SisControl
+namespace GVC
 {
     public partial class FrmCadUser : KryptonForm
     {

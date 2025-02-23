@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using static SisControl.View.FrmContaReceberr;
+using static GVC.View.FrmContaReceberr;
 
-namespace SisControl.MODEL
+namespace GVC.MODEL
 {
     internal class PagamentoParcialModel
     {

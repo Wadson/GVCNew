@@ -1,4 +1,4 @@
-﻿namespace SisControl
+﻿namespace GVC
 {
     partial class FrmManutUsuario
     {

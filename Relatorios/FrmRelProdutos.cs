@@ -7,9 +7,9 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 
-namespace SisControl.Relatorios
+namespace GVC.Relatorios
 {
-    public partial class FrmRelProdutos : SisControl.FrmModeloForm
+    public partial class FrmRelProdutos : GVC.FrmModeloForm
     {
         public FrmRelProdutos()
         {

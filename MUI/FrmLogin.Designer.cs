@@ -1,4 +1,4 @@
-﻿namespace SisControl.MUI
+﻿namespace GVC.MUI
 {
     partial class FrmLogin
     {
@@ -294,7 +294,7 @@
             // 
             // pictureBoxUser
             // 
-            this.pictureBoxUser.Image = global::SisControl.Properties.Resources.Usuario24;
+            this.pictureBoxUser.Image = global::GVC.Properties.Resources.Usuario24;
             this.pictureBoxUser.Location = new System.Drawing.Point(25, 166);
             this.pictureBoxUser.Name = "pictureBoxUser";
             this.pictureBoxUser.Size = new System.Drawing.Size(20, 25);
@@ -304,7 +304,7 @@
             // 
             // pictureBoxEmail
             // 
-            this.pictureBoxEmail.Image = global::SisControl.Properties.Resources.EmailBranco24;
+            this.pictureBoxEmail.Image = global::GVC.Properties.Resources.EmailBranco24;
             this.pictureBoxEmail.Location = new System.Drawing.Point(25, 204);
             this.pictureBoxEmail.Name = "pictureBoxEmail";
             this.pictureBoxEmail.Size = new System.Drawing.Size(20, 25);
@@ -314,7 +314,7 @@
             // 
             // pictureBoxRepetePassWord
             // 
-            this.pictureBoxRepetePassWord.Image = global::SisControl.Properties.Resources.Senhas24;
+            this.pictureBoxRepetePassWord.Image = global::GVC.Properties.Resources.Senhas24;
             this.pictureBoxRepetePassWord.Location = new System.Drawing.Point(25, 242);
             this.pictureBoxRepetePassWord.Name = "pictureBoxRepetePassWord";
             this.pictureBoxRepetePassWord.Size = new System.Drawing.Size(20, 25);
@@ -324,7 +324,7 @@
             // 
             // pictureBox4
             // 
-            this.pictureBox4.Image = global::SisControl.Properties.Resources.autenticacao_do_usuario;
+            this.pictureBox4.Image = global::GVC.Properties.Resources.autenticacao_do_usuario;
             this.pictureBox4.Location = new System.Drawing.Point(96, 12);
             this.pictureBox4.Name = "pictureBox4";
             this.pictureBox4.Size = new System.Drawing.Size(128, 129);

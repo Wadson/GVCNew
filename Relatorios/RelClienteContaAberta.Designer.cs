@@ -1,4 +1,4 @@
-﻿namespace SisControl.Relatorios
+﻿namespace GVC.Relatorios
 {
     partial class RelClienteContaAberta
     {
@@ -257,7 +257,7 @@
             // 
             // reportViewer2
             // 
-            this.reportViewer2.LocalReport.ReportEmbeddedResource = "SisControl.Relatorios.RelClienteItemCompra.rdlc";
+            this.reportViewer2.LocalReport.ReportEmbeddedResource = "GVC.Relatorios.RelClienteItemCompra.rdlc";
             this.reportViewer2.Location = new System.Drawing.Point(40, 70);
             this.reportViewer2.Name = "reportViewer2";
             this.reportViewer2.ServerReport.BearerToken = null;

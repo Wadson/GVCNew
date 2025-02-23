@@ -1,4 +1,4 @@
-﻿namespace SisControl.View
+﻿namespace GVC.View
 {
     partial class FrmPrincipalTela
     {
@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmPrincipalTela));
             this.panelConteiner = new System.Windows.Forms.Panel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.statusStrip2 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel7 = new System.Windows.Forms.ToolStripStatusLabel();
             this.lblEstação = new System.Windows.Forms.ToolStripStatusLabel();
@@ -67,10 +68,10 @@
             this.loginToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.kryptonPalette1 = new ComponentFactory.Krypton.Toolkit.KryptonPalette(this.components);
-            this.statusStrip2.SuspendLayout();
+            this.panelConteiner.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel2)).BeginInit();
             this.kryptonPanel2.SuspendLayout();
-            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panelConteiner
@@ -79,27 +80,26 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panelConteiner.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.panelConteiner.Controls.Add(this.pictureBox1);
             this.panelConteiner.Location = new System.Drawing.Point(3, 100);
             this.panelConteiner.Name = "panelConteiner";
             this.panelConteiner.Size = new System.Drawing.Size(1002, 584);
             this.panelConteiner.TabIndex = 1;
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.pictureBox1.Image = global::GVC.Properties.Resources.GVC_Gestao_de_Vendas_e_Cobrancas;
+            this.pictureBox1.Location = new System.Drawing.Point(356, 159);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(260, 269);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
+            // 
             // statusStrip2
             // 
             this.statusStrip2.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.statusStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripStatusLabel7,
-            this.lblEstação,
-            this.toolStripStatusLabel9,
-            this.toolStripStatusLabel10,
-            this.lblData,
-            this.toolStripStatusLabel11,
-            this.lblHoraAtual,
-            this.toolStripStatusLabel1,
-            this.lblUsuarioLogado,
-            this.toolStripStatusLabel2,
-            this.toolStripStatusLabel3,
-            this.lblTipoUsuario});
             this.statusStrip2.Location = new System.Drawing.Point(0, 707);
             this.statusStrip2.Name = "statusStrip2";
             this.statusStrip2.Size = new System.Drawing.Size(1008, 22);
@@ -204,20 +204,20 @@
             this.kryptonPanel2.Location = new System.Drawing.Point(-1, 26);
             this.kryptonPanel2.Name = "kryptonPanel2";
             this.kryptonPanel2.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Blue;
-            this.kryptonPanel2.PanelBackStyle = ComponentFactory.Krypton.Toolkit.PaletteBackStyle.SeparatorHighInternalProfile;
+            this.kryptonPanel2.PanelBackStyle = ComponentFactory.Krypton.Toolkit.PaletteBackStyle.GridDataCellCustom1;
             this.kryptonPanel2.Size = new System.Drawing.Size(1010, 73);
             this.kryptonPanel2.TabIndex = 602;
             // 
             // btnCidade
             // 
-            this.btnCidade.BackColor = System.Drawing.Color.White;
-            this.btnCidade.BackgroundImage = global::SisControl.Properties.Resources.Cidade64;
+            this.btnCidade.BackColor = System.Drawing.Color.Transparent;
             this.btnCidade.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.btnCidade.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
+            this.btnCidade.FlatAppearance.BorderSize = 0;
             this.btnCidade.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
             this.btnCidade.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.btnCidade.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCidade.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnCidade.Image = global::GVC.Properties.Resources.Cidades64;
             this.btnCidade.Location = new System.Drawing.Point(314, 3);
             this.btnCidade.Name = "btnCidade";
             this.btnCidade.Size = new System.Drawing.Size(75, 66);
@@ -229,14 +229,14 @@
             // 
             // btnEstado
             // 
-            this.btnEstado.BackColor = System.Drawing.Color.White;
-            this.btnEstado.BackgroundImage = global::SisControl.Properties.Resources.capitol;
+            this.btnEstado.BackColor = System.Drawing.Color.Transparent;
             this.btnEstado.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.btnEstado.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
+            this.btnEstado.FlatAppearance.BorderSize = 0;
             this.btnEstado.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
             this.btnEstado.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.btnEstado.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnEstado.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnEstado.Image = global::GVC.Properties.Resources.Estados64;
             this.btnEstado.Location = new System.Drawing.Point(391, 3);
             this.btnEstado.Name = "btnEstado";
             this.btnEstado.Size = new System.Drawing.Size(75, 66);
@@ -248,12 +248,13 @@
             // 
             // btnLogoff
             // 
-            this.btnLogoff.BackColor = System.Drawing.Color.White;
+            this.btnLogoff.BackColor = System.Drawing.Color.Transparent;
             this.btnLogoff.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
+            this.btnLogoff.FlatAppearance.BorderSize = 0;
             this.btnLogoff.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
             this.btnLogoff.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.btnLogoff.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnLogoff.Image = global::SisControl.Properties.Resources.Logogg64;
+            this.btnLogoff.Image = global::GVC.Properties.Resources.Logogg64;
             this.btnLogoff.Location = new System.Drawing.Point(776, 4);
             this.btnLogoff.Name = "btnLogoff";
             this.btnLogoff.Size = new System.Drawing.Size(75, 65);
@@ -265,13 +266,13 @@
             // 
             // btnUsuario
             // 
-            this.btnUsuario.BackColor = System.Drawing.Color.White;
+            this.btnUsuario.BackColor = System.Drawing.Color.Transparent;
             this.btnUsuario.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
+            this.btnUsuario.FlatAppearance.BorderSize = 0;
             this.btnUsuario.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
             this.btnUsuario.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.btnUsuario.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnUsuario.Image = global::SisControl.Properties.Resources.Usuario64;
-            this.btnUsuario.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnUsuario.Image = global::GVC.Properties.Resources.Usuarios64;
             this.btnUsuario.Location = new System.Drawing.Point(6, 4);
             this.btnUsuario.Name = "btnUsuario";
             this.btnUsuario.Size = new System.Drawing.Size(75, 65);
@@ -283,12 +284,13 @@
             // 
             // btnFornecedor
             // 
-            this.btnFornecedor.BackColor = System.Drawing.Color.White;
+            this.btnFornecedor.BackColor = System.Drawing.Color.Transparent;
             this.btnFornecedor.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
+            this.btnFornecedor.FlatAppearance.BorderSize = 0;
             this.btnFornecedor.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
             this.btnFornecedor.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.btnFornecedor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnFornecedor.Image = global::SisControl.Properties.Resources.Fornecedor64;
+            this.btnFornecedor.Image = global::GVC.Properties.Resources.Fornecedo64;
             this.btnFornecedor.Location = new System.Drawing.Point(160, 3);
             this.btnFornecedor.Name = "btnFornecedor";
             this.btnFornecedor.Size = new System.Drawing.Size(75, 66);
@@ -300,13 +302,13 @@
             // 
             // btnCliente
             // 
-            this.btnCliente.BackColor = System.Drawing.Color.White;
+            this.btnCliente.BackColor = System.Drawing.Color.Transparent;
             this.btnCliente.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
+            this.btnCliente.FlatAppearance.BorderSize = 0;
             this.btnCliente.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
             this.btnCliente.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.btnCliente.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCliente.Image = global::SisControl.Properties.Resources.Cliente64;
-            this.btnCliente.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnCliente.Image = global::GVC.Properties.Resources.Clientes64;
             this.btnCliente.Location = new System.Drawing.Point(83, 4);
             this.btnCliente.Name = "btnCliente";
             this.btnCliente.Size = new System.Drawing.Size(75, 65);
@@ -319,12 +321,13 @@
             // btnSair
             // 
             this.btnSair.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSair.BackColor = System.Drawing.Color.White;
+            this.btnSair.BackColor = System.Drawing.Color.Transparent;
             this.btnSair.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
+            this.btnSair.FlatAppearance.BorderSize = 0;
             this.btnSair.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
             this.btnSair.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.btnSair.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSair.Image = global::SisControl.Properties.Resources.Sair64;
+            this.btnSair.Image = global::GVC.Properties.Resources.Exit64;
             this.btnSair.Location = new System.Drawing.Point(931, 3);
             this.btnSair.Name = "btnSair";
             this.btnSair.Size = new System.Drawing.Size(75, 65);
@@ -335,12 +338,13 @@
             // 
             // btnRelatorios
             // 
-            this.btnRelatorios.BackColor = System.Drawing.Color.White;
+            this.btnRelatorios.BackColor = System.Drawing.Color.Transparent;
             this.btnRelatorios.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
+            this.btnRelatorios.FlatAppearance.BorderSize = 0;
             this.btnRelatorios.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
             this.btnRelatorios.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.btnRelatorios.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnRelatorios.Image = global::SisControl.Properties.Resources.Relatorios64;
+            this.btnRelatorios.Image = ((System.Drawing.Image)(resources.GetObject("btnRelatorios.Image")));
             this.btnRelatorios.Location = new System.Drawing.Point(699, 4);
             this.btnRelatorios.Name = "btnRelatorios";
             this.btnRelatorios.Size = new System.Drawing.Size(75, 65);
@@ -352,14 +356,14 @@
             // 
             // btnProduto
             // 
-            this.btnProduto.BackColor = System.Drawing.Color.White;
-            this.btnProduto.BackgroundImage = global::SisControl.Properties.Resources.Produtos;
+            this.btnProduto.BackColor = System.Drawing.Color.Transparent;
             this.btnProduto.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.btnProduto.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
+            this.btnProduto.FlatAppearance.BorderSize = 0;
             this.btnProduto.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
             this.btnProduto.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.btnProduto.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnProduto.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnProduto.Image = global::GVC.Properties.Resources.Produtos64;
             this.btnProduto.Location = new System.Drawing.Point(237, 3);
             this.btnProduto.Name = "btnProduto";
             this.btnProduto.Size = new System.Drawing.Size(75, 66);
@@ -371,12 +375,13 @@
             // 
             // btnContaReceber
             // 
-            this.btnContaReceber.BackColor = System.Drawing.Color.White;
+            this.btnContaReceber.BackColor = System.Drawing.Color.Transparent;
             this.btnContaReceber.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
+            this.btnContaReceber.FlatAppearance.BorderSize = 0;
             this.btnContaReceber.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
             this.btnContaReceber.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.btnContaReceber.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnContaReceber.Image = global::SisControl.Properties.Resources.Receber64;
+            this.btnContaReceber.Image = global::GVC.Properties.Resources.Recebe64;
             this.btnContaReceber.Location = new System.Drawing.Point(622, 4);
             this.btnContaReceber.Name = "btnContaReceber";
             this.btnContaReceber.Size = new System.Drawing.Size(75, 65);
@@ -388,12 +393,13 @@
             // 
             // btnVendas
             // 
-            this.btnVendas.BackColor = System.Drawing.Color.White;
+            this.btnVendas.BackColor = System.Drawing.Color.Transparent;
             this.btnVendas.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
+            this.btnVendas.FlatAppearance.BorderSize = 0;
             this.btnVendas.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
             this.btnVendas.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.btnVendas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnVendas.Image = global::SisControl.Properties.Resources.Vendas64;
+            this.btnVendas.Image = global::GVC.Properties.Resources.Venda64;
             this.btnVendas.Location = new System.Drawing.Point(468, 4);
             this.btnVendas.Name = "btnVendas";
             this.btnVendas.Size = new System.Drawing.Size(75, 65);
@@ -405,12 +411,13 @@
             // 
             // btnFerramentas
             // 
-            this.btnFerramentas.BackColor = System.Drawing.Color.White;
+            this.btnFerramentas.BackColor = System.Drawing.Color.Transparent;
             this.btnFerramentas.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
+            this.btnFerramentas.FlatAppearance.BorderSize = 0;
             this.btnFerramentas.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
             this.btnFerramentas.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.btnFerramentas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnFerramentas.Image = global::SisControl.Properties.Resources.Ferramenta64;
+            this.btnFerramentas.Image = global::GVC.Properties.Resources.Ferrament64;
             this.btnFerramentas.Location = new System.Drawing.Point(545, 4);
             this.btnFerramentas.Name = "btnFerramentas";
             this.btnFerramentas.Size = new System.Drawing.Size(75, 65);
@@ -424,9 +431,6 @@
             // 
             this.menuStrip1.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.menuStrip1.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.cadastrosToolStripMenuItem,
-            this.loginToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(1008, 24);
@@ -487,14 +491,14 @@
             // kryptonPalette1
             // 
             this.kryptonPalette1.ButtonSpecs.FormClose.Image = ((System.Drawing.Image)(resources.GetObject("kryptonPalette1.ButtonSpecs.FormClose.Image")));
-            this.kryptonPalette1.ButtonSpecs.FormClose.ImageStates.ImagePressed = global::SisControl.Properties.Resources.Sairr;
-            this.kryptonPalette1.ButtonSpecs.FormClose.ImageStates.ImageTracking = global::SisControl.Properties.Resources.Sairr;
-            this.kryptonPalette1.ButtonSpecs.FormMax.Image = global::SisControl.Properties.Resources.Maximize;
+            this.kryptonPalette1.ButtonSpecs.FormClose.ImageStates.ImagePressed = global::GVC.Properties.Resources.Sairr;
+            this.kryptonPalette1.ButtonSpecs.FormClose.ImageStates.ImageTracking = global::GVC.Properties.Resources.Sairr;
+            this.kryptonPalette1.ButtonSpecs.FormMax.Image = global::GVC.Properties.Resources.Maximize;
             this.kryptonPalette1.ButtonSpecs.FormMax.ImageStates.ImagePressed = ((System.Drawing.Image)(resources.GetObject("kryptonPalette1.ButtonSpecs.FormMax.ImageStates.ImagePressed")));
             this.kryptonPalette1.ButtonSpecs.FormMax.ImageStates.ImageTracking = ((System.Drawing.Image)(resources.GetObject("kryptonPalette1.ButtonSpecs.FormMax.ImageStates.ImageTracking")));
-            this.kryptonPalette1.ButtonSpecs.FormMin.Image = global::SisControl.Properties.Resources.Minimize;
-            this.kryptonPalette1.ButtonSpecs.FormMin.ImageStates.ImagePressed = global::SisControl.Properties.Resources.Minimizar24;
-            this.kryptonPalette1.ButtonSpecs.FormMin.ImageStates.ImageTracking = global::SisControl.Properties.Resources.Minimizar24;
+            this.kryptonPalette1.ButtonSpecs.FormMin.Image = global::GVC.Properties.Resources.Minimize;
+            this.kryptonPalette1.ButtonSpecs.FormMin.ImageStates.ImagePressed = global::GVC.Properties.Resources.Minimizar24;
+            this.kryptonPalette1.ButtonSpecs.FormMin.ImageStates.ImageTracking = global::GVC.Properties.Resources.Minimizar24;
             this.kryptonPalette1.ButtonStyles.ButtonForm.StateNormal.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.kryptonPalette1.ButtonStyles.ButtonForm.StateNormal.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.kryptonPalette1.ButtonStyles.ButtonForm.StateNormal.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
@@ -542,15 +546,13 @@
             this.StateCommon.Border.DrawBorders = ((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders)((((ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Top | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Bottom) 
             | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
             | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
-            this.Text = "SisControl - Sistema de Vendas";
+            this.Text = "GVC - Sistema de Vendas";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.FrmPrincipal_Load);
-            this.statusStrip2.ResumeLayout(false);
-            this.statusStrip2.PerformLayout();
+            this.panelConteiner.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel2)).EndInit();
             this.kryptonPanel2.ResumeLayout(false);
-            this.menuStrip1.ResumeLayout(false);
-            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -594,5 +596,6 @@
         private System.Windows.Forms.Button btnEstado;
         private System.Windows.Forms.Button btnCidade;
         private ComponentFactory.Krypton.Toolkit.KryptonPalette kryptonPalette1;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

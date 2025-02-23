@@ -1,4 +1,4 @@
-﻿namespace SisControl
+﻿namespace GVC
 {
     partial class FrmModelo
     {
@@ -292,7 +292,7 @@
             this.Palette = this.kryptonPalette1;
             this.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Custom;
             this.ShowIcon = false;
-            this.Text = "SisControl - Sistema Controle de Vendas";
+            this.Text = "GVC - Sistema Controle de Vendas";
             this.ResumeLayout(false);
             this.PerformLayout();
 

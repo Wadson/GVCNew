@@ -1,13 +1,13 @@
 ﻿using Microsoft.Reporting.WinForms;
-using SisControl.View;
+using GVC.View;
 using System;
 using System.Data;
 using System.Data.SqlServerCe;
 using System.Windows.Forms;
 
-namespace SisControl.Relatorios
+namespace GVC.Relatorios
 {
-    public partial class RelClienteContaAberta : SisControl.FrmModeloForm
+    public partial class RelClienteContaAberta : GVC.FrmModeloForm
     {
         public string clienteSelecionado { get; set; } //Não serve para nada, só para preencher o parametro do construtor
         public RelClienteContaAberta()

@@ -1,4 +1,4 @@
-﻿namespace SisControl
+﻿namespace GVC
 {
     partial class FrmBasePesquisa
     {
@@ -117,14 +117,14 @@
             // kryptonPalette1
             // 
             this.kryptonPalette1.ButtonSpecs.FormClose.Image = ((System.Drawing.Image)(resources.GetObject("kryptonPalette1.ButtonSpecs.FormClose.Image")));
-            this.kryptonPalette1.ButtonSpecs.FormClose.ImageStates.ImagePressed = global::SisControl.Properties.Resources.Sairr;
-            this.kryptonPalette1.ButtonSpecs.FormClose.ImageStates.ImageTracking = global::SisControl.Properties.Resources.Sairr;
-            this.kryptonPalette1.ButtonSpecs.FormMax.Image = global::SisControl.Properties.Resources.Maximize;
+            this.kryptonPalette1.ButtonSpecs.FormClose.ImageStates.ImagePressed = global::GVC.Properties.Resources.Sairr;
+            this.kryptonPalette1.ButtonSpecs.FormClose.ImageStates.ImageTracking = global::GVC.Properties.Resources.Sairr;
+            this.kryptonPalette1.ButtonSpecs.FormMax.Image = global::GVC.Properties.Resources.Maximize;
             this.kryptonPalette1.ButtonSpecs.FormMax.ImageStates.ImagePressed = ((System.Drawing.Image)(resources.GetObject("kryptonPalette1.ButtonSpecs.FormMax.ImageStates.ImagePressed")));
             this.kryptonPalette1.ButtonSpecs.FormMax.ImageStates.ImageTracking = ((System.Drawing.Image)(resources.GetObject("kryptonPalette1.ButtonSpecs.FormMax.ImageStates.ImageTracking")));
-            this.kryptonPalette1.ButtonSpecs.FormMin.Image = global::SisControl.Properties.Resources.Minimize;
-            this.kryptonPalette1.ButtonSpecs.FormMin.ImageStates.ImagePressed = global::SisControl.Properties.Resources.Minimizar24;
-            this.kryptonPalette1.ButtonSpecs.FormMin.ImageStates.ImageTracking = global::SisControl.Properties.Resources.Minimizar24;
+            this.kryptonPalette1.ButtonSpecs.FormMin.Image = global::GVC.Properties.Resources.Minimize;
+            this.kryptonPalette1.ButtonSpecs.FormMin.ImageStates.ImagePressed = global::GVC.Properties.Resources.Minimizar24;
+            this.kryptonPalette1.ButtonSpecs.FormMin.ImageStates.ImageTracking = global::GVC.Properties.Resources.Minimizar24;
             this.kryptonPalette1.FormStyles.FormCommon.StateCommon.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(252)))), ((int)(((byte)(252)))));
             this.kryptonPalette1.FormStyles.FormCommon.StateCommon.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(252)))), ((int)(((byte)(252)))));
             this.kryptonPalette1.FormStyles.FormMain.StateCommon.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(252)))), ((int)(((byte)(252)))));

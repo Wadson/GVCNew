@@ -136,16 +136,13 @@
   <data name="calendarioBranco24" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\calendarioBranco24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="capitol" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\capitol.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="Cidade32" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Cidade32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Cidade64" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="Cidades64" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Cidade64.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Cliente64" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="Clientes64" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Cliente64.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="cpfAzul24" type="System.Resources.ResXFileRef, System.Windows.Forms">
@@ -160,26 +157,35 @@
   <data name="EmailBranco24" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\EmailBranco24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Estados64" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Estado64.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="excluir32" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\excluir32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Exit" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Exit.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Ferramenta64" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Ferramenta64.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Exit64" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Sair64.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Ferramentas64" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="Ferrament64" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Ferramentas64.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="FinalizarVenda" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\FinalizarVenda.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Fornecedor64" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="Forneced64" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Fornecedor2-64.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Fornecedo64" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Fornecedor64.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Gestao_de_produtos64" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Gestao-de-produtos64.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="GVC" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\GVC.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="GVC_Gestao_de_Vendas_e_Cobrancas" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\GVC-Gestao de Vendas e Cobrancas.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Logogg64" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Logogg64.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -205,26 +211,23 @@
   <data name="Pesquisar" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Pesquisar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Produtos" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\WhatsApp Image 2025-02-14 at 17.19.19.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Produtos64" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Produto64.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Recebe64" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Receber64.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Receber34" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Receber34.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Receber64" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Receber64.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="redefinir_senha" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\redefinir-senha.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Relatorios64" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Relatorios64.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Relatorio64" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Relatorio64.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="sair" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\sair.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Sair64" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Sair64.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Sairr" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Sairr.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -244,13 +247,19 @@
   <data name="Usuario24" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Usuario24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Usuario64" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Usuario64.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="UsuarioBlue24" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\UsuarioBlue24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Vendas64" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="Usuarios64" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Usuario64.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Venda64" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Vendas64.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="WhatsApp_Image_2025_02_14_at_17_19_19" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\WhatsApp Image 2025-02-14 at 17.19.19.jpeg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="WhatsApp_Image_2025_02_14_at_17_19_191" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\WhatsApp Image 2025-02-14 at 17.19.19.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

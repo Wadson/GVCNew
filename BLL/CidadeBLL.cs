@@ -1,5 +1,5 @@
-﻿using SisControl.DALL;
-using SisControl.MODEL;
+﻿using GVC.DALL;
+using GVC.MODEL;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlServerCe;
@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SisControl.BLL
+namespace GVC.BLL
 {
     internal class CidadeBLL
     {

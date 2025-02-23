@@ -4,7 +4,7 @@ using System.Data.SqlServerCe;
 using System.Configuration;
 using System.IO; // Adicione este namespace
 
-namespace SisControl
+namespace GVC
 {
     internal class Conexao
     {

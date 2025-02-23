@@ -8,9 +8,9 @@ using System.Data.SqlServerCe;
 using System.Windows.Forms;
 using System.IO;
 
-namespace SisControl.View
+namespace GVC.View
 {
-    public partial class FrmBackup : SisControl.FrmModeloForm
+    public partial class FrmBackup : GVC.FrmModeloForm
     {
         public FrmBackup()
         {

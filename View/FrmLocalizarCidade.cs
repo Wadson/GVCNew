@@ -1,5 +1,5 @@
 ﻿using Microsoft.Identity.Client;
-using SisControl.DALL;
+using GVC.DALL;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -9,11 +9,11 @@ using System.Drawing;
 using System.Drawing.Text;
 using System.Text;
 using System.Windows.Forms;
-using static SisControl.FrmModeloForm;
+using static GVC.FrmModeloForm;
 
-namespace SisControl.View
+namespace GVC.View
 {
-    public partial class FrmLocalizarCidade : SisControl.FrmBasePesquisa
+    public partial class FrmLocalizarCidade : GVC.FrmBasePesquisa
     {       
         private Form _formChamador;
         protected int LinhaAtual = -1;        

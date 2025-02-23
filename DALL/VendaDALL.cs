@@ -1,4 +1,4 @@
-﻿using SisControl.MODEL;
+﻿using GVC.MODEL;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlServerCe;
@@ -9,7 +9,7 @@ using System.Configuration;
 using System.Data;
 using System.Data.SqlServerCe;
 
-namespace SisControl.DALL
+namespace GVC.DALL
 {
     public class VendaDAL
     {
@@ -25,7 +25,7 @@ namespace SisControl.DALL
                 command.Parameters.AddWithValue("@VendaID", venda.VendaID);
                 command.Parameters.AddWithValue("@DataVenda", venda.DataVenda);
                 command.Parameters.AddWithValue("@ClienteID", venda.ClienteID);
-                command.Parameters.AddWithValue("@ValorTotal", venda.ValorTotal);                
+                command.Parameters.AddWithValue("@ValorTotal", venda.ValorTotal);
                 command.Parameters.AddWithValue("@FormaPgto", venda.FormaPgto);
 
                 conn.Open();
@@ -167,7 +167,7 @@ namespace SisControl.DALL
                             cmd.Parameters.AddWithValue("@ValorParcela", parcela.ValorParcela);
                             cmd.Parameters.AddWithValue("@ValorRecebido", parcela.ValorRecebido);
                             cmd.Parameters.AddWithValue("@SaldoRestante", parcela.SaldoRestante);
-                            cmd.Parameters.AddWithValue("@Pago", parcela.Pago);                            
+                            cmd.Parameters.AddWithValue("@Pago", parcela.Pago);
 
                             cmd.ExecuteNonQuery();
                         }
@@ -191,14 +191,14 @@ namespace SisControl.DALL
         {
             using (var conn = Conexao.Conex())
             {
-                SqlCeCommand comando = new SqlCeCommand("SELECT * FROM Pagamento WHERE ClienteID=" +CodigoCliente.ToString(), conn);
+                SqlCeCommand comando = new SqlCeCommand("SELECT * FROM Pagamento WHERE ClienteID=" + CodigoCliente.ToString(), conn);
                 SqlCeDataAdapter daUsuario = new SqlCeDataAdapter(comando);
                 DataTable dtUsuario = new DataTable();
                 daUsuario.Fill(dtUsuario);
                 return dtUsuario;
             }
         }
-        public DataTable VendaLocalizarPorCliente(int CodigoCliente) 
+        public DataTable VendaLocalizarPorCliente(int CodigoCliente)
         {
             using (var conn = Conexao.Conex())
             {
@@ -209,4 +209,5 @@ namespace SisControl.DALL
                 return dtUsuario;
             }
         }
+    }
 }

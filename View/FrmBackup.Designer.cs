@@ -1,4 +1,4 @@
-﻿namespace SisControl.View
+﻿namespace GVC.View
 {
     partial class FrmBackup
     {
@@ -173,7 +173,7 @@
             this.txtBancoDeDados.StateCommon.Content.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
             this.txtBancoDeDados.StateCommon.Content.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
             this.txtBancoDeDados.TabIndex = 1004;
-            this.txtBancoDeDados.Text = "bdsiscontrol";
+            this.txtBancoDeDados.Text = "bdGVC";
             // 
             // btnGerarBackup
             // 

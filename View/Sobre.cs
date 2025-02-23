@@ -7,7 +7,7 @@ using System.Reflection;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace SisControl.View
+namespace GVC.View
 {
     partial class Sobre : Form
     {

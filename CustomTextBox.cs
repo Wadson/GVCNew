@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace SisControl
+namespace GVC
 {
     internal class CustomTextBox : TextBox // Herda de TextBox para ter acesso aos eventos Enter e Leave
     {

@@ -1,4 +1,4 @@
-﻿using SisControl.MUI;
+﻿using GVC.MUI;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -7,9 +7,9 @@ using System.Drawing;
 using System.IO;
 using System.Text;
 using System.Windows.Forms;
-using static SisControl.View.FrmContaReceberr;
+using static GVC.View.FrmContaReceberr;
 
-namespace SisControl.View
+namespace GVC.View
 {
     public partial class FrmPrincipal : MetroFramework.Forms.MetroForm
     {
