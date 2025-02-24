@@ -94,7 +94,6 @@
             this.groupBox4.Controls.Add(this.label17);
             this.groupBox4.Controls.Add(this.txtQuantidade);
             this.groupBox4.Controls.Add(this.label7);
-            this.groupBox4.Controls.Add(this.btnIncluir);
             this.groupBox4.Controls.Add(this.txtValorProduto);
             this.groupBox4.Controls.Add(this.label8);
             this.groupBox4.Controls.Add(this.txtValorRecebido);
@@ -129,6 +128,7 @@
             this.dtpVencimento.Name = "dtpVencimento";
             this.dtpVencimento.Size = new System.Drawing.Size(128, 36);
             this.dtpVencimento.TabIndex = 628;
+            this.dtpVencimento.TabStop = false;
             this.dtpVencimento.UseTransparentBackground = true;
             this.dtpVencimento.Value = new System.DateTime(2025, 2, 19, 7, 9, 15, 860);
             this.dtpVencimento.ValueChanged += new System.EventHandler(this.dtpVencimento_ValueChanged);
@@ -141,6 +141,7 @@
             this.radiobtnParcelado.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.ProfessionalOffice2003;
             this.radiobtnParcelado.Size = new System.Drawing.Size(81, 22);
             this.radiobtnParcelado.TabIndex = 618;
+            this.radiobtnParcelado.TabStop = false;
             this.radiobtnParcelado.Values.Text = "Parcelado";
             this.radiobtnParcelado.CheckedChanged += new System.EventHandler(this.radiobtnParcelado_CheckedChanged);
             // 
@@ -153,6 +154,7 @@
             this.radiobtnAVista.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.ProfessionalSystem;
             this.radiobtnAVista.Size = new System.Drawing.Size(64, 22);
             this.radiobtnAVista.TabIndex = 619;
+            this.radiobtnAVista.TabStop = false;
             this.radiobtnAVista.Values.Text = "A Vista";
             this.radiobtnAVista.CheckedChanged += new System.EventHandler(this.radiobtnAVista_CheckedChanged);
             // 
@@ -160,7 +162,7 @@
             // 
             this.btnLocalizarProduto.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnLocalizarProduto.ButtonStyle = ComponentFactory.Krypton.Toolkit.ButtonStyle.Custom1;
-            this.btnLocalizarProduto.Location = new System.Drawing.Point(808, 27);
+            this.btnLocalizarProduto.Location = new System.Drawing.Point(760, 27);
             this.btnLocalizarProduto.Name = "btnLocalizarProduto";
             this.btnLocalizarProduto.OverrideDefault.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(174)))), ((int)(((byte)(244)))));
             this.btnLocalizarProduto.OverrideDefault.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
@@ -175,7 +177,7 @@
             this.btnLocalizarProduto.OverrideDefault.Border.Rounding = 1;
             this.btnLocalizarProduto.OverrideDefault.Border.Width = 1;
             this.btnLocalizarProduto.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Blue;
-            this.btnLocalizarProduto.Size = new System.Drawing.Size(105, 28);
+            this.btnLocalizarProduto.Size = new System.Drawing.Size(155, 28);
             this.btnLocalizarProduto.StateCommon.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(174)))), ((int)(((byte)(244)))));
             this.btnLocalizarProduto.StateCommon.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
             this.btnLocalizarProduto.StateCommon.Back.ColorAlign = ComponentFactory.Krypton.Toolkit.PaletteRectangleAlign.Local;
@@ -215,9 +217,10 @@
             this.btnLocalizarProduto.StateTracking.Border.GraphicsHint = ComponentFactory.Krypton.Toolkit.PaletteGraphicsHint.AntiAlias;
             this.btnLocalizarProduto.StateTracking.Border.Rounding = 1;
             this.btnLocalizarProduto.StateTracking.Border.Width = 1;
-            this.btnLocalizarProduto.TabIndex = 2;
+            this.btnLocalizarProduto.TabIndex = 200;
+            this.btnLocalizarProduto.TabStop = false;
             this.btnLocalizarProduto.Values.Image = global::GVC.Properties.Resources.Pesquisar;
-            this.btnLocalizarProduto.Values.Text = "&(F5)";
+            this.btnLocalizarProduto.Values.Text = "&(F5) Localizar Produto";
             this.btnLocalizarProduto.Click += new System.EventHandler(this.btnLocalizarProduto_Click);
             // 
             // txtNomeProduto
@@ -228,7 +231,7 @@
             this.txtNomeProduto.Location = new System.Drawing.Point(7, 28);
             this.txtNomeProduto.Name = "txtNomeProduto";
             this.txtNomeProduto.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Blue;
-            this.txtNomeProduto.Size = new System.Drawing.Size(795, 27);
+            this.txtNomeProduto.Size = new System.Drawing.Size(746, 27);
             this.txtNomeProduto.StateCommon.Back.Color1 = System.Drawing.Color.White;
             this.txtNomeProduto.StateCommon.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
             this.txtNomeProduto.StateCommon.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
@@ -282,7 +285,7 @@
             // 
             this.txtQuantidade.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.txtQuantidade.InputControlStyle = ComponentFactory.Krypton.Toolkit.InputControlStyle.Custom1;
-            this.txtQuantidade.Location = new System.Drawing.Point(299, 74);
+            this.txtQuantidade.Location = new System.Drawing.Point(311, 74);
             this.txtQuantidade.Name = "txtQuantidade";
             this.txtQuantidade.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Blue;
             this.txtQuantidade.Size = new System.Drawing.Size(106, 30);
@@ -299,7 +302,7 @@
             this.txtQuantidade.StateCommon.Content.Color1 = System.Drawing.Color.Black;
             this.txtQuantidade.StateCommon.Content.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtQuantidade.StateCommon.Content.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
-            this.txtQuantidade.TabIndex = 3;
+            this.txtQuantidade.TabIndex = 2;
             this.txtQuantidade.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtQuantidade.Leave += new System.EventHandler(this.txtQuantidade_Leave);
             // 
@@ -309,7 +312,7 @@
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(100)))), ((int)(((byte)(255)))));
-            this.label7.Location = new System.Drawing.Point(309, 56);
+            this.label7.Location = new System.Drawing.Point(321, 56);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(87, 16);
             this.label7.TabIndex = 563;
@@ -318,7 +321,7 @@
             // btnIncluir
             // 
             this.btnIncluir.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnIncluir.Location = new System.Drawing.Point(759, 61);
+            this.btnIncluir.Location = new System.Drawing.Point(769, 249);
             this.btnIncluir.Name = "btnIncluir";
             this.btnIncluir.OverrideDefault.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(174)))), ((int)(((byte)(244)))));
             this.btnIncluir.OverrideDefault.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
@@ -336,7 +339,7 @@
             this.btnIncluir.OverrideFocus.Content.LongText.Font = new System.Drawing.Font("Gadugi", 9F);
             this.btnIncluir.OverrideFocus.Content.ShortText.Font = new System.Drawing.Font("Gadugi", 9F);
             this.btnIncluir.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.ProfessionalSystem;
-            this.btnIncluir.Size = new System.Drawing.Size(155, 43);
+            this.btnIncluir.Size = new System.Drawing.Size(155, 30);
             this.btnIncluir.StateCommon.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(174)))), ((int)(((byte)(244)))));
             this.btnIncluir.StateCommon.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
             this.btnIncluir.StateCommon.Back.ColorAngle = 45F;
@@ -374,16 +377,16 @@
             this.btnIncluir.StateTracking.Border.GraphicsHint = ComponentFactory.Krypton.Toolkit.PaletteGraphicsHint.AntiAlias;
             this.btnIncluir.StateTracking.Border.Rounding = 1;
             this.btnIncluir.StateTracking.Border.Width = 1;
-            this.btnIncluir.TabIndex = 619;
-            this.btnIncluir.Values.Image = global::GVC.Properties.Resources.Adicionar;
-            this.btnIncluir.Values.Text = "&Incluir Item";
+            this.btnIncluir.TabIndex = 5;
+            this.btnIncluir.Values.Image = global::GVC.Properties.Resources.AdicionarProuto;
+            this.btnIncluir.Values.Text = "    &Incluir Item";
             this.btnIncluir.Click += new System.EventHandler(this.btnIncluir_Click);
             // 
             // txtValorProduto
             // 
             this.txtValorProduto.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.txtValorProduto.InputControlStyle = ComponentFactory.Krypton.Toolkit.InputControlStyle.Custom1;
-            this.txtValorProduto.Location = new System.Drawing.Point(411, 74);
+            this.txtValorProduto.Location = new System.Drawing.Point(423, 74);
             this.txtValorProduto.Name = "txtValorProduto";
             this.txtValorProduto.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Blue;
             this.txtValorProduto.Size = new System.Drawing.Size(106, 30);
@@ -400,7 +403,7 @@
             this.txtValorProduto.StateCommon.Content.Color1 = System.Drawing.Color.Black;
             this.txtValorProduto.StateCommon.Content.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtValorProduto.StateCommon.Content.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
-            this.txtValorProduto.TabIndex = 4;
+            this.txtValorProduto.TabIndex = 3;
             this.txtValorProduto.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtValorProduto.Leave += new System.EventHandler(this.txtValorProduto_Leave);
             // 
@@ -410,7 +413,7 @@
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(100)))), ((int)(((byte)(255)))));
-            this.label8.Location = new System.Drawing.Point(425, 56);
+            this.label8.Location = new System.Drawing.Point(437, 56);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(79, 16);
             this.label8.TabIndex = 564;
@@ -420,7 +423,7 @@
             // 
             this.txtValorRecebido.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.txtValorRecebido.InputControlStyle = ComponentFactory.Krypton.Toolkit.InputControlStyle.Custom1;
-            this.txtValorRecebido.Location = new System.Drawing.Point(523, 74);
+            this.txtValorRecebido.Location = new System.Drawing.Point(535, 74);
             this.txtValorRecebido.Name = "txtValorRecebido";
             this.txtValorRecebido.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Blue;
             this.txtValorRecebido.Size = new System.Drawing.Size(106, 30);
@@ -437,7 +440,7 @@
             this.txtValorRecebido.StateCommon.Content.Color1 = System.Drawing.Color.Black;
             this.txtValorRecebido.StateCommon.Content.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtValorRecebido.StateCommon.Content.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
-            this.txtValorRecebido.TabIndex = 5;
+            this.txtValorRecebido.TabIndex = 4;
             this.txtValorRecebido.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtValorRecebido.Leave += new System.EventHandler(this.txtValorRecebido_Leave);
             // 
@@ -445,7 +448,7 @@
             // 
             this.txtSubTotal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.txtSubTotal.InputControlStyle = ComponentFactory.Krypton.Toolkit.InputControlStyle.Custom1;
-            this.txtSubTotal.Location = new System.Drawing.Point(635, 74);
+            this.txtSubTotal.Location = new System.Drawing.Point(647, 74);
             this.txtSubTotal.Name = "txtSubTotal";
             this.txtSubTotal.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Blue;
             this.txtSubTotal.Size = new System.Drawing.Size(106, 30);
@@ -472,7 +475,7 @@
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(100)))), ((int)(((byte)(255)))));
-            this.label11.Location = new System.Drawing.Point(523, 56);
+            this.label11.Location = new System.Drawing.Point(535, 56);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(106, 16);
             this.label11.TabIndex = 584;
@@ -484,7 +487,7 @@
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(100)))), ((int)(((byte)(255)))));
-            this.label10.Location = new System.Drawing.Point(632, 52);
+            this.label10.Location = new System.Drawing.Point(644, 52);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(113, 25);
             this.label10.TabIndex = 566;
@@ -522,7 +525,7 @@
             // 
             this.btnLocalizarCliente.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnLocalizarCliente.ButtonStyle = ComponentFactory.Krypton.Toolkit.ButtonStyle.Custom1;
-            this.btnLocalizarCliente.Location = new System.Drawing.Point(808, 23);
+            this.btnLocalizarCliente.Location = new System.Drawing.Point(760, 23);
             this.btnLocalizarCliente.Name = "btnLocalizarCliente";
             this.btnLocalizarCliente.OverrideDefault.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(174)))), ((int)(((byte)(244)))));
             this.btnLocalizarCliente.OverrideDefault.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
@@ -537,7 +540,7 @@
             this.btnLocalizarCliente.OverrideDefault.Border.Rounding = 1;
             this.btnLocalizarCliente.OverrideDefault.Border.Width = 1;
             this.btnLocalizarCliente.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Blue;
-            this.btnLocalizarCliente.Size = new System.Drawing.Size(105, 28);
+            this.btnLocalizarCliente.Size = new System.Drawing.Size(155, 28);
             this.btnLocalizarCliente.StateCommon.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(174)))), ((int)(((byte)(244)))));
             this.btnLocalizarCliente.StateCommon.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
             this.btnLocalizarCliente.StateCommon.Back.ColorAlign = ComponentFactory.Krypton.Toolkit.PaletteRectangleAlign.Local;
@@ -578,8 +581,9 @@
             this.btnLocalizarCliente.StateTracking.Border.Rounding = 1;
             this.btnLocalizarCliente.StateTracking.Border.Width = 1;
             this.btnLocalizarCliente.TabIndex = 1002;
+            this.btnLocalizarCliente.TabStop = false;
             this.btnLocalizarCliente.Values.Image = global::GVC.Properties.Resources.Pesquisar;
-            this.btnLocalizarCliente.Values.Text = "&(F4)";
+            this.btnLocalizarCliente.Values.Text = "&(F4) Localizar Cliente";
             this.btnLocalizarCliente.Click += new System.EventHandler(this.btnLocalizarCliente_Click);
             // 
             // txtNomeCliente
@@ -590,7 +594,7 @@
             this.txtNomeCliente.Location = new System.Drawing.Point(7, 24);
             this.txtNomeCliente.Name = "txtNomeCliente";
             this.txtNomeCliente.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Blue;
-            this.txtNomeCliente.Size = new System.Drawing.Size(795, 27);
+            this.txtNomeCliente.Size = new System.Drawing.Size(746, 27);
             this.txtNomeCliente.StateCommon.Back.Color1 = System.Drawing.Color.White;
             this.txtNomeCliente.StateCommon.Border.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
             this.txtNomeCliente.StateCommon.Border.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
@@ -697,6 +701,7 @@
             this.dgvItensVenda.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvItensVenda.Size = new System.Drawing.Size(755, 195);
             this.dgvItensVenda.TabIndex = 593;
+            this.dgvItensVenda.TabStop = false;
             this.dgvItensVenda.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvItensVenda_CellClick);
             this.dgvItensVenda.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dgvItensVenda_KeyDown);
             // 
@@ -767,7 +772,7 @@
             // btnNovo
             // 
             this.btnNovo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnNovo.Location = new System.Drawing.Point(769, 402);
+            this.btnNovo.Location = new System.Drawing.Point(769, 414);
             this.btnNovo.Name = "btnNovo";
             this.btnNovo.OverrideDefault.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(252)))), ((int)(((byte)(252)))));
             this.btnNovo.OverrideDefault.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(252)))), ((int)(((byte)(252)))));
@@ -785,7 +790,7 @@
             this.btnNovo.OverrideFocus.Content.LongText.Font = new System.Drawing.Font("Gadugi", 9F);
             this.btnNovo.OverrideFocus.Content.ShortText.Font = new System.Drawing.Font("Gadugi", 9F);
             this.btnNovo.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.ProfessionalSystem;
-            this.btnNovo.Size = new System.Drawing.Size(155, 43);
+            this.btnNovo.Size = new System.Drawing.Size(155, 30);
             this.btnNovo.StateCommon.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(252)))), ((int)(((byte)(252)))));
             this.btnNovo.StateCommon.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(252)))), ((int)(((byte)(252)))));
             this.btnNovo.StateCommon.Back.ColorAngle = 45F;
@@ -825,14 +830,15 @@
             this.btnNovo.StateTracking.Border.Width = 1;
             this.btnNovo.StateTracking.Content.ShortText.Color1 = System.Drawing.Color.White;
             this.btnNovo.TabIndex = 620;
-            this.btnNovo.Values.Image = global::GVC.Properties.Resources.Novo;
-            this.btnNovo.Values.Text = "&Novo";
+            this.btnNovo.TabStop = false;
+            this.btnNovo.Values.Image = global::GVC.Properties.Resources.Novo24;
+            this.btnNovo.Values.Text = "           &Novo";
             this.btnNovo.Click += new System.EventHandler(this.btnNovo_Click);
             // 
             // btnFinalizarVenda
             // 
             this.btnFinalizarVenda.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnFinalizarVenda.Location = new System.Drawing.Point(769, 323);
+            this.btnFinalizarVenda.Location = new System.Drawing.Point(769, 359);
             this.btnFinalizarVenda.Name = "btnFinalizarVenda";
             this.btnFinalizarVenda.OverrideDefault.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(174)))), ((int)(((byte)(244)))));
             this.btnFinalizarVenda.OverrideDefault.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
@@ -850,7 +856,7 @@
             this.btnFinalizarVenda.OverrideFocus.Content.LongText.Font = new System.Drawing.Font("Gadugi", 9F);
             this.btnFinalizarVenda.OverrideFocus.Content.ShortText.Font = new System.Drawing.Font("Gadugi", 9F);
             this.btnFinalizarVenda.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.ProfessionalSystem;
-            this.btnFinalizarVenda.Size = new System.Drawing.Size(155, 43);
+            this.btnFinalizarVenda.Size = new System.Drawing.Size(155, 30);
             this.btnFinalizarVenda.StateCommon.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(174)))), ((int)(((byte)(244)))));
             this.btnFinalizarVenda.StateCommon.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(142)))), ((int)(((byte)(254)))));
             this.btnFinalizarVenda.StateCommon.Back.ColorAngle = 45F;
@@ -889,14 +895,15 @@
             this.btnFinalizarVenda.StateTracking.Border.Rounding = 1;
             this.btnFinalizarVenda.StateTracking.Border.Width = 1;
             this.btnFinalizarVenda.TabIndex = 621;
-            this.btnFinalizarVenda.Values.Image = global::GVC.Properties.Resources.FinalizarVenda;
-            this.btnFinalizarVenda.Values.Text = "&Finalizar";
+            this.btnFinalizarVenda.TabStop = false;
+            this.btnFinalizarVenda.Values.Image = global::GVC.Properties.Resources.fechando;
+            this.btnFinalizarVenda.Values.Text = "        &Finalizar";
             this.btnFinalizarVenda.Click += new System.EventHandler(this.btnFinalizarVenda_Click);
             // 
             // btnParcelar
             // 
             this.btnParcelar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnParcelar.Location = new System.Drawing.Point(769, 251);
+            this.btnParcelar.Location = new System.Drawing.Point(769, 304);
             this.btnParcelar.Name = "btnParcelar";
             this.btnParcelar.OverrideDefault.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(252)))), ((int)(((byte)(252)))));
             this.btnParcelar.OverrideDefault.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(252)))), ((int)(((byte)(252)))));
@@ -914,7 +921,7 @@
             this.btnParcelar.OverrideFocus.Content.LongText.Font = new System.Drawing.Font("Gadugi", 9F);
             this.btnParcelar.OverrideFocus.Content.ShortText.Font = new System.Drawing.Font("Gadugi", 9F);
             this.btnParcelar.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.ProfessionalSystem;
-            this.btnParcelar.Size = new System.Drawing.Size(155, 43);
+            this.btnParcelar.Size = new System.Drawing.Size(155, 30);
             this.btnParcelar.StateCommon.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(252)))), ((int)(((byte)(252)))));
             this.btnParcelar.StateCommon.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(252)))), ((int)(((byte)(252)))));
             this.btnParcelar.StateCommon.Back.ColorAngle = 45F;
@@ -954,8 +961,9 @@
             this.btnParcelar.StateTracking.Border.Width = 1;
             this.btnParcelar.StateTracking.Content.ShortText.Color1 = System.Drawing.Color.White;
             this.btnParcelar.TabIndex = 622;
-            this.btnParcelar.Values.Image = global::GVC.Properties.Resources.Parcelar;
-            this.btnParcelar.Values.Text = "&Parcelar";
+            this.btnParcelar.TabStop = false;
+            this.btnParcelar.Values.Image = global::GVC.Properties.Resources.cartao_de_credito;
+            this.btnParcelar.Values.Text = "         &Parcelar";
             this.btnParcelar.Click += new System.EventHandler(this.btnParcelar_Click_1);
             // 
             // kryptonPanel2
@@ -1071,6 +1079,7 @@
             this.btnSair.StateTracking.Border.Rounding = 1;
             this.btnSair.StateTracking.Border.Width = 1;
             this.btnSair.TabIndex = 626;
+            this.btnSair.TabStop = false;
             this.btnSair.Values.Image = global::GVC.Properties.Resources.sair;
             this.btnSair.Values.Text = "&Sair";
             this.btnSair.Click += new System.EventHandler(this.btnSair_Click);
@@ -1096,6 +1105,7 @@
             this.Controls.Add(this.btnFinalizarVenda);
             this.Controls.Add(this.txtVendaID);
             this.Controls.Add(this.btnNovo);
+            this.Controls.Add(this.btnIncluir);
             this.Controls.Add(this.dgvItensVenda);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.groupBox4);

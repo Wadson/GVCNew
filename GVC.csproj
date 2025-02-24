@@ -811,11 +811,7 @@
     <None Include="Resources\Vendas.png" />
     <None Include="Resources\aplicativo.ico" />
     <None Include="Resources\Cidade32.png" />
-    <None Include="Resources\Parcelar.png" />
-    <None Include="Resources\Adicionar.png" />
-    <None Include="Resources\Novo.png" />
     <None Include="Resources\sair.png" />
-    <None Include="Resources\FinalizarVenda.png" />
     <None Include="Resources\Pesquisar.png" />
     <None Include="Resources\Minimize.png" />
     <None Include="Resources\Maximize.png" />
@@ -845,6 +841,11 @@
     <None Include="Resources\GVC.ico" />
     <None Include="Resources\GVC-Gestao de Vendas e Cobrancas 256.png" />
     <None Include="Resources\Cliente64.png" />
+    <None Include="Resources\AdicionarProuto.png" />
+    <None Include="Resources\cartao-de-credito.png" />
+    <None Include="Resources\fechando.png" />
+    <None Include="Resources\Novo24.png" />
+    <None Include="Resources\Novo.png" />
     <Content Include="SqlServerTypes\readme.htm" />
     <Content Include="SqlServerTypes\x64\msvcr120.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

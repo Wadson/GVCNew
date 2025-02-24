@@ -130,9 +130,6 @@
   <data name="Ferrament64" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Ferramentas64.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="FinalizarVenda" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\FinalizarVenda.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="Minimiza24" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Minimiza24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -190,9 +187,6 @@
   <data name="Forneced64" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Fornecedor2-64.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Novo" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Novo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="Minimize" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Minimize.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -202,14 +196,8 @@
   <data name="autenticacao_do_usuario" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\autenticacao-do-usuario.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Adicionar" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Adicionar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="Cidade32" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Cidade32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Parcelar" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Parcelar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="GVC_Gestao_de_Vendas_e_Cobrancas" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\GVC-Gestao de Vendas e Cobrancas.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -264,5 +252,20 @@
   </data>
   <data name="Cliente64" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Cliente64.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="AdicionarProuto" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\AdicionarProuto.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="cartao_de_credito" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\cartao-de-credito.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="fechando" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\fechando.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Novo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Novo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Novo24" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Novo24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

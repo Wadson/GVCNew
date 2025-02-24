@@ -63,9 +63,9 @@ namespace GVC.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Adicionar {
+        internal static System.Drawing.Bitmap AdicionarProuto {
             get {
-                object obj = ResourceManager.GetObject("Adicionar", resourceCulture);
+                object obj = ResourceManager.GetObject("AdicionarProuto", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -116,6 +116,16 @@ namespace GVC.Properties {
         internal static System.Drawing.Bitmap calendarioBranco24 {
             get {
                 object obj = ResourceManager.GetObject("calendarioBranco24", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap cartao_de_credito {
+            get {
+                object obj = ResourceManager.GetObject("cartao_de_credito", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -233,9 +243,9 @@ namespace GVC.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Ferrament64 {
+        internal static System.Drawing.Bitmap fechando {
             get {
-                object obj = ResourceManager.GetObject("Ferrament64", resourceCulture);
+                object obj = ResourceManager.GetObject("fechando", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -243,9 +253,9 @@ namespace GVC.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap FinalizarVenda {
+        internal static System.Drawing.Bitmap Ferrament64 {
             get {
-                object obj = ResourceManager.GetObject("FinalizarVenda", resourceCulture);
+                object obj = ResourceManager.GetObject("Ferrament64", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -363,9 +373,9 @@ namespace GVC.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Parcelar {
+        internal static System.Drawing.Bitmap Novo24 {
             get {
-                object obj = ResourceManager.GetObject("Parcelar", resourceCulture);
+                object obj = ResourceManager.GetObject("Novo24", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
