@@ -34,6 +34,7 @@
             this.label28 = new System.Windows.Forms.Label();
             this.btnEstoque = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.kryptonPanel2 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
+            this.lblTotalRegistros = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridPesquisar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel2)).BeginInit();
@@ -384,10 +385,22 @@
             this.kryptonPanel2.Size = new System.Drawing.Size(782, 26);
             this.kryptonPanel2.TabIndex = 602;
             // 
+            // lblTotalRegistros
+            // 
+            this.lblTotalRegistros.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.lblTotalRegistros.AutoSize = true;
+            this.lblTotalRegistros.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.lblTotalRegistros.Location = new System.Drawing.Point(11, 430);
+            this.lblTotalRegistros.Name = "lblTotalRegistros";
+            this.lblTotalRegistros.Size = new System.Drawing.Size(93, 13);
+            this.lblTotalRegistros.TabIndex = 603;
+            this.lblTotalRegistros.Text = "Total de Registros";
+            // 
             // FrmManutProduto
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.ClientSize = new System.Drawing.Size(779, 456);
+            this.Controls.Add(this.lblTotalRegistros);
             this.Controls.Add(this.kryptonPanel2);
             this.Controls.Add(this.btnEstoque);
             this.Controls.Add(this.dataGridPesquisar);
@@ -402,6 +415,7 @@
             this.Controls.SetChildIndex(this.dataGridPesquisar, 0);
             this.Controls.SetChildIndex(this.btnEstoque, 0);
             this.Controls.SetChildIndex(this.kryptonPanel2, 0);
+            this.Controls.SetChildIndex(this.lblTotalRegistros, 0);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridPesquisar)).EndInit();
@@ -409,6 +423,7 @@
             this.kryptonPanel2.ResumeLayout(false);
             this.kryptonPanel2.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -419,5 +434,6 @@
         private System.Windows.Forms.Label label28;
         private ComponentFactory.Krypton.Toolkit.KryptonButton btnEstoque;
         private ComponentFactory.Krypton.Toolkit.KryptonPanel kryptonPanel2;
+        private System.Windows.Forms.Label lblTotalRegistros;
     }
 }

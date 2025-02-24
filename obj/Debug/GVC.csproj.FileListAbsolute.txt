@@ -171,7 +171,7 @@ D:\GVC\obj\Debug\GVC.FrmModeloForm.resources
 D:\GVC\obj\Debug\GVC.FrmBaixarConta.resources
 D:\GVC\obj\Debug\GVC.FrmModeloUI.resources
 D:\GVC\obj\Debug\GVC.View.FrmPedidoVendaNovo.resources
-D:\GVC\obj\Debug\GVC.View.FrmPrincipalTela.resources
+D:\GVC\obj\Debug\GVC.View.FrmTelaPrincipal.resources
 D:\GVC\obj\Debug\GVC.View.FrmPrincipal.resources
 D:\GVC\obj\Debug\GVC.View.FrmRelatorios.resources
 D:\GVC\obj\Debug\GVC.View.FrmRestauraBackup.resources

@@ -1,6 +1,7 @@
 ﻿using ComponentFactory.Krypton.Toolkit;
 using GVC.BLL;
 using GVC.DALL;
+using GVC.View;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -15,10 +16,11 @@ namespace GVC
 {
     public partial class FrmManutUsuario : GVC.FrmBaseManutencao
     {
-        private new string StatusOperacao;
+        private new string StatusOperacao;        
         public FrmManutUsuario(string statusOperacao)
         {
-            InitializeComponent();
+            InitializeComponent();            
+
             this.StatusOperacao = statusOperacao;
             //Centraliza o Label dentro do Panel
             label28.Location = new Point(
@@ -143,6 +145,7 @@ namespace GVC
             UsuarioBLL usuariosBll = new UsuarioBLL();
             dataGridPesquisar.DataSource = usuariosBll.Listar();
             PersonalizarDataGridView(dataGridPesquisar);
+            Utilitario.AtualizarTotalRegistros(lblTotalRegistros, dataGridPesquisar);
         }
         public void HabilitarTimer(bool habilitar)
         {
@@ -186,10 +189,12 @@ namespace GVC
             if (rbtCodigo.Checked)
             {               
                 dataGridPesquisar.DataSource = dao.PesquisarPorCodigo(nome);
+                Utilitario.AtualizarTotalRegistros(lblTotalRegistros, dataGridPesquisar);
             }
             else
             {              
                 dataGridPesquisar.DataSource = dao.PesquisarPorNome(nome);
+                Utilitario.AtualizarTotalRegistros(lblTotalRegistros, dataGridPesquisar);
             }
         }
 
@@ -203,6 +208,10 @@ namespace GVC
         {
             txtPesquisa.Text = "";
             txtPesquisa.Focus();
+        }
+
+        private void FrmManutUsuario_FormClosed(object sender, FormClosedEventArgs e)
+        {            
         }
     }
 }

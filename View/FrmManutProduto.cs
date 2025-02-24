@@ -39,6 +39,7 @@ namespace GVC.View
             ProdutoBLL objetoBll = new ProdutoBLL();
             dataGridPesquisar.DataSource = objetoBll.Listar();
             PersonalizarDataGridView(dataGridPesquisar);
+            Utilitario.AtualizarTotalRegistros(lblTotalRegistros, dataGridPesquisar);
         }
         public void PersonalizarDataGridView(KryptonDataGridView dgv)
         {
@@ -194,10 +195,12 @@ namespace GVC.View
             if (rbtCodigo.Checked)
             {               
                 dataGridPesquisar.DataSource = dao.PesquisarProdutoPorCodido(nome);
+                Utilitario.AtualizarTotalRegistros(lblTotalRegistros, dataGridPesquisar);
             }
             else
             {               
                 dataGridPesquisar.DataSource = dao.PesquisarProdutoPorNome(nome);
+                Utilitario.AtualizarTotalRegistros(lblTotalRegistros, dataGridPesquisar);
             }
             PersonalizarDataGridView(dataGridPesquisar);
         }

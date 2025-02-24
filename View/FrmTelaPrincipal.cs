@@ -1,20 +1,21 @@
 ﻿using GVC.MUI;
-using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.IO;
-using System.Text;
+using System.Timers;
 using System.Windows.Forms;
 using static GVC.View.FrmContaReceberr;
 using ComponentFactory.Krypton.Toolkit;
+using System;
 
 namespace GVC.View
 {
-    public partial class FrmPrincipalTela : KryptonForm
+    public partial class FrmTelaPrincipal : KryptonForm
     {
-        public FrmPrincipalTela()
+        private System.Timers.Timer timer;
+        public FrmTelaPrincipal()
         {
             InitializeComponent();
             StatusOperacao = "";
@@ -33,6 +34,7 @@ namespace GVC.View
             this.panelConteiner.Tag = fh;
             fh.Show();
         }
+
 
         private void btnUsuario_Click(object sender, EventArgs e)
         {
@@ -93,8 +95,16 @@ namespace GVC.View
             FrmRelatorios frm = new FrmRelatorios();
             AbrirFormEnPanel(frm);
         }
-
-        private void FrmPrincipal_Load(object sender, EventArgs e)
+        private void OnTimedEvent(Object source, ElapsedEventArgs e)
+        {
+            // Atualiza a data e hora
+            this.Invoke(new Action(() =>
+            {
+                lblData.Text = DateTime.Now.ToString("dd/MM/yyyy");
+                lblHoraAtual.Text = DateTime.Now.ToString("HH:mm:ss");
+            }));
+        }
+        private void AtualizaBarraStatus()
         {
             // Obtém o caminho do diretório de execução
             string currentPath = Path.GetDirectoryName(Application.ExecutablePath);
@@ -102,22 +112,32 @@ namespace GVC.View
             // Atualiza a label de usuário na barra de status
             string usuarioLogado = FrmLogin.UsuarioConectado;
             string nivelAcesso = FrmLogin.NivelAcesso;
-            lblUsuarioLogado.Text = $"{usuarioLogado}";
-            lblTipoUsuario.Text = $"{nivelAcesso}";
+            lblUsuarioLogadoo.Text = $"{usuarioLogado}";
+            lblTipoUsuarioo.Text = $"{nivelAcesso}";
 
             // Atualiza a data
             string data = DateTime.Now.ToLongDateString();
             data = data.Substring(0, 1).ToUpper() + data.Substring(1);
-            lblData.Text = data;
+            lblDataa.Text = data;
 
             // Exibe informações do computador
             string path = System.AppDomain.CurrentDomain.BaseDirectory.ToString();
             var informacao = Environment.UserName;
             var nomeComputador = Environment.MachineName;
 
-            lblEstação.Text = nomeComputador;
-            lblData.Text = DateTime.Now.ToString("dd/MM/yyyy");
-            lblHoraAtual.Text = DateTime.Now.ToString("HH:mm:ss");
+            lblEstacao.Text = nomeComputador;
+            lblDataa.Text = DateTime.Now.ToString("dd/MM/yyyy");
+            lblHoraAtuall.Text = DateTime.Now.ToString("HH:mm:ss");
+
+            // Configuração do timer para atualizar a hora e a data
+            timer = new System.Timers.Timer(1000); // Atualiza a cada segundo
+            timer.Elapsed += OnTimedEvent;
+            timer.AutoReset = true;
+            timer.Enabled = true;
+        }
+        private void FrmPrincipal_Load(object sender, EventArgs e)
+        {
+            AtualizaBarraStatus();
         }
 
 
@@ -157,6 +177,11 @@ namespace GVC.View
             FrmManutCidade frmManutCidade = new FrmManutCidade(StatusOperacao);
             StatusOperacao = "NOVO";
             AbrirFormEnPanel(frmManutCidade);
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            lblHoraAtuall.Text = DateTime.Now.ToString("HH:mm:ss");
         }
     }
 }

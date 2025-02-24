@@ -19,11 +19,12 @@ namespace GVC
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            // Criar a tela de login
+            //Criar a tela de login
+
             //FrmLogin frmLogin = new FrmLogin();
             //if (frmLogin.ShowDialog() == DialogResult.OK) // Se o login for bem-sucedido
             //{
-            //    Application.Run(new FrmPrincipalTela()); // Abre a tela principal
+            //    Application.Run(new FrmTelaPrincipal()); // Abre a tela principal
             //}
             //else
             //{
@@ -31,7 +32,7 @@ namespace GVC
             //}
 
 
-            Application.Run(new FrmPrincipalTela());
+            Application.Run(new FrmTelaPrincipal());
 
         }
     }

@@ -29,6 +29,7 @@ namespace GVC.View
             ClienteBLL objetoBll = new ClienteBLL();
             dataGridPesquisar.DataSource = objetoBll.Listar();
             PersonalizarDataGridView();
+            Utilitario.AtualizarTotalRegistros(lblTotalRegistros, dataGridPesquisar);
         }
         public void HabilitarTimer(bool habilitar)
         {

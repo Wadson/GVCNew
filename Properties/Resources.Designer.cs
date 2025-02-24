@@ -143,9 +143,9 @@ namespace GVC.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Clientes64 {
+        internal static System.Drawing.Bitmap Cliente64 {
             get {
-                object obj = ResourceManager.GetObject("Clientes64", resourceCulture);
+                object obj = ResourceManager.GetObject("Cliente64", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -286,6 +286,16 @@ namespace GVC.Properties {
         internal static System.Drawing.Bitmap GVC_Gestao_de_Vendas_e_Cobrancas {
             get {
                 object obj = ResourceManager.GetObject("GVC_Gestao_de_Vendas_e_Cobrancas", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap GVC_Gestao_de_Vendas_e_Cobrancas_256 {
+            get {
+                object obj = ResourceManager.GetObject("GVC-Gestao de Vendas e Cobrancas 256", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

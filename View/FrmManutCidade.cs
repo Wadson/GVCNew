@@ -120,6 +120,7 @@ namespace GVC
             CidadeBLL cidadeBll = new CidadeBLL();
             dataGridPesquisar.DataSource = cidadeBll.Listar();
             PersonalizarDataGridView(dataGridPesquisar);
+            Utilitario.AtualizarTotalRegistros(lblTotalRegistros, dataGridPesquisar);
         }
         public void HabilitarTimer(bool habilitar)
         {
@@ -159,10 +160,12 @@ namespace GVC
             if (rbtCodigo.Checked)
             {               
                 dataGridPesquisar.DataSource = dao.PesquisarPorCodigo(nome);
+                Utilitario.AtualizarTotalRegistros(lblTotalRegistros, dataGridPesquisar);
             }
             else
             {              
                 dataGridPesquisar.DataSource = dao.PesquisarPorNome(nome);
+                Utilitario.AtualizarTotalRegistros(lblTotalRegistros, dataGridPesquisar);
             }
         }
 

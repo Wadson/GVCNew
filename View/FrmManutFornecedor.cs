@@ -167,11 +167,7 @@ namespace GVC.View
         public void HabilitarTimer(bool habilitar)
         {
             timer1.Enabled = habilitar;
-        }
-        private void FrmManutCategoria_Load(object sender, EventArgs e)
-        {
-            ListarFornecedor();
-        }
+        }       
         private void txtPesquisa_TextChanged(object sender, EventArgs e)
         {
             string textoPesquisa = txtPesquisa.Text.ToLower();
@@ -182,16 +178,19 @@ namespace GVC.View
             if (rbtCodigo.Checked)
             {               
                 dataGridPesquisar.DataSource = dao.PesquisarPorCodigo(nome);
+                Utilitario.AtualizarTotalRegistros(lblTotalRegistros, dataGridPesquisar);
             }
             else
             {               
                 dataGridPesquisar.DataSource = dao.PesquisarPorNome(nome);
+                Utilitario.AtualizarTotalRegistros(lblTotalRegistros, dataGridPesquisar);
             }
         }
 
         private void FrmManutFornecedor_Load(object sender, EventArgs e)
         {
             ListarFornecedor();
+            Utilitario.AtualizarTotalRegistros(lblTotalRegistros, dataGridPesquisar);
         }
         private void timer1_Tick(object sender, EventArgs e)
         {

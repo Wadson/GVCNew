@@ -456,11 +456,11 @@
     <Compile Include="View\FrmPedidoVendaNovo .Designer.cs">
       <DependentUpon>FrmPedidoVendaNovo .cs</DependentUpon>
     </Compile>
-    <Compile Include="View\FrmPrincipalTela.cs">
+    <Compile Include="View\FrmTelaPrincipal.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\FrmPrincipalTela.Designer.cs">
-      <DependentUpon>FrmPrincipalTela.cs</DependentUpon>
+    <Compile Include="View\FrmTelaPrincipal.Designer.cs">
+      <DependentUpon>FrmTelaPrincipal.cs</DependentUpon>
     </Compile>
     <Compile Include="View\FrmPrincipal.cs">
       <SubType>Form</SubType>
@@ -676,8 +676,8 @@
     <EmbeddedResource Include="View\FrmPedidoVendaNovo .resx">
       <DependentUpon>FrmPedidoVendaNovo .cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\FrmPrincipalTela.resx">
-      <DependentUpon>FrmPrincipalTela.cs</DependentUpon>
+    <EmbeddedResource Include="View\FrmTelaPrincipal.resx">
+      <DependentUpon>FrmTelaPrincipal.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\FrmPrincipal.resx">
       <DependentUpon>FrmPrincipal.cs</DependentUpon>
@@ -828,7 +828,6 @@
     <None Include="Resources\Receber34.png" />
     <None Include="Resources\excluir32.png" />
     <None Include="Resources\Cidade64.png" />
-    <None Include="Resources\Cliente64.png" />
     <None Include="Resources\Estado64.png" />
     <None Include="Resources\Ferramentas64.png" />
     <None Include="Resources\Fornecedor2-64.png" />
@@ -844,6 +843,8 @@
     <None Include="Resources\WhatsApp Image 2025-02-14 at 17.19.19.png" />
     <None Include="Resources\Logogg64.png" />
     <None Include="Resources\GVC.ico" />
+    <None Include="Resources\GVC-Gestao de Vendas e Cobrancas 256.png" />
+    <None Include="Resources\Cliente64.png" />
     <Content Include="SqlServerTypes\readme.htm" />
     <Content Include="SqlServerTypes\x64\msvcr120.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

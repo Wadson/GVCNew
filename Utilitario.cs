@@ -28,7 +28,11 @@ namespace GVC
             return valor.TrimStart('0');            
 
         }
-       
+        public static void AtualizarTotalRegistros(Label lblTotalRegistros, DataGridView dataGridView1)
+        {
+            int totalRegistros = dataGridView1.Rows.Count;
+            lblTotalRegistros.Text = $"Total de Registros: {totalRegistros}";
+        }
         public static void PreencherCamposEndereco(string enderecoCompleto, KryptonTextBox txtEndereco, KryptonTextBox txtNumero, KryptonTextBox txtBairro)
         {
             try
