@@ -122,118 +122,68 @@ namespace GVC.View
         private bool isSelectingProduct = false;
         private Form formChamador;
         private void SelecionarCliente()
-{
-    if (isSelectingProduct) return;
-    isSelectingProduct = true;
-
-    try
-    {
-        if (LinhaAtual < 0 || LinhaAtual >= dataGridPesquisar.Rows.Count)
         {
-            MessageBox.Show("Linha inválida.");
-            return;
+            if (isSelectingProduct) return;
+            isSelectingProduct = true;
+
+            try
+            {
+                if (LinhaAtual < 0 || LinhaAtual >= dataGridPesquisar.Rows.Count)
+                {
+                    MessageBox.Show("Linha inválida.");
+                    return;
+                }
+
+                if (dataGridPesquisar["ClienteID", LinhaAtual]?.Value == null ||
+                    dataGridPesquisar["NomeCliente", LinhaAtual]?.Value == null)
+                {
+                    MessageBox.Show("Dados do cliente inválidos.");
+                    return;
+                }
+
+                _clienteID = int.Parse(dataGridPesquisar["ClienteID", LinhaAtual].Value.ToString());
+                ClienteSelecionado = dataGridPesquisar["NomeCliente", LinhaAtual].Value.ToString();
+
+                if (this.Owner is FrmPedidoVendaNovo frmPedidoVendaNovo)
+                {
+                    frmPedidoVendaNovo.ClienteID = _clienteID;
+                    frmPedidoVendaNovo.txtNomeCliente.Text = ClienteSelecionado;
+                }
+                else if (this.Owner is FrmContaReceberr frmContaReceberr)
+                {
+                    frmContaReceberr.clienteID = _clienteID;
+                    frmContaReceberr.txtNomeCliente.Text = ClienteSelecionado;
+                }
+                else if (this.Owner is FrmRelatorios frmRelatorios)
+                {
+                    frmRelatorios.txtClienteID.Text = _clienteID.ToString();
+                    frmRelatorios.txtNomeCliente.Text = ClienteSelecionado;
+                }
+                else if (this.Owner is RelClienteContaAberta frmRelGeralContasAbertas)
+                {
+                    frmRelGeralContasAbertas.txtNomeCliente.Text = ClienteSelecionado;
+                }
+                else if (this.Owner is FrmRelContaAbertaPorCliente frmRelContaAbertaporCliente)
+                {
+                    frmRelContaAbertaporCliente.txtNomeCliente.Text = ClienteSelecionado;
+                }
+                else if (this.Owner is FrmRelHistoricoPagamento frmRelHistoricoPagamento)
+                {
+                    frmRelHistoricoPagamento.txtNomeCliente.Text = ClienteSelecionado;
+                }
+                else
+                {
+                    MessageBox.Show("O formulário chamador não é reconhecido.");
+                }
+
+                this.DialogResult = DialogResult.OK; // Confirma que um cliente foi selecionado
+                this.Close();
+            }
+            finally
+            {
+                isSelectingProduct = false;
+            }
         }
-
-        if (dataGridPesquisar["ClienteID", LinhaAtual]?.Value == null ||
-            dataGridPesquisar["NomeCliente", LinhaAtual]?.Value == null)
-        {
-            MessageBox.Show("Dados do cliente inválidos.");
-            return;
-        }
-
-        _clienteID = int.Parse(dataGridPesquisar["ClienteID", LinhaAtual].Value.ToString());
-        ClienteSelecionado = dataGridPesquisar["NomeCliente", LinhaAtual].Value.ToString();
-
-        if (this.Owner is FrmPedidoVendaNovo frmPedidoVendaNovo)
-        {
-            frmPedidoVendaNovo.ClienteID = _clienteID;
-            frmPedidoVendaNovo.txtNomeCliente.Text = ClienteSelecionado;
-        }
-        else if (this.Owner is FrmContaReceberr frmContaReceberr)
-        {
-            frmContaReceberr.clienteID = _clienteID;
-            frmContaReceberr.txtNomeCliente.Text = ClienteSelecionado;
-        }
-        else if (this.Owner is FrmRelatorios frmRelatorios)
-        {
-            frmRelatorios.txtClienteID.Text = _clienteID.ToString();
-            frmRelatorios.txtNomeCliente.Text = ClienteSelecionado;
-        }
-        else if (this.Owner is RelClienteContaAberta frmRelGeralContasAbertas)
-        {
-            frmRelGeralContasAbertas.txtNomeCliente.Text = ClienteSelecionado;
-        }
-        else
-        {
-            MessageBox.Show("O formulário chamador não é reconhecido.");
-        }
-
-        this.DialogResult = DialogResult.OK; // Confirma que um cliente foi selecionado
-        this.Close();
-    }
-    finally
-    {
-        isSelectingProduct = false;
-    }
-}
-        //private void SelecionarCliente()
-        //{
-        //    if (isSelectingProduct) return;
-        //    isSelectingProduct = true;
-
-        //    try
-        //    {
-        //        if (LinhaAtual < 0 || LinhaAtual >= dataGridPesquisar.Rows.Count)
-        //        {
-        //            MessageBox.Show("Cliente não encontrado!.");
-        //            return;
-        //        }
-
-        //        if (dataGridPesquisar["ClienteID", LinhaAtual]?.Value == null ||
-        //            dataGridPesquisar["NomeCliente", LinhaAtual]?.Value == null)
-        //        {
-        //            MessageBox.Show("Dados do cliente inválidos.");
-        //            return;
-        //        }
-
-        //        _clienteID = int.Parse(dataGridPesquisar["ClienteID", LinhaAtual].Value.ToString());
-        //        ClienteSelecionado = dataGridPesquisar["NomeCliente", LinhaAtual].Value.ToString();
-
-        //        if (this.Owner is FrmPedidoVendaNovo frmPedidoVendaNovo)
-        //        {
-        //            frmPedidoVendaNovo.ClienteID = _clienteID;
-        //            frmPedidoVendaNovo.txtNomeCliente.Text = ClienteSelecionado;
-        //        }
-        //        else if (this.Owner is FrmContaReceberr frmContaReceberr)
-        //        {
-        //            frmContaReceberr.clienteID = _clienteID;
-        //            frmContaReceberr.txtNomeCliente.Text = ClienteSelecionado;
-        //        }
-        //        else if (this.Owner is FrmRelatorios frmRelatorios)
-        //        {
-        //            frmRelatorios.txtClienteID.Text = _clienteID.ToString();
-        //            frmRelatorios.txtNomeCliente.Text = ClienteSelecionado;
-        //        }
-        //        else if (this.Owner is RelClienteContaAberta frmRelGeralContasAbertas)
-        //        {
-        //            //frmRelGeralContasAbertas.txtClienteID.Text = ClienteID.ToString();
-        //            frmRelGeralContasAbertas.txtNomeCliente.Text = ClienteSelecionado;
-        //        }
-        //        else
-        //        {
-        //            MessageBox.Show("O formulário chamador não é reconhecido.");
-        //        }
-
-        //        this.Close();
-        //    }
-        //    finally
-        //    {
-        //        isSelectingProduct = false;
-        //    }
-        //}
-
-
-
         private void dataGridPesquisar_SelectionChanged(object sender, EventArgs e)
         {
             if (dataGridPesquisar.CurrentRow != null)

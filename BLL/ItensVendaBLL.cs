@@ -1,7 +1,7 @@
 ﻿using GVC.MODEL;
 using System;
 using System.Collections.Generic;
-using System.Data.SqlServerCe;
+using System.Data.SqlClient;
 using System.Data;
 using System.Linq;
 using System.Text;
@@ -73,11 +73,11 @@ namespace GVC.BLL
             var conn = Conexao.Conex();
             try
             {
-                SqlCeCommand sql = new SqlCeCommand("SELECT * FROM ItemVenda WHERE ItemVendaID like @Pesquisa + '%'", conn);
+                SqlCommand sql = new SqlCommand("SELECT * FROM ItemVenda WHERE ItemVendaID like @Pesquisa + '%'", conn);
                 sql.Parameters.AddWithValue("@Pesquisa", pesquisa);
 
                 conn.Open();
-                SqlCeDataReader datareader;
+                SqlDataReader datareader;
                 ItemVendaModel obj_Itensvenda = new ItemVendaModel();
                 datareader = sql.ExecuteReader(CommandBehavior.CloseConnection);
 

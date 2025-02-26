@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
-using System.Data.SqlServerCe;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
@@ -610,10 +610,10 @@ namespace GVC.View
             }
         }
 
-        private int ObterUltimaParcelaID(SqlCeConnection connection, SqlCeTransaction transaction)
+        private int ObterUltimaParcelaID(SqlConnection connection, SqlTransaction transaction)
         {
             string query = "SELECT MAX(ParcelaID) FROM Parcela WHERE VendaID = @VendaID";
-            using (SqlCeCommand cmd = new SqlCeCommand(query, connection, transaction))
+            using (SqlCommand cmd = new SqlCommand(query, connection, transaction))
             {
                 cmd.Parameters.Add("@VendaID", SqlDbType.Int).Value = VendaID;
                 return Convert.ToInt32(cmd.ExecuteScalar());

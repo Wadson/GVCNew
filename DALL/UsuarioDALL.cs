@@ -1,7 +1,7 @@
 ﻿using GVC.MODEL;
 using System;
 using System.Collections.Generic;
-using System.Data.SqlServerCe;
+using System.Data.SqlClient;
 using System.Data;
 using System.Linq;
 using System.Text;
@@ -22,10 +22,10 @@ namespace GVC.DALL
             var conn = Conexao.Conex();
             try
             {
-                SqlCeCommand comando = new SqlCeCommand("SELECT UsuarioID, NomeUsuario, Email, Senha, TipoUsuario, Cpf, DataNascimento FROM Usuario", conn);
+                SqlCommand comando = new SqlCommand("SELECT UsuarioID, NomeUsuario, Email, Senha, TipoUsuario, Cpf, DataNascimento FROM Usuario", conn);
                 //id_usuario, nome_usuario, user_usuario, dt_nascimento, nivelacesso_usuario, senha_usuario, email_usuario, dt_nascimento
 
-                SqlCeDataAdapter daUsuario = new SqlCeDataAdapter();
+                SqlDataAdapter daUsuario = new SqlDataAdapter();
                 daUsuario.SelectCommand = comando;
 
                 DataTable dtUsuario = new DataTable();
@@ -48,7 +48,7 @@ namespace GVC.DALL
 
             try
             {
-                SqlCeCommand sqlcomm = new SqlCeCommand("INSERT INTO Usuario (UsuarioID, NomeUsuario, Email, Senha, TipoUsuario, Cpf, DataNascimento) VALUES (@UsuarioID, @NomeUsuario, @Email, @Senha, @TipoUsuario, @Cpf, @DataNascimento)", conn);
+                SqlCommand sqlcomm = new SqlCommand("INSERT INTO Usuario (UsuarioID, NomeUsuario, Email, Senha, TipoUsuario, Cpf, DataNascimento) VALUES (@UsuarioID, @NomeUsuario, @Email, @Senha, @TipoUsuario, @Cpf, @DataNascimento)", conn);
 
                 sqlcomm.Parameters.AddWithValue("@UsuarioID", usuarios.UsuarioID);
                 sqlcomm.Parameters.AddWithValue("@NomeUsuario", usuarios.NomeUsuario);
@@ -61,7 +61,7 @@ namespace GVC.DALL
                 conn.Open();
                 sqlcomm.ExecuteNonQuery();
             }
-            catch (SqlCeException ex)
+            catch (SqlException ex)
             {
                 throw new ApplicationException(ex.ToString());
             }
@@ -76,7 +76,7 @@ namespace GVC.DALL
             var conn = Conexao.Conex();
             try
             {
-                SqlCeCommand sqlcomando = new SqlCeCommand("DELETE FROM Usuario WHERE UsuarioID = @UsuarioID", conn);
+                SqlCommand sqlcomando = new SqlCommand("DELETE FROM Usuario WHERE UsuarioID = @UsuarioID", conn);
                 sqlcomando.Parameters.AddWithValue("@UsuarioID", usuarios.UsuarioID);
                 conn.Open();
                 sqlcomando.ExecuteNonQuery();
@@ -96,7 +96,7 @@ namespace GVC.DALL
             var conn = Conexao.Conex();
             try
             {
-                SqlCeCommand sqlcomm = new SqlCeCommand("UPDATE Usuario SET NomeUsuario = @NomeUsuario, Email = @Email, Senha = @Senha, TipoUsuario = @TipoUsuario , Cpf = @Cpf, DataNascimento = @DataNascimento WHERE UsuarioID = @UsuarioID", conn);
+                SqlCommand sqlcomm = new SqlCommand("UPDATE Usuario SET NomeUsuario = @NomeUsuario, Email = @Email, Senha = @Senha, TipoUsuario = @TipoUsuario , Cpf = @Cpf, DataNascimento = @DataNascimento WHERE UsuarioID = @UsuarioID", conn);
 
                 sqlcomm.Parameters.AddWithValue("@UsuarioID", usuarios.UsuarioID);
                 sqlcomm.Parameters.AddWithValue("@NomeUsuario", usuarios.NomeUsuario);
@@ -126,7 +126,7 @@ namespace GVC.DALL
             var conn = Conexao.Conex();
             try
             {
-                SqlCeCommand sqlcomm = new SqlCeCommand("UPDATE Usuario SET Senha = @Senha WHERE UsuarioID = @UsuarioID", conn);
+                SqlCommand sqlcomm = new SqlCommand("UPDATE Usuario SET Senha = @Senha WHERE UsuarioID = @UsuarioID", conn);
 
                 sqlcomm.Parameters.AddWithValue("@Senha", usuarios.Senha);
                 sqlcomm.Parameters.AddWithValue("@UsuarioID", usuarios.UsuarioID);
@@ -152,11 +152,11 @@ namespace GVC.DALL
                 DataTable dt = new DataTable();
 
                 string sqlconn = "SELECT UsuarioID, NomeUsuario, Email, Senha, TipoUsuario FROM Usuario WHERE NomeUsuario  LIKE @NomeUsuario";
-                SqlCeCommand cmd = new SqlCeCommand(sqlconn, conn);
+                SqlCommand cmd = new SqlCommand(sqlconn, conn);
                 cmd.Parameters.AddWithValue("@NomeUsuario", nome);
                 conn.Open();
                 cmd.ExecuteNonQuery();
-                SqlCeDataAdapter da = new SqlCeDataAdapter(cmd);
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
                 da.Fill(dt);
                 conn.Close();
                 conn.Dispose();
@@ -176,11 +176,11 @@ namespace GVC.DALL
                 DataTable dt = new DataTable();
 
                 string sqlconn = "SELECT UsuarioID, NomeUsuario, Email, Senha, TipoUsuario, Cpf, DataNascimento FROM Usuario WHERE UsuarioID  LIKE @UsuarioID";
-                SqlCeCommand cmd = new SqlCeCommand(sqlconn, conn);
+                SqlCommand cmd = new SqlCommand(sqlconn, conn);
                 cmd.Parameters.AddWithValue("@UsuarioID", codigo);
                 conn.Open();
                 cmd.ExecuteNonQuery();
-                SqlCeDataAdapter da = new SqlCeDataAdapter(cmd);
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
                 da.Fill(dt);
                 conn.Close();
                 conn.Dispose();

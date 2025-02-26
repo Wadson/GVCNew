@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data.SqlServerCe;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Security.Cryptography;
 using System.Text;
@@ -27,12 +27,12 @@ namespace GVC.MUI
             using (var con = Conexao.Conex())
             {
                 string query = "SELECT UsuarioID, Email FROM Usuario WHERE CPF = @CPF AND DataNascimento = @DataNascimento";
-                using (SqlCeCommand cmd = new SqlCeCommand(query, con))
+                using (SqlCommand cmd = new SqlCommand(query, con))
                 {
                     cmd.Parameters.AddWithValue("@CPF", cpf);
                     cmd.Parameters.AddWithValue("@DataNascimento", dataNascimento);
                     con.Open();
-                    SqlCeDataReader reader = cmd.ExecuteReader();
+                    SqlDataReader reader = cmd.ExecuteReader();
                     if (reader.Read())
                     {
                         usuario = new Usuario
@@ -73,7 +73,7 @@ namespace GVC.MUI
             using (var con = Conexao.Conex())
             {
                 string query = "UPDATE Usuario SET Senha = @Senha WHERE UsuarioID = @UsuarioID";
-                using (SqlCeCommand cmd = new SqlCeCommand(query, con))
+                using (SqlCommand cmd = new SqlCommand(query, con))
                 {
                     cmd.Parameters.AddWithValue("@Senha", hashSenha);
                     cmd.Parameters.AddWithValue("@UsuarioID", usuarioID);

@@ -18,11 +18,10 @@ namespace GVC.Relatorios
 
         private void FrmRelProdutos_Load(object sender, EventArgs e)
         {
-
+            // TODO: esta linha de código carrega dados na tabela 'bdsiscontrolDataSet1.Produtos'. Você pode movê-la ou removê-la conforme necessário.
+            this.produtosTableAdapter.Fill(this.bdsiscontrolDataSet1.Produtos);
+            DataSet ds = new DataSet();
             this.reportViewer1.RefreshReport();
-
-            LocalReport relatorio = new LocalReport();
-            //relatorio.DataSources.Add(new ReportDataSource(bdsiscontrolDataSet1);
         }
     }
 }

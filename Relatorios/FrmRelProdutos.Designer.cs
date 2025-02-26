@@ -28,19 +28,49 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
             this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
+            this.bdsiscontrolDataSet1 = new GVC.bdsiscontrolDataSet();
+            this.bdsiscontrolDataSet1BindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.produtosBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.produtosTableAdapter = new GVC.bdsiscontrolDataSetTableAdapters.ProdutosTableAdapter();
+            ((System.ComponentModel.ISupportInitialize)(this.bdsiscontrolDataSet1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bdsiscontrolDataSet1BindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.produtosBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // reportViewer1
             // 
             this.reportViewer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.reportViewer1.DocumentMapWidth = 26;
-            this.reportViewer1.LocalReport.ReportEmbeddedResource = "GVC.Relatorios.RelProdutos .rdlc";
+            reportDataSource1.Name = "DataSetProdutos";
+            reportDataSource1.Value = this.produtosBindingSource;
+            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource1);
+            this.reportViewer1.LocalReport.ReportEmbeddedResource = "GVC.Relatorios.RelProdutos.rdlc";
             this.reportViewer1.Location = new System.Drawing.Point(0, 0);
             this.reportViewer1.Name = "reportViewer1";
             this.reportViewer1.ServerReport.BearerToken = null;
             this.reportViewer1.Size = new System.Drawing.Size(708, 461);
             this.reportViewer1.TabIndex = 0;
+            // 
+            // bdsiscontrolDataSet1
+            // 
+            this.bdsiscontrolDataSet1.DataSetName = "bdsiscontrolDataSet";
+            this.bdsiscontrolDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // bdsiscontrolDataSet1BindingSource
+            // 
+            this.bdsiscontrolDataSet1BindingSource.DataSource = this.bdsiscontrolDataSet1;
+            this.bdsiscontrolDataSet1BindingSource.Position = 0;
+            // 
+            // produtosBindingSource
+            // 
+            this.produtosBindingSource.DataMember = "Produtos";
+            this.produtosBindingSource.DataSource = this.bdsiscontrolDataSet1;
+            // 
+            // produtosTableAdapter
+            // 
+            this.produtosTableAdapter.ClearBeforeFill = true;
             // 
             // FrmRelProdutos
             // 
@@ -54,6 +84,9 @@
             | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Left) 
             | ComponentFactory.Krypton.Toolkit.PaletteDrawBorders.Right)));
             this.Load += new System.EventHandler(this.FrmRelProdutos_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.bdsiscontrolDataSet1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bdsiscontrolDataSet1BindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.produtosBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -61,5 +94,9 @@
         #endregion
 
         private Microsoft.Reporting.WinForms.ReportViewer reportViewer1;
+        private bdsiscontrolDataSet bdsiscontrolDataSet1;
+        private System.Windows.Forms.BindingSource bdsiscontrolDataSet1BindingSource;
+        private System.Windows.Forms.BindingSource produtosBindingSource;
+        private bdsiscontrolDataSetTableAdapters.ProdutosTableAdapter produtosTableAdapter;
     }
 }

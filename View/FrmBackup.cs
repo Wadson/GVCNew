@@ -4,7 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Text;
-using System.Data.SqlServerCe;
+using System.Data.SqlClient;
 using System.Windows.Forms;
 using System.IO;
 
@@ -68,13 +68,13 @@ namespace GVC.View
                 Directory.CreateDirectory(caminhoBackup);
             }
 
-            using (SqlCeConnection connection = new SqlCeConnection(connectionString))
+            using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 string backupFileName = $"BancoBackup_{DateTime.Now:yyyyMMddHHmmss}.bak";
                 string backupPath = Path.Combine(caminhoBackup, backupFileName);
                 string backupQuery = $"BACKUP DATABASE {bancoDeDados} TO DISK = '{backupPath}'";
 
-                SqlCeCommand command = new SqlCeCommand(backupQuery, connection);
+                SqlCommand command = new SqlCommand(backupQuery, connection);
 
                 try
                 {
@@ -108,13 +108,13 @@ namespace GVC.View
         //{
         //    string connectionString = $"Server={servidor};Database={bancoDeDados};Integrated Security=True;";
 
-        //    using (SqlCeConnection connection = new SqlCeConnection(connectionString))
+        //    using (SqlConnection connection = new SqlConnection(connectionString))
         //    {
         //        string backupFileName = $"BancoBackup_{DateTime.Now:yyyyMMddHHmmss}.bak";
         //        string backupPath = System.IO.Path.Combine(caminhoBackup, backupFileName);
         //        string backupQuery = $"BACKUP DATABASE {bancoDeDados} TO DISK = '{backupPath}'";
 
-        //        SqlCeCommand command = new SqlCeCommand(backupQuery, connection);
+        //        SqlCommand command = new SqlCommand(backupQuery, connection);
 
         //        try
         //        {

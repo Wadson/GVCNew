@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using ComponentFactory.Krypton.Toolkit;
-using System.Data.SqlServerCe;
+using System.Data.SqlClient;
 using GVC.DALL;
 using static GVC.View.FrmContaReceberr;
 
@@ -171,9 +171,9 @@ namespace GVC.View
         //        }
         //    }
         //}
-        //private bool VendaExiste(int vendaID, SqlCeConnection connection, SqlCeTransaction transaction)
+        //private bool VendaExiste(int vendaID, SqlConnection connection, SqlCeTransaction transaction)
         //{
-        //    using (SqlCeCommand cmd = new SqlCeCommand("SELECT COUNT(*) FROM Venda WHERE VendaID = @VendaID", connection, transaction))
+        //    using (SqlCommand cmd = new SqlCommand("SELECT COUNT(*) FROM Venda WHERE VendaID = @VendaID", connection, transaction))
         //    {
         //        cmd.Parameters.AddWithValue("@VendaID", vendaID);
         //        return (int)cmd.ExecuteScalar() > 0;
@@ -223,7 +223,7 @@ namespace GVC.View
         }
 
        
-        public void InserirParcelas(SqlCeConnection connection, SqlCeTransaction transaction)
+        public void InserirParcelas(SqlConnection connection, SqlTransaction transaction)
         {
             List<ParcelaModel> parcelas = new List<ParcelaModel>();
 

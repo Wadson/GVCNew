@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Data.SqlServerCe;
+using System.Data.SqlClient;
 using System.Data;
 
 namespace GVC.DALL
@@ -18,7 +18,7 @@ namespace GVC.DALL
                 conn.Open();
                 string query = "INSERT INTO PagamentosParciais (ParcelaID, ValorPago, DataPagamento) VALUES (@ParcelaID, @ValorPago, @DataPagamento)";
 
-                using (SqlCeCommand cmd = new SqlCeCommand(query, conn))
+                using (SqlCommand cmd = new SqlCommand(query, conn))
                 {
                     cmd.Parameters.AddWithValue("@ParcelaID", pagamentoParcial.ParcelaID);
                     cmd.Parameters.AddWithValue("@ValorPago", pagamentoParcial.ValorPago);
@@ -32,7 +32,7 @@ namespace GVC.DALL
             using (var connection = Conexao.Conex())
             {
                 string query = "DELETE FROM PagamentosParciais WHERE ParcelaID = @ParcelaID";
-                SqlCeCommand command = new SqlCeCommand(query, connection);
+                SqlCommand command = new SqlCommand(query, connection);
                 command.Parameters.AddWithValue("@ParcelaID", pagamentoParcialID);
 
                 connection.Open();
@@ -48,10 +48,10 @@ namespace GVC.DALL
                 conn.Open();
                 string query = "SELECT PagamentoParcialID, ParcelaID, ValorPago, DataPagamento FROM PagamentosParciais WHERE ParcelaID = @ParcelaID";
 
-                using (SqlCeCommand cmd = new SqlCeCommand(query, conn))
+                using (SqlCommand cmd = new SqlCommand(query, conn))
                 {
                     cmd.Parameters.AddWithValue("@ParcelaID", parcelaID);
-                    using (SqlCeDataReader reader = cmd.ExecuteReader())
+                    using (SqlDataReader reader = cmd.ExecuteReader())
                     {
                         while (reader.Read())
                         {
@@ -75,7 +75,7 @@ namespace GVC.DALL
             string query = "DELETE FROM PagamentosParciais WHERE ParcelaID = @ParcelaID";
             using (var conn = Conexao.Conex())
             {
-                SqlCeCommand cmd = new SqlCeCommand(query, conn);
+                SqlCommand cmd = new SqlCommand(query, conn);
                 cmd.Parameters.AddWithValue("@ParcelaID", parcelaID);
                 conn.Open();
                 cmd.ExecuteNonQuery();
@@ -86,9 +86,9 @@ namespace GVC.DALL
             var conn = Conexao.Conex();
             try
             {
-                SqlCeCommand comando = new SqlCeCommand("SELECT * FROM PagamentosParciais", conn);
+                SqlCommand comando = new SqlCommand("SELECT * FROM PagamentosParciais", conn);
 
-                SqlCeDataAdapter daUsuario = new SqlCeDataAdapter();
+                SqlDataAdapter daUsuario = new SqlDataAdapter();
                 daUsuario.SelectCommand = comando;
 
                 DataTable dtUsuario = new DataTable();

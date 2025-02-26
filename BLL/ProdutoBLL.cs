@@ -2,7 +2,7 @@
 using GVC.MODEL;
 using System;
 using System.Collections.Generic;
-using System.Data.SqlServerCe;
+using System.Data.SqlClient;
 using System.Data;
 using System.Linq;
 using System.Text;
@@ -38,7 +38,7 @@ namespace GVC.BLL
             {
                
             }
-            catch (SqlCeException erro)
+            catch (SqlException erro)
             {
                 throw erro;
             }
@@ -50,7 +50,7 @@ namespace GVC.BLL
                 produtodall = new ProdutosDal();
                 produtodall.AlterarProduto(produto);
             }
-            catch (SqlCeException erro)
+            catch (SqlException erro)
             {
                 throw erro;
             }
@@ -62,7 +62,7 @@ namespace GVC.BLL
                 produtodall = new ProdutosDal();
                 produtodall.ExcluirProduto(produto);
             }
-            catch (SqlCeException erro)
+            catch (SqlException erro)
             {
                 throw erro;
             }
@@ -74,7 +74,7 @@ namespace GVC.BLL
                 produtodall = new ProdutosDal();
                 produtodall.PesquisarProdutoPorNome(ParametroNome);
             }
-            catch (SqlCeException erro)
+            catch (SqlException erro)
             {
                 throw erro;
             }
@@ -86,7 +86,7 @@ namespace GVC.BLL
                 produtodall = new ProdutosDal();
                 produtodall.PesquisarProdutoPorCodido(ParametroCodigo);
             }
-            catch (SqlCeException erro)
+            catch (SqlException erro)
             {
                 throw erro;
             }

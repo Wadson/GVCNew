@@ -2,7 +2,7 @@
 using GVC.MODEL;
 using System;
 using System.Collections.Generic;
-using System.Data.SqlServerCe;
+using System.Data.SqlClient;
 using System.Data;
 using System.Linq;
 using System.Text;
@@ -38,7 +38,7 @@ namespace GVC.BLL
             {
                
             }
-            catch (SqlCeException erro)
+            catch (SqlException erro)
             {
                 throw erro;
             }
@@ -50,7 +50,7 @@ namespace GVC.BLL
                 clienteDAL = new ClienteDALL();
                 clienteDAL.atualiza_Cliente(clienteS);
             }
-            catch (SqlCeException erro)
+            catch (SqlException erro)
             {
                 throw erro;
             }
@@ -62,7 +62,7 @@ namespace GVC.BLL
                 clienteDAL = new ClienteDALL();
                 clienteDAL.excluiCliente(clienteS);
             }
-            catch (SqlCeException erro)
+            catch (SqlException erro)
             {
                 throw erro;
             }
@@ -73,9 +73,9 @@ namespace GVC.BLL
             try
             {
 
-                SqlCeCommand sql = new SqlCeCommand("SELECT * FROM Cliente WHERE ClienteID LIKE '" + pesquisa + "%' ", conn);
+                SqlCommand sql = new SqlCommand("SELECT * FROM Cliente WHERE ClienteID LIKE '" + pesquisa + "%' ", conn);
                 conn.Open();
-                SqlCeDataReader datareader;
+                SqlDataReader datareader;
                 ClienteMODEL obj_cliente = new ClienteMODEL();
 
                 datareader = sql.ExecuteReader(CommandBehavior.CloseConnection);

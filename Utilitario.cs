@@ -1,6 +1,6 @@
 using System;
 using System.Collections.Generic;
-using System.Data.SqlServerCe;
+using System.Data.SqlClient;
 using System.Data;
 using System.Linq;
 using System.Text;
@@ -19,7 +19,7 @@ namespace GVC
     public static class Utilitario
     {
         
-        private static readonly SqlCeConnection conn = Conexao.Conex();
+        private static readonly SqlConnection conn = Conexao.Conex();
         public static string RemoverZerosAEsquerda(string valor)
         {
             if (string.IsNullOrEmpty(valor))
@@ -99,7 +99,7 @@ namespace GVC
 
             using (var connection = Conexao.Conex())
             {
-                SqlCeCommand command = new SqlCeCommand(query, connection);
+                SqlCommand command = new SqlCommand(query, connection);
                 command.Parameters.AddWithValue("@Codigo", codigo);
 
                 try
@@ -108,7 +108,7 @@ namespace GVC
                     Console.WriteLine("Conexão aberta com sucesso.");
                     Console.WriteLine($"Executando a query: {query}");
 
-                    SqlCeDataReader reader = command.ExecuteReader();
+                    SqlDataReader reader = command.ExecuteReader();
                     if (reader.Read())
                     {
                         resultado = reader[0].ToString(); // Acessando o primeiro resultado da consulta
@@ -140,12 +140,12 @@ namespace GVC
         {
             int proximoCodigo = 1; // Valor inicial padrão
 
-            using (SqlCeConnection conn = Conexao.Conex()) // Inicializando a conexão aqui
+            using (SqlConnection conn = Conexao.Conex()) // Inicializando a conexão aqui
             {
                 try
                 {
                     conn.Open();
-                    using (SqlCeCommand cmd = new SqlCeCommand(query, conn))
+                    using (SqlCommand cmd = new SqlCommand(query, conn))
                     {
                         var result = cmd.ExecuteScalar();
                         if (result != DBNull.Value)
@@ -154,7 +154,7 @@ namespace GVC
                         }
                     }
                 }
-                catch (SqlCeException sqlEx)
+                catch (SqlException sqlEx)
                 {
                     // Tratar exceção de SQL
                     Console.WriteLine($"Erro de SQL: {sqlEx.Message}");
@@ -195,7 +195,7 @@ namespace GVC
             {
                 string query = $"SELECT MAX({nomeCampo}) FROM {nomeDaTabela}";
 
-                SqlCeCommand command = new SqlCeCommand(query, connection);
+                SqlCommand command = new SqlCommand(query, connection);
 
                 connection.Open();
                 object result = command.ExecuteScalar();
@@ -265,10 +265,10 @@ namespace GVC
         // Método para preencher ComboBox
         public static void PreencherComboBox(ComboBox comboBox, string query, string nome, string Id)
         {            
-            using (SqlCeCommand cmd = new SqlCeCommand(query, conn))
+            using (SqlCommand cmd = new SqlCommand(query, conn))
             {
                 conn.Open();
-                using (SqlCeDataReader reader = cmd.ExecuteReader())
+                using (SqlDataReader reader = cmd.ExecuteReader())
                 {
                     DataTable dt = new DataTable();
                     dt.Load(reader);
@@ -282,10 +282,10 @@ namespace GVC
         }
         public static void PreencherComboBoxKrypton(KryptonComboBox comboBox, string query, string nome, string Id)
         {
-            using (SqlCeCommand cmd = new SqlCeCommand(query, conn))
+            using (SqlCommand cmd = new SqlCommand(query, conn))
             {
                 conn.Open();
-                using (SqlCeDataReader reader = cmd.ExecuteReader())
+                using (SqlDataReader reader = cmd.ExecuteReader())
                 {
                     DataTable dt = new DataTable();
                     dt.Load(reader);
@@ -303,7 +303,7 @@ namespace GVC
             using (var connection = Conexao.Conex())
             {
                 //string query = "SELECT CategoriaID FROM Categoria WHERE NomeCategoria = @NomeCategoria";
-                SqlCeCommand command = new SqlCeCommand(query, connection);
+                SqlCommand command = new SqlCommand(query, connection);
                 command.Parameters.AddWithValue(NomeParametro, nomePesquisar);
 
                 try
@@ -326,13 +326,13 @@ namespace GVC
         {
             using (var connection = Conexao.Conex())
             {
-                SqlCeCommand command = new SqlCeCommand(query, connection);
+                SqlCommand command = new SqlCommand(query, connection);
                 command.Parameters.AddWithValue(nomeParametro, nomePesquisar);
 
                 try
                 {
                     connection.Open();
-                    SqlCeDataAdapter dataAdapter = new SqlCeDataAdapter(command);
+                    SqlDataAdapter dataAdapter = new SqlDataAdapter(command);
                     DataTable dataTable = new DataTable();
                     dataAdapter.Fill(dataTable);
 
@@ -356,13 +356,13 @@ namespace GVC
         {
             using (var connection = Conexao.Conex())
             {
-                SqlCeCommand command = new SqlCeCommand(query, connection);
+                SqlCommand command = new SqlCommand(query, connection);
                 command.Parameters.AddWithValue(nomeParametro, valorParametro);
 
                 try
                 {
                     connection.Open();
-                    SqlCeDataAdapter dataAdapter = new SqlCeDataAdapter(command);
+                    SqlDataAdapter dataAdapter = new SqlDataAdapter(command);
                     DataTable dataTable = new DataTable();
                     dataAdapter.Fill(dataTable);
 
@@ -387,13 +387,13 @@ namespace GVC
         {
             using (var connection = Conexao.Conex())
             {
-                SqlCeCommand command = new SqlCeCommand(query, connection);
+                SqlCommand command = new SqlCommand(query, connection);
                 command.Parameters.AddWithValue(parametroCodigo, codigoPesquisar);
 
                 try
                 {
                     connection.Open();
-                    SqlCeDataReader reader = command.ExecuteReader();
+                    SqlDataReader reader = command.ExecuteReader();
 
                     if (reader.Read())
                     {
@@ -416,13 +416,13 @@ namespace GVC
         {
             using (var connection = Conexao.Conex())
             {
-                SqlCeCommand command = new SqlCeCommand(query, connection);
+                SqlCommand command = new SqlCommand(query, connection);
                 command.Parameters.AddWithValue(nomeParametro, parametro);
 
                 try
                 {
                     connection.Open();
-                    SqlCeDataReader reader = command.ExecuteReader();
+                    SqlDataReader reader = command.ExecuteReader();
 
                     if (reader.Read())
                     {
@@ -445,14 +445,14 @@ namespace GVC
         {
             try
             {
-                using (SqlCeConnection conn = Conexao.Conex())
+                using (SqlConnection conn = Conexao.Conex())
                 {
                     conn.Open();
-                    using (SqlCeCommand cmd = new SqlCeCommand(query, conn))
+                    using (SqlCommand cmd = new SqlCommand(query, conn))
                     {
                         cmd.Parameters.AddWithValue(nomeParametro, valorParametro);
 
-                        using (SqlCeDataReader reader = cmd.ExecuteReader())
+                        using (SqlDataReader reader = cmd.ExecuteReader())
                         {
                             DataTable dt = new DataTable();
                             dt.Load(reader);
@@ -480,14 +480,14 @@ namespace GVC
         {
             using (var connection = Conexao.Conex())
             {
-                SqlCeCommand command = new SqlCeCommand(query, connection);
+                SqlCommand command = new SqlCommand(query, connection);
                 command.Parameters.AddWithValue(nomeParametroInicio, dataVencimentoInicio);
                 command.Parameters.AddWithValue(nomeParametroFim, dataVencimentoFim);
 
                 try
                 {
                     connection.Open();
-                    SqlCeDataAdapter dataAdapter = new SqlCeDataAdapter(command);
+                    SqlDataAdapter dataAdapter = new SqlDataAdapter(command);
                     DataTable dataTable = new DataTable();
                     dataAdapter.Fill(dataTable);
 
@@ -614,7 +614,7 @@ private void FrmMeuFormulario_Load(object sender, EventArgs e)
         {                      
             using (conn)
             {
-                using (SqlCeCommand comando = new SqlCeCommand(query, conn))
+                using (SqlCommand comando = new SqlCommand(query, conn))
                 {
                     try
                     {
@@ -627,7 +627,7 @@ private void FrmMeuFormulario_Load(object sender, EventArgs e)
                         }
 
                         // Configuração do DataAdapter
-                        SqlCeDataAdapter da = new SqlCeDataAdapter
+                        SqlDataAdapter da = new SqlDataAdapter
                         {
                             SelectCommand = comando
                         };
@@ -645,7 +645,7 @@ private void FrmMeuFormulario_Load(object sender, EventArgs e)
                         // Atribuição dos dados ao DataGridView
                         dataGridView.DataSource = dtGeral;
                     }
-                    catch (SqlCeException sqlEx)
+                    catch (SqlException sqlEx)
                     {
                         MessageBox.Show($"Erro de SQL: {sqlEx.Message}", "Erro de SQL", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
@@ -777,14 +777,14 @@ private void FrmMeuFormulario_Load(object sender, EventArgs e)
             decimal soma = 0;            
             using (conn)
             {
-                using (SqlCeCommand comando = new SqlCeCommand(query, conn))
+                using (SqlCommand comando = new SqlCommand(query, conn))
                 {
                     try
                     {
                         conn.Open();
                         soma = Convert.ToDecimal(comando.ExecuteScalar());
                     }
-                    catch (SqlCeException sqlEx)
+                    catch (SqlException sqlEx)
                     {
                         MessageBox.Show($"Erro de SQL: {sqlEx.Message}", "Erro de SQL", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
@@ -811,7 +811,7 @@ private void FrmMeuFormulario_Load(object sender, EventArgs e)
         {
             using (conn)
             {
-                using (SqlCeCommand comando = new SqlCeCommand(query, conn))
+                using (SqlCommand comando = new SqlCommand(query, conn))
                 {
                     foreach (var parametro in parametros)
                     {
@@ -824,7 +824,7 @@ private void FrmMeuFormulario_Load(object sender, EventArgs e)
                         var result = comando.ExecuteScalar();
                         return result != null && result != DBNull.Value;
                     }
-                    catch (SqlCeException sqlEx)
+                    catch (SqlException sqlEx)
                     {
                         // Trate a exceção de SQL conforme necessário
                         Console.WriteLine($"Erro de SQL: {sqlEx.Message}");
@@ -937,7 +937,7 @@ private void FrmMeuFormulario_Load(object sender, EventArgs e)
 
             using (conn)
             {
-                using (SqlCeCommand comando = new SqlCeCommand(query, conn))
+                using (SqlCommand comando = new SqlCommand(query, conn))
                 {
                     comando.Parameters.AddWithValue("@valor", valor);
 
@@ -947,7 +947,7 @@ private void FrmMeuFormulario_Load(object sender, EventArgs e)
                         var result = comando.ExecuteScalar();
                         return result != null && Convert.ToInt32(result) > 0;
                     }
-                    catch (SqlCeException sqlEx)
+                    catch (SqlException sqlEx)
                     {
                         // Trate a exceção de SQL conforme necessário
                         Console.WriteLine($"Erro de SQL: {sqlEx.Message}");
@@ -1302,7 +1302,7 @@ private void FrmMeuFormulario_Load(object sender, EventArgs e)
         {
             using (var connection = Conexao.Conex())
             {
-                using (var command = new SqlCeCommand(query, connection))
+                using (var command = new SqlCommand(query, connection))
                 {
                     if (parametros != null)
                     {
@@ -1312,7 +1312,7 @@ private void FrmMeuFormulario_Load(object sender, EventArgs e)
                         }
                     }
 
-                    var adapter = new SqlCeDataAdapter(command);
+                    var adapter = new SqlDataAdapter(command);
                     var dataTable = new DataTable();
                     adapter.Fill(dataTable);
                     grid.DataSource = dataTable;
@@ -1332,12 +1332,12 @@ private void FrmMeuFormulario_Load(object sender, EventArgs e)
                 try
                 {
                     DataTable dt = new DataTable();
-                    SqlCeCommand comando = new SqlCeCommand("SELECT NomeProduto, PrecoDeVenda FROM Produtos WHERE Referencia = @Referencia", conn);
+                    SqlCommand comando = new SqlCommand("SELECT NomeProduto, PrecoDeVenda FROM Produtos WHERE Referencia = @Referencia", conn);
                     comando.Parameters.AddWithValue("@Referencia", referencia);
 
                     conn.Open();
 
-                    SqlCeDataAdapter da = new SqlCeDataAdapter(comando);
+                    SqlDataAdapter da = new SqlDataAdapter(comando);
                     da.Fill(dt);
 
                     if (dt.Rows.Count > 0)
@@ -1380,14 +1380,14 @@ private void FrmMeuFormulario_Load(object sender, EventArgs e)
 
             try
             {
-                using (SqlCeConnection conexao = Conexao.Conex())
+                using (SqlConnection conexao = Conexao.Conex())
                 {
                     conexao.Open();
-                    SqlCeCommand comando = new SqlCeCommand(query, conexao);
+                    SqlCommand comando = new SqlCommand(query, conexao);
                     comando.Parameters.AddWithValue("@Referencia", referencia);
 
                     // Executa a consulta e obtém o resultado
-                    using (SqlCeDataReader reader = comando.ExecuteReader())
+                    using (SqlDataReader reader = comando.ExecuteReader())
                     {
                         if (reader.Read())
                         {

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
-using System.Data.SqlServerCe;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Runtime.InteropServices;
@@ -36,7 +36,7 @@ namespace GVC
         private extern static void SendMessage(System.IntPtr hWnd, int wMsg, int wParam, int lParam);
 
 
-        public void carregaGrid2Localizar(SqlCeCommand criterioSQL, DataGridView dataGridPesqParam)
+        public void carregaGrid2Localizar(SqlCommand criterioSQL, DataGridView dataGridPesqParam)
         {
             var conn = Conexao.Conex();
             criterioSQL.Connection = conn;
@@ -44,7 +44,7 @@ namespace GVC
             {
                 conn.Open();
                 System.Data.DataTable tabela = new System.Data.DataTable();
-                SqlCeDataAdapter adapter = new SqlCeDataAdapter();
+                SqlDataAdapter adapter = new SqlDataAdapter();
                 adapter.SelectCommand = criterioSQL;
                 adapter.Fill(tabela);
 

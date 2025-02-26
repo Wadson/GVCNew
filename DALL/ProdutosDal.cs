@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Data.SqlServerCe;
+using System.Data.SqlClient;
 using System.Data;
 using System.Windows.Forms;
 
@@ -18,9 +18,9 @@ namespace GVC.DALL
             var conn = Conexao.Conex();
             try
             {
-                SqlCeCommand comando = new SqlCeCommand("SELECT TOP (30) ProdutoID, Referencia, NomeProduto, PrecoCusto, Lucro, PrecoDeVenda, Estoque, DataDeEntrada, Status FROM Produtos", conn);              
+                SqlCommand comando = new SqlCommand("SELECT TOP (30) ProdutoID, Referencia, NomeProduto, PrecoCusto, Lucro, PrecoDeVenda, Estoque, DataDeEntrada, Status FROM Produtos", conn);              
 
-                SqlCeDataAdapter daProduto = new SqlCeDataAdapter();
+                SqlDataAdapter daProduto = new SqlDataAdapter();
                 daProduto.SelectCommand = comando;
 
                 DataTable dtProduto= new DataTable();
@@ -42,7 +42,7 @@ namespace GVC.DALL
             using (connection)
             {
                 var query = "SELECT COUNT(*) FROM Produtos WHERE NomeProduto = @NomeProduto OR Referencia = @Referencia";
-                using (var command = new SqlCeCommand(query, connection))
+                using (var command = new SqlCommand(query, connection))
                 {
                     command.Parameters.AddWithValue("@NomeProduto", nomeProduto);
                     command.Parameters.AddWithValue("@Referencia", referencia);
@@ -64,7 +64,7 @@ namespace GVC.DALL
 
                 // Verificação de duplicidade por NomeProduto ou Referencia
                 var verificarQuery = "SELECT COUNT(*) FROM Produtos WHERE NomeProduto = @NomeProduto OR Referencia = @Referencia";
-                using (var verificarCommand = new SqlCeCommand(verificarQuery, connection))
+                using (var verificarCommand = new SqlCommand(verificarQuery, connection))
                 {
                     verificarCommand.Parameters.AddWithValue("@NomeProduto", produto.NomeProduto);
                     verificarCommand.Parameters.AddWithValue("@Referencia", produto.Referencia);
@@ -81,7 +81,7 @@ namespace GVC.DALL
                 var insertQuery = @"INSERT INTO Produtos (ProdutoID, NomeProduto, PrecoCusto, Lucro, PrecoDeVenda, Estoque, DataDeEntrada, Status, Referencia)
                             VALUES (@ProdutoID, @NomeProduto, @PrecoCusto, @Lucro, @PrecoDeVenda, @Estoque, @DataDeEntrada, @Status, @Referencia)";
 
-                using (var insertCommand = new SqlCeCommand(insertQuery, connection))
+                using (var insertCommand = new SqlCommand(insertQuery, connection))
                 {
                     insertCommand.Parameters.AddWithValue("@ProdutoID", produto.ProdutoID);
                     insertCommand.Parameters.AddWithValue("@NomeProduto", produto.NomeProduto);
@@ -104,7 +104,7 @@ namespace GVC.DALL
             using (var conn = Conexao.Conex())
             {
                 string sql = "UPDATE Produtos SET Estoque = Estoque - @QuantidadeEmVendida WHERE ProdutoID = @ProdutoID";
-                SqlCeCommand cmd = new SqlCeCommand(sql, conn);
+                SqlCommand cmd = new SqlCommand(sql, conn);
                 cmd.Parameters.AddWithValue("@QuantidadeEmVendida", quantidadeVendida);
                 cmd.Parameters.AddWithValue("@ProdutoID", produtoID);
 
@@ -122,7 +122,7 @@ namespace GVC.DALL
             using (connection)
             {
                 var query = "UPDATE Produtos SET NomeProduto = @NomeProduto, PrecoCusto = @PrecoCusto, Lucro = @Lucro, PrecoDeVenda = @PrecoDeVenda, Estoque = @Estoque, DataDeEntrada = @DataDeEntrada, Status = @Status, Referencia = @Referencia WHERE ProdutoID = @ProdutoID";
-                using (var command = new SqlCeCommand(query, connection))
+                using (var command = new SqlCommand(query, connection))
                 {
                     command.Parameters.AddWithValue("@ProdutoID", produto.ProdutoID);
                     command.Parameters.AddWithValue("@NomeProduto", produto.NomeProduto);
@@ -149,7 +149,7 @@ namespace GVC.DALL
             using (connection)
             {
                 var query = "DELETE FROM Produtos WHERE ProdutoID = @ProdutoID";
-                using (var command = new SqlCeCommand(query, connection))
+                using (var command = new SqlCommand(query, connection))
                 {
                     command.Parameters.AddWithValue("@ProdutoID", produto.ProdutoID);
                     
@@ -164,9 +164,9 @@ namespace GVC.DALL
             try
             {
 
-                SqlCeCommand sql = new SqlCeCommand("SELECT * FROM Produtos WHERE Referencia LIKE '" + pesquisa + "%' ", conn);
+                SqlCommand sql = new SqlCommand("SELECT * FROM Produtos WHERE Referencia LIKE '" + pesquisa + "%' ", conn);
                 conn.Open();
-                SqlCeDataReader datareader;
+                SqlDataReader datareader;
                 ProdutosModel obj_Produto = new ProdutosModel();
 
                 datareader = sql.ExecuteReader(CommandBehavior.CloseConnection);
@@ -199,7 +199,7 @@ namespace GVC.DALL
             using (var conn = Conexao.Conex())
             {
                 string sql = "UPDATE Produtos SET Estoque = Estoque + @Quantidade WHERE ProdutoID = @ProdutoID";
-                SqlCeCommand cmd = new SqlCeCommand(sql, conn);
+                SqlCommand cmd = new SqlCommand(sql, conn);
                 cmd.Parameters.AddWithValue("@Quantidade", quantidade);
                 cmd.Parameters.AddWithValue("@ProdutoID", produtoID);
 
@@ -219,11 +219,11 @@ namespace GVC.DALL
 
 
                 //string sqlconn = "SELECT TOP (30) * FROM Cliente WHERE NomeCliente LIKE @NomeCliente";
-                SqlCeCommand cmd = new SqlCeCommand(sqlconn, conn);
+                SqlCommand cmd = new SqlCommand(sqlconn, conn);
                 cmd.Parameters.AddWithValue("@NomeProduto", nome);
                 conn.Open();
                 cmd.ExecuteNonQuery();
-                SqlCeDataAdapter da = new SqlCeDataAdapter(cmd);
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
                 da.Fill(dt);
                 conn.Close();
                 conn.Dispose();
@@ -246,11 +246,11 @@ namespace GVC.DALL
                 string sqlconn = "SELECT TOP (30) ProdutoID, Referencia, NomeProduto, PrecoCusto, Lucro, PrecoDeVenda, Estoque, DataDeEntrada, Status FROM Produtos WHERE Referencia LIKE @Referencia";
 
                 //string sqlconn = "SELECT TOP (30) * FROM Cliente WHERE NomeCliente LIKE @NomeCliente";
-                SqlCeCommand cmd = new SqlCeCommand(sqlconn, conn);
+                SqlCommand cmd = new SqlCommand(sqlconn, conn);
                 cmd.Parameters.AddWithValue("@Referencia", codigo);
                 conn.Open();
                 cmd.ExecuteNonQuery();
-                SqlCeDataAdapter da = new SqlCeDataAdapter(cmd);
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
                 da.Fill(dt);
                 conn.Close();
                 conn.Dispose();

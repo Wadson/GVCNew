@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
-using System.Data.SqlServerCe;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -73,10 +73,10 @@ namespace GVC
                 // Buscar os valores atuais da parcela
                 string selectParcelaQuery = "SELECT ValorRecebido, SaldoRestante FROM Parcela WHERE ParcelaID = @ParcelaID";
 
-                using (SqlCeCommand cmdSelect = new SqlCeCommand(selectParcelaQuery, conn))
+                using (SqlCommand cmdSelect = new SqlCommand(selectParcelaQuery, conn))
                 {
                     cmdSelect.Parameters.AddWithValue("@ParcelaID", parcelaID);
-                    using (SqlCeDataReader reader = cmdSelect.ExecuteReader())
+                    using (SqlDataReader reader = cmdSelect.ExecuteReader())
                     {
                         if (reader.Read())
                         {
@@ -102,12 +102,12 @@ namespace GVC
             {
                 conn.Open();
 
-                using (SqlCeTransaction transaction = conn.BeginTransaction())
+                using (SqlTransaction transaction = conn.BeginTransaction())
                 {
                     try
                     {
                         // Inserir na tabela PagamentoParcial
-                        using (SqlCeCommand cmdPagamentoParcial = new SqlCeCommand(insertPagamentoParcialQuery, conn, transaction))
+                        using (SqlCommand cmdPagamentoParcial = new SqlCommand(insertPagamentoParcialQuery, conn, transaction))
                         {
                             cmdPagamentoParcial.Parameters.AddWithValue("@ParcelaID", parcelaID);
                             cmdPagamentoParcial.Parameters.AddWithValue("@ValorPago", valorPagoParcial);
@@ -116,7 +116,7 @@ namespace GVC
                         }
 
                         // Atualizar tabela Parcela
-                        using (SqlCeCommand cmdParcela = new SqlCeCommand(updateParcelaQuery, conn, transaction))
+                        using (SqlCommand cmdParcela = new SqlCommand(updateParcelaQuery, conn, transaction))
                         {
                             cmdParcela.Parameters.AddWithValue("@Pago", pago);
                             cmdParcela.Parameters.AddWithValue("@ValorRecebido", novoValorPago);

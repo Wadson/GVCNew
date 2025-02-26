@@ -1,7 +1,7 @@
 ﻿using GVC.MODEL;
 using System;
 using System.Collections.Generic;
-using System.Data.SqlServerCe;
+using System.Data.SqlClient;
 using System.Data;
 using System.Linq;
 using System.Text;
@@ -18,8 +18,8 @@ namespace GVC.DALL
             try
             {
                 conn.Open();
-                SqlCeCommand sqlcomando = new SqlCeCommand("SELECT TOP (30) Cidade.CidadeID, Cidade.NomeCidade, Cidade.EstadoID, Estado.NomeEstado FROM Cidade INNER JOIN Estado ON Cidade.EstadoID = Estado.EstadoID", conn);
-                SqlCeDataAdapter daReceitas = new SqlCeDataAdapter();
+                SqlCommand sqlcomando = new SqlCommand("SELECT TOP (30) Cidade.CidadeID, Cidade.NomeCidade, Cidade.EstadoID, Estado.NomeEstado FROM Cidade INNER JOIN Estado ON Cidade.EstadoID = Estado.EstadoID", conn);
+                SqlDataAdapter daReceitas = new SqlDataAdapter();
                 daReceitas.SelectCommand = sqlcomando;
                 DataTable dtReceitas = new DataTable();
                 daReceitas.Fill(dtReceitas);
@@ -40,7 +40,7 @@ namespace GVC.DALL
             var conn = Conexao.Conex();
             try
             {
-                SqlCeCommand sqlcomando = new SqlCeCommand("INSERT INTO Cidade (CidadeID, NomeCidade, EstadoID) VALUES  (@CidadeID, @NomeCidade, @EstadoID )", conn);
+                SqlCommand sqlcomando = new SqlCommand("INSERT INTO Cidade (CidadeID, NomeCidade, EstadoID) VALUES  (@CidadeID, @NomeCidade, @EstadoID )", conn);
                                 
                 sqlcomando.Parameters.AddWithValue("@CidadeID", Cidades.CidadeID);
                 sqlcomando.Parameters.AddWithValue("@NomeCidade", Cidades.NomeCidade);
@@ -49,7 +49,7 @@ namespace GVC.DALL
                 conn.Open();
                 sqlcomando.ExecuteNonQuery();
             }
-            catch (SqlCeException ex)
+            catch (SqlException ex)
             {
                 throw new ApplicationException(ex.ToString());
             }
@@ -64,7 +64,7 @@ namespace GVC.DALL
             var conn = Conexao.Conex();
             try
             {
-                SqlCeCommand sqlcomando = new SqlCeCommand("DELETE FROM Cidade WHERE CidadeID = @CidadeID", conn);
+                SqlCommand sqlcomando = new SqlCommand("DELETE FROM Cidade WHERE CidadeID = @CidadeID", conn);
                 sqlcomando.Parameters.AddWithValue("@Id", Cidades.CidadeID);
                 conn.Open();
                 sqlcomando.ExecuteNonQuery();
@@ -84,7 +84,7 @@ namespace GVC.DALL
             var conn = Conexao.Conex();
             try
             {
-                SqlCeCommand sqlcomando = new SqlCeCommand("UPDATE Cidade SET NomeCidade = @NomeCidade, EstadoID = @EstadoID WHERE CidadeID = @CidadeID", conn);
+                SqlCommand sqlcomando = new SqlCommand("UPDATE Cidade SET NomeCidade = @NomeCidade, EstadoID = @EstadoID WHERE CidadeID = @CidadeID", conn);
                 
                 sqlcomando.Parameters.AddWithValue("@NomeCidade", Cidades.NomeCidade);
                 sqlcomando.Parameters.AddWithValue("@EstadoID", Cidades.EstadoID);
@@ -110,11 +110,11 @@ namespace GVC.DALL
                 DataTable dt = new DataTable();
 
                 string sqlconn = "SELECT TOP (30) Cidade.CidadeID, Cidade.NomeCidade, Cidade.EstadoID, Estado.NomeEstado FROM  Cidade INNER JOIN Estado ON Cidade.EstadoID = Estado.EstadoID WHERE NomeCidade LIKE @NomeCidade";
-                SqlCeCommand cmd = new SqlCeCommand(sqlconn, conn);
+                SqlCommand cmd = new SqlCommand(sqlconn, conn);
                 cmd.Parameters.AddWithValue("@NomeCidade", nome);
                 conn.Open();
                 cmd.ExecuteNonQuery();
-                SqlCeDataAdapter da = new SqlCeDataAdapter(cmd);
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
                 da.Fill(dt);
                 conn.Close();
                 conn.Dispose();
@@ -134,11 +134,11 @@ namespace GVC.DALL
                 DataTable dt = new DataTable();
 
                 string sqlconn = "SELECT TOP (30) Cidade.CidadeID, Cidade.NomeCidade, Cidade.EstadoID, Estado.NomeEstado FROM  Cidade INNER JOIN Estado ON Cidade.EstadoID = Estado.EstadoID WHERE CidadeID  LIKE @CidadeID";
-                SqlCeCommand cmd = new SqlCeCommand(sqlconn, conn);
+                SqlCommand cmd = new SqlCommand(sqlconn, conn);
                 cmd.Parameters.AddWithValue("@CidadeID", nome);
                 conn.Open();
                 cmd.ExecuteNonQuery();
-                SqlCeDataAdapter da = new SqlCeDataAdapter(cmd);
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
                 da.Fill(dt);
                 conn.Close();
                 conn.Dispose();
@@ -159,11 +159,11 @@ namespace GVC.DALL
                 string sqlconn = "SELECT TOP (30) Cidade.CidadeID, Cidade.NomeCidade, Cidade.EstadoID, Estado.NomeEstado FROM  Cidade INNER JOIN Estado ON Cidade.EstadoID = Estado.EstadoID";
                                  //WHERE Cidade.NomeCidade = @NomeCidade);
                                 
-                SqlCeCommand cmd = new SqlCeCommand(sqlconn, conn);
+                SqlCommand cmd = new SqlCommand(sqlconn, conn);
                 //cmd.Parameters.AddWithValue("@NomeCidade", nome);
                 conn.Open();
                 cmd.ExecuteNonQuery();
-                SqlCeDataAdapter da = new SqlCeDataAdapter(cmd);
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
                 da.Fill(dt);
                 conn.Close();
                 conn.Dispose();

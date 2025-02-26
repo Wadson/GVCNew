@@ -1,7 +1,7 @@
 ﻿using GVC.MODEL;
 using System;
 using System.Collections.Generic;
-using System.Data.SqlServerCe;
+using System.Data.SqlClient;
 using System.Data;
 using System.Linq;
 using System.Text;
@@ -22,10 +22,10 @@ namespace GVC.DALL
             var conn = Conexao.Conex();
             try
             {
-                SqlCeCommand comando = new SqlCeCommand("SELECT EstadoID, NomeEstado, Uf FROM Estado", conn);
+                SqlCommand comando = new SqlCommand("SELECT EstadoID, NomeEstado, Uf FROM Estado", conn);
                 //id_usuario, nome_usuario, user_usuario, dt_nascimento, nivelacesso_usuario, senha_usuario, email_usuario, dt_nascimento
 
-                SqlCeDataAdapter daUsuario = new SqlCeDataAdapter();
+                SqlDataAdapter daUsuario = new SqlDataAdapter();
                 daUsuario.SelectCommand = comando;
 
                 DataTable dtUsuario = new DataTable();
@@ -48,7 +48,7 @@ namespace GVC.DALL
 
             try
             {
-                SqlCeCommand sqlcomm = new SqlCeCommand("INSERT INTO Estado (EstadoID, NomeEstado, Uf ) VALUES (@EstadoID, @NomeEstado, @Uf )", conn);
+                SqlCommand sqlcomm = new SqlCommand("INSERT INTO Estado (EstadoID, NomeEstado, Uf ) VALUES (@EstadoID, @NomeEstado, @Uf )", conn);
 
                 sqlcomm.Parameters.AddWithValue("@EstadoID", estado.EstadoID);
                 sqlcomm.Parameters.AddWithValue("@NomeEstado", estado.NomeEstado);
@@ -57,7 +57,7 @@ namespace GVC.DALL
                 conn.Open();
                 sqlcomm.ExecuteNonQuery();
             }
-            catch (SqlCeException ex)
+            catch (SqlException ex)
             {
                 throw new ApplicationException(ex.ToString());
             }
@@ -72,7 +72,7 @@ namespace GVC.DALL
             var conn = Conexao.Conex();
             try
             {
-                SqlCeCommand sqlcomando = new SqlCeCommand("DELETE FROM Estado WHERE EstadoID = @EstadoID", conn);
+                SqlCommand sqlcomando = new SqlCommand("DELETE FROM Estado WHERE EstadoID = @EstadoID", conn);
                 sqlcomando.Parameters.AddWithValue("@EstadoID", estado.EstadoID);
                 conn.Open();
                 sqlcomando.ExecuteNonQuery();
@@ -92,7 +92,7 @@ namespace GVC.DALL
             var conn = Conexao.Conex();
             try
             {
-                SqlCeCommand sqlcomm = new SqlCeCommand("UPDATE Estado SET NomeEstado = @NomeEstado, Uf = @Uf WHERE EstadoID = @EstadoID", conn);
+                SqlCommand sqlcomm = new SqlCommand("UPDATE Estado SET NomeEstado = @NomeEstado, Uf = @Uf WHERE EstadoID = @EstadoID", conn);
                                 
                 sqlcomm.Parameters.AddWithValue("@NomeEstado", estado.NomeEstado);
                 sqlcomm.Parameters.AddWithValue("@Uf", estado.UF);
@@ -121,11 +121,11 @@ namespace GVC.DALL
                 DataTable dt = new DataTable();
 
                 string sqlconn = "SELECT EstadoID, NomeEstado, Uf FROM Estado WHERE EstadoID  LIKE @EstadoID";
-                SqlCeCommand cmd = new SqlCeCommand(sqlconn, conn);
+                SqlCommand cmd = new SqlCommand(sqlconn, conn);
                 cmd.Parameters.AddWithValue("@EstadoID", codigo);
                 conn.Open();
                 cmd.ExecuteNonQuery();
-                SqlCeDataAdapter da = new SqlCeDataAdapter(cmd);
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
                 da.Fill(dt);
                 conn.Close();
                 conn.Dispose();
@@ -145,11 +145,11 @@ namespace GVC.DALL
                 DataTable dt = new DataTable();
 
                 string sqlconn = "SELECT EstadoID, NomeEstado, Uf FROM Estado WHERE NomeEstado  LIKE @NomeEstado";
-                SqlCeCommand cmd = new SqlCeCommand(sqlconn, conn);
+                SqlCommand cmd = new SqlCommand(sqlconn, conn);
                 cmd.Parameters.AddWithValue("@NomeEstado", codigo);
                 conn.Open();
                 cmd.ExecuteNonQuery();
-                SqlCeDataAdapter da = new SqlCeDataAdapter(cmd);
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
                 da.Fill(dt);
                 conn.Close();
                 conn.Dispose();
@@ -169,9 +169,9 @@ namespace GVC.DALL
             try
             {
                 string sqlconn = "SELECT EstadoID, NomeEstado, Uf FROM Estado";
-                using (SqlCeCommand cmd = new SqlCeCommand(sqlconn, conn))
+                using (SqlCommand cmd = new SqlCommand(sqlconn, conn))
                 {
-                    using (SqlCeDataAdapter da = new SqlCeDataAdapter(cmd))
+                    using (SqlDataAdapter da = new SqlDataAdapter(cmd))
                     {
                         conn.Open();
                         da.Fill(dt);

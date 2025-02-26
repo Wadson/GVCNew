@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Configuration;
 using System.Data;
-using System.Data.SqlServerCe;
+using System.Data.SqlClient;
 
 
 namespace GVC.DALL
@@ -24,7 +24,7 @@ namespace GVC.DALL
                 string query = @"UPDATE Parcela SET DataVencimento = @DataVencimento, ValorParcela = @ValorParcela, 
                              ValorRecebido = @ValorRecebido, SaldoRestante = @SaldoRestante, Pago = @Pago 
                              WHERE ParcelaID = @ParcelaID";
-                SqlCeCommand command = new SqlCeCommand(query, connection);
+                SqlCommand command = new SqlCommand(query, connection);
                 command.Parameters.AddWithValue("@DataVencimento", parcela.DataVencimento);
                 command.Parameters.AddWithValue("@ValorParcela", parcela.ValorParcela);
                 command.Parameters.AddWithValue("@ValorRecebido", parcela.ValorRecebido);
@@ -43,7 +43,7 @@ namespace GVC.DALL
             using (var connection = Conexao.Conex())
             {
                 string query = "DELETE FROM Parcela WHERE ParcelaID = @ParcelaID";
-                SqlCeCommand command = new SqlCeCommand(query, connection);
+                SqlCommand command = new SqlCommand(query, connection);
                 command.Parameters.AddWithValue("@ParcelaID", parcelaId);
 
                 connection.Open();
@@ -58,11 +58,11 @@ namespace GVC.DALL
             using (var connection = Conexao.Conex())
             {
                 string query = "SELECT * FROM Parcela WHERE VendaID = @VendaID";
-                SqlCeCommand command = new SqlCeCommand(query, connection);
+                SqlCommand command = new SqlCommand(query, connection);
                 command.Parameters.AddWithValue("@VendaID", vendaId);
 
                 connection.Open();
-                using (SqlCeDataReader reader = command.ExecuteReader())
+                using (SqlDataReader reader = command.ExecuteReader())
                 {
                     while (reader.Read())
                     {
@@ -88,8 +88,8 @@ namespace GVC.DALL
         {
             using (var conn = Conexao.Conex())
             {
-                SqlCeCommand comando = new SqlCeCommand("SELECT * FROM Parcela", conn);
-                SqlCeDataAdapter daParcela = new SqlCeDataAdapter(comando);
+                SqlCommand comando = new SqlCommand("SELECT * FROM Parcela", conn);
+                SqlDataAdapter daParcela = new SqlDataAdapter(comando);
                 DataTable dtParcela = new DataTable();
                 daParcela.Fill(dtParcela);
                 return dtParcela;
@@ -102,10 +102,10 @@ namespace GVC.DALL
         {
             try
             {
-                using (SqlCeConnection connection = Conexao.Conex()) // Obtém a conexão do SQL Server Express
+                using (SqlConnection connection = Conexao.Conex()) // Obtém a conexão do SQL Server Express
                 {
                     connection.Open();
-                    using (SqlCeCommand cmd = new SqlCeCommand(@"
+                    using (SqlCommand cmd = new SqlCommand(@"
                 INSERT INTO Parcela 
                 (ParcelaID, VendaID, NumeroParcela, DataVencimento, ValorParcela, ValorRecebido, SaldoRestante, Pago) 
                 VALUES 

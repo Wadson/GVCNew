@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
-using System.Data.SqlServerCe;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -150,7 +150,7 @@ namespace GVC
             }
 
         }
-        public virtual DataTable LocalizarGeral(SqlCeCommand comando)
+        public virtual DataTable LocalizarGeral(SqlCommand comando)
         {
             var conn = Conexao.Conex();
 
@@ -158,7 +158,7 @@ namespace GVC
             try
             {
                 conn.Open();
-                SqlCeDataAdapter daCliente = new SqlCeDataAdapter();
+                SqlDataAdapter daCliente = new SqlDataAdapter();
                 daCliente.SelectCommand = comando;
                 DataTable dt = new DataTable();
                 daCliente.Fill(dt);
@@ -179,7 +179,7 @@ namespace GVC
         {
             var conn = Conexao.Conex();
             object codigo = 0;
-            SqlCeCommand cmd = new SqlCeCommand(query, conn);
+            SqlCommand cmd = new SqlCommand(query, conn);
             try
             {
                 conn.Open();
@@ -190,7 +190,7 @@ namespace GVC
                 codigo = cmd.ExecuteScalar();
 
             }
-            catch (SqlCeException erro)
+            catch (SqlException erro)
             {
                 throw new Exception(erro.Message);
             }
@@ -220,7 +220,7 @@ namespace GVC
             }
         }
 
-        public virtual void carregaGrid2Localizar(SqlCeCommand criterioSQL, DataGridView DatagridParametro)
+        public virtual void carregaGrid2Localizar(SqlCommand criterioSQL, DataGridView DatagridParametro)
         {
             var conn = Conexao.Conex();
             criterioSQL.Connection = conn;
@@ -228,7 +228,7 @@ namespace GVC
             {
                 conn.Open();
                 System.Data.DataTable tabela = new System.Data.DataTable();
-                SqlCeDataAdapter adapter = new SqlCeDataAdapter();
+                SqlDataAdapter adapter = new SqlDataAdapter();
                 adapter.SelectCommand = criterioSQL;
                 adapter.Fill(tabela);
 

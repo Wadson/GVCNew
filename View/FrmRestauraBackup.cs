@@ -5,7 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
-using System.Data.SqlServerCe;
+using System.Data.SqlClient;
 
 namespace GVC.View
 {
@@ -54,14 +54,14 @@ namespace GVC.View
         {
             string connectionString = $"Server={servidor};Database=master;Integrated Security=True;";
 
-            using (SqlCeConnection connection = new SqlCeConnection(connectionString))
+            using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 string restoreQuery = $@"
                 ALTER DATABASE {bancoDeDados} SET SINGLE_USER WITH ROLLBACK IMMEDIATE;
                 RESTORE DATABASE {bancoDeDados} FROM DISK = '{caminhoBackup}' WITH REPLACE;
                 ALTER DATABASE {bancoDeDados} SET MULTI_USER;";
 
-                SqlCeCommand command = new SqlCeCommand(restoreQuery, connection);
+                SqlCommand command = new SqlCommand(restoreQuery, connection);
 
                 try
                 {

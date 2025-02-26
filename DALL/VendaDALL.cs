@@ -1,13 +1,12 @@
 ﻿using GVC.MODEL;
 using System;
 using System.Collections.Generic;
-using System.Data.SqlServerCe;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Configuration;
 using System.Data;
-using System.Data.SqlServerCe;
 
 namespace GVC.DALL
 {
@@ -20,7 +19,7 @@ namespace GVC.DALL
             {
                 string query = @"INSERT INTO Venda (VendaID, DataVenda, ClienteID, ValorTotal, FormaPgto) 
                              VALUES (@VendaID, @DataVenda, @ClienteID, @ValorTotal, @FormaPgto)";
-                SqlCeCommand command = new SqlCeCommand(query, conn);
+                SqlCommand command = new SqlCommand(query, conn);
 
                 command.Parameters.AddWithValue("@VendaID", venda.VendaID);
                 command.Parameters.AddWithValue("@DataVenda", venda.DataVenda);
@@ -41,7 +40,7 @@ namespace GVC.DALL
                 string query = @"UPDATE Venda SET DataVenda = @DataVenda, ClienteID = @ClienteID, 
                              ValorTotal = @ValorTotal, FormaPgto = @FormaPgto 
                              WHERE VendaID = @VendaID";
-                SqlCeCommand command = new SqlCeCommand(query, connection);
+                SqlCommand command = new SqlCommand(query, connection);
                 command.Parameters.AddWithValue("@DataVenda", venda.DataVenda);
                 command.Parameters.AddWithValue("@ClienteID", venda.ClienteID);
                 command.Parameters.AddWithValue("@ValorTotal", venda.ValorTotal);
@@ -59,7 +58,7 @@ namespace GVC.DALL
             using (var connection = Conexao.Conex())
             {
                 string query = "DELETE FROM Venda WHERE VendaID = @VendaID";
-                SqlCeCommand command = new SqlCeCommand(query, connection);
+                SqlCommand command = new SqlCommand(query, connection);
                 command.Parameters.AddWithValue("@VendaID", vendaId);
 
                 connection.Open();
@@ -73,11 +72,11 @@ namespace GVC.DALL
             using (var connection = Conexao.Conex())
             {
                 string query = "SELECT * FROM Venda WHERE VendaID = @VendaID";
-                SqlCeCommand command = new SqlCeCommand(query, connection);
+                SqlCommand command = new SqlCommand(query, connection);
                 command.Parameters.AddWithValue("@VendaID", vendaId);
 
                 connection.Open();
-                using (SqlCeDataReader reader = command.ExecuteReader())
+                using (SqlDataReader reader = command.ExecuteReader())
                 {
                     if (reader.Read())
                     {
@@ -100,8 +99,8 @@ namespace GVC.DALL
         {
             using (var conn = Conexao.Conex())
             {
-                SqlCeCommand comando = new SqlCeCommand("SELECT * FROM Venda", conn);
-                SqlCeDataAdapter daUsuario = new SqlCeDataAdapter(comando);
+                SqlCommand comando = new SqlCommand("SELECT * FROM Venda", conn);
+                SqlDataAdapter daUsuario = new SqlDataAdapter(comando);
                 DataTable dtUsuario = new DataTable();
                 daUsuario.Fill(dtUsuario);
                 return dtUsuario;
@@ -121,7 +120,7 @@ namespace GVC.DALL
                         string query = @"INSERT INTO ItemVenda (ItemVendaID, VendaID, ProdutoID, Quantidade, PrecoUnitario, Subtotal) 
                          VALUES (@ItemVendaID, @VendaID, @ProdutoID, @Quantidade, @PrecoUnitario, @Subtotal)";
 
-                        using (SqlCeCommand cmd = new SqlCeCommand(query, connection, transaction))
+                        using (SqlCommand cmd = new SqlCommand(query, connection, transaction))
                         {
                             cmd.Parameters.AddWithValue("@ItemVendaID", itemVenda.ItemVendaID);
                             cmd.Parameters.AddWithValue("@VendaID", itemVenda.VendaID);
@@ -158,7 +157,7 @@ namespace GVC.DALL
                         string query = @"INSERT INTO Parcela (ParcelaID, VendaID, NumeroParcela, DataVencimento, ValorParcela, ValorRecebido, SaldoRestante, Pago) 
                                  VALUES (@ParcelaID, @VendaID, @NumeroParcela, @DataVencimento, @ValorParcela, @ValorRecebido, @SaldoRestante, @Pago)";
 
-                        using (SqlCeCommand cmd = new SqlCeCommand(query, connection, transaction))
+                        using (SqlCommand cmd = new SqlCommand(query, connection, transaction))
                         {
                             cmd.Parameters.AddWithValue("@ParcelaID", parcela.ParcelaID);
                             cmd.Parameters.AddWithValue("@VendaID", parcela.VendaID);
@@ -191,8 +190,8 @@ namespace GVC.DALL
         {
             using (var conn = Conexao.Conex())
             {
-                SqlCeCommand comando = new SqlCeCommand("SELECT * FROM Pagamento WHERE ClienteID=" + CodigoCliente.ToString(), conn);
-                SqlCeDataAdapter daUsuario = new SqlCeDataAdapter(comando);
+                SqlCommand comando = new SqlCommand("SELECT * FROM Pagamento WHERE ClienteID=" + CodigoCliente.ToString(), conn);
+                SqlDataAdapter daUsuario = new SqlDataAdapter(comando);
                 DataTable dtUsuario = new DataTable();
                 daUsuario.Fill(dtUsuario);
                 return dtUsuario;
@@ -202,8 +201,8 @@ namespace GVC.DALL
         {
             using (var conn = Conexao.Conex())
             {
-                SqlCeCommand comando = new SqlCeCommand("SELECT * FROM Venda WHERE ClienteID=" + CodigoCliente.ToString(), conn);
-                SqlCeDataAdapter daUsuario = new SqlCeDataAdapter(comando);
+                SqlCommand comando = new SqlCommand("SELECT * FROM Venda WHERE ClienteID=" + CodigoCliente.ToString(), conn);
+                SqlDataAdapter daUsuario = new SqlDataAdapter(comando);
                 DataTable dtUsuario = new DataTable();
                 daUsuario.Fill(dtUsuario);
                 return dtUsuario;

@@ -6,7 +6,7 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
-using System.Data.SqlServerCe;
+using System.Data.SqlClient;
 using iTextSharp.text.pdf;
 using iTextSharp.text;
 using System.IO;
@@ -124,10 +124,10 @@ namespace GVC.View
 
             using (var connection = Conexao.Conex())
             {
-                using (SqlCeCommand command = new SqlCeCommand(query, connection))
+                using (SqlCommand command = new SqlCommand(query, connection))
                 {
                     command.Parameters.AddWithValue("@Pago", pago);
-                    using (SqlCeDataAdapter adapter = new SqlCeDataAdapter(command))
+                    using (SqlDataAdapter adapter = new SqlDataAdapter(command))
                     {
                         DataTable dataTable = new DataTable();
                         adapter.Fill(dataTable);
@@ -163,11 +163,11 @@ namespace GVC.View
 
             using (var connection = Conexao.Conex())
             {
-                using (SqlCeCommand command = new SqlCeCommand(query, connection))
+                using (SqlCommand command = new SqlCommand(query, connection))
                 {
                     command.Parameters.AddWithValue("@NomeCliente", nomeCliente);
                     command.Parameters.AddWithValue("@Pago", pago);
-                    using (SqlCeDataAdapter adapter = new SqlCeDataAdapter(command))
+                    using (SqlDataAdapter adapter = new SqlDataAdapter(command))
                     {
                         DataTable dataTable = new DataTable();
                         adapter.Fill(dataTable);
@@ -201,12 +201,12 @@ namespace GVC.View
 
             using (var connection = Conexao.Conex())
             {
-                using (SqlCeCommand command = new SqlCeCommand(query, connection))
+                using (SqlCommand command = new SqlCommand(query, connection))
                 {
                     command.Parameters.AddWithValue("@DataInicial", dataInicial);
                     command.Parameters.AddWithValue("@DataFinal", dataFinal);
                     command.Parameters.AddWithValue("@Pago", pago);
-                    using (SqlCeDataAdapter adapter = new SqlCeDataAdapter(command))
+                    using (SqlDataAdapter adapter = new SqlDataAdapter(command))
                     {
                         DataTable dataTable = new DataTable();
                         adapter.Fill(dataTable);
@@ -241,10 +241,10 @@ namespace GVC.View
 
             using (var connection = Conexao.Conex())
             {
-                using (SqlCeCommand command = new SqlCeCommand(query, connection))
+                using (SqlCommand command = new SqlCommand(query, connection))
                 {
                     command.Parameters.AddWithValue("@DataVencimento", dataVencimento);
-                    using (SqlCeDataAdapter adapter = new SqlCeDataAdapter(command))
+                    using (SqlDataAdapter adapter = new SqlDataAdapter(command))
                     {
                         DataTable dataTable = new DataTable();
                         adapter.Fill(dataTable);
@@ -280,10 +280,10 @@ namespace GVC.View
 
             using (var connection = Conexao.Conex())
             {
-                using (SqlCeCommand command = new SqlCeCommand(query, connection))
+                using (SqlCommand command = new SqlCommand(query, connection))
                 {
                     command.Parameters.AddWithValue("@DataVencimento", dataVencimento);
-                    using (SqlCeDataAdapter adapter = new SqlCeDataAdapter(command))
+                    using (SqlDataAdapter adapter = new SqlDataAdapter(command))
                     {
                         DataTable dataTable = new DataTable();
                         adapter.Fill(dataTable);
@@ -571,10 +571,10 @@ namespace GVC.View
 
 
             using (var connection = Conexao.Conex())
-            using (SqlCeCommand command = new SqlCeCommand(query, connection))
+            using (SqlCommand command = new SqlCommand(query, connection))
             {
                 command.Parameters.AddWithValue("@VendaID", vendaID);
-                SqlCeDataAdapter adapter = new SqlCeDataAdapter(command);
+                SqlDataAdapter adapter = new SqlDataAdapter(command);
                 DataTable dataTable = new DataTable();
                 adapter.Fill(dataTable);
                 dgvItensVenda.DataSource = dataTable;

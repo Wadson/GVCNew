@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Data.SqlServerCe;
+using System.Data.SqlClient;
 
 namespace GVC.DALL
 {
@@ -19,7 +19,7 @@ namespace GVC.DALL
                 string sql = "INSERT INTO HistoricoPreco (ProdutoID, DataRegistro, PrecoCusto, Lucro, PrecoVenda) " +
                              "VALUES (@ProdutoID, @DataRegistro, @PrecoCusto, @Lucro, @PrecoVenda)";
 
-                SqlCeCommand cmd = new SqlCeCommand(sql, conn);
+                SqlCommand cmd = new SqlCommand(sql, conn);
                 cmd.Parameters.AddWithValue("@ProdutoID", historico.ProdutoID);
                 cmd.Parameters.AddWithValue("@DataRegistro", historico.DataRegistro);
                 cmd.Parameters.AddWithValue("@PrecoCusto", historico.PrecoCusto);
@@ -42,11 +42,11 @@ namespace GVC.DALL
                 string sql = "SELECT HistoricoID, ProdutoID, DataRegistro, PrecoCusto, Lucro, PrecoVenda " +
                              "FROM HistoricoPreco WHERE ProdutoID = @ProdutoID ORDER BY DataRegistro DESC";
 
-                SqlCeCommand cmd = new SqlCeCommand(sql, conn);
+                SqlCommand cmd = new SqlCommand(sql, conn);
                 cmd.Parameters.AddWithValue("@ProdutoID", produtoID);
 
                 conn.Open();
-                using (SqlCeDataReader dr = cmd.ExecuteReader())
+                using (SqlDataReader dr = cmd.ExecuteReader())
                 {
                     while (dr.Read())
                     {

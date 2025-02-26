@@ -1,7 +1,7 @@
 ﻿using GVC.MODEL;
 using System;
 using System.Collections.Generic;
-using System.Data.SqlServerCe;
+using System.Data.SqlClient;
 using System.Data;
 using System.Linq;
 using System.Text;
@@ -17,12 +17,12 @@ namespace GVC.DALL
             var conn = Conexao.Conex();
             try
             {
-                SqlCeCommand sql = new SqlCeCommand("SELECT Cliente.ClienteID, Cliente.NomeCliente, Cliente.Cpf, Cliente.Endereco, Cliente.Telefone, Cliente.Email, Cliente.CidadeID, Cidade.NomeCidade AS NomeCidade, Cidade.EstadoID, Estado.NomeEstado AS NomeEstado, Estado.Uf FROM Cliente INNER JOIN Cidade ON Cliente.CidadeID = Cidade.CidadeID INNER JOIN Estado ON Cidade.EstadoID = Estado.EstadoID", conn);
+                SqlCommand sql = new SqlCommand("SELECT Cliente.ClienteID, Cliente.NomeCliente, Cliente.Cpf, Cliente.Endereco, Cliente.Telefone, Cliente.Email, Cliente.CidadeID, Cidade.NomeCidade AS NomeCidade, Cidade.EstadoID, Estado.NomeEstado AS NomeEstado, Estado.Uf FROM Cliente INNER JOIN Cidade ON Cliente.CidadeID = Cidade.CidadeID INNER JOIN Estado ON Cidade.EstadoID = Estado.EstadoID", conn);
 
-                //                SqlCeCommand sql = new SqlCeCommand("SELECT Cliente.ClienteID, Cliente.NomeCliente, Cliente.Cpf, Cliente.Endereco, Cliente.Telefone, Cliente.Email, Cliente.CidadeID, Cidade.NomeCidade AS Expr1, Cidade.EstadoID, Estado.NomeEstado AS Expr2, Estado.Uf " +
+                //                SqlCommand sql = new SqlCommand("SELECT Cliente.ClienteID, Cliente.NomeCliente, Cliente.Cpf, Cliente.Endereco, Cliente.Telefone, Cliente.Email, Cliente.CidadeID, Cidade.NomeCidade AS Expr1, Cidade.EstadoID, Estado.NomeEstado AS Expr2, Estado.Uf " +
                 //"FROM Cliente INNER JOIN Cidade ON Cliente.CidadeID = Cidade.CidadeID INNER JOIN Estado ON Cidade.EstadoID = Estado.EstadoID", conn);
 
-                SqlCeDataAdapter daCliente = new SqlCeDataAdapter();
+                SqlDataAdapter daCliente = new SqlDataAdapter();
                 daCliente.SelectCommand = sql;
                 DataTable dtcliente = new DataTable();
                 daCliente.Fill(dtcliente);
@@ -51,7 +51,7 @@ namespace GVC.DALL
                       WHERE (@NomeCliente <> '' AND NomeCliente = @NomeCliente) 
                       OR (@Cpf <> '' AND Cpf = @Cpf)";
 
-                using (var command = new SqlCeCommand(query, connection))
+                using (var command = new SqlCommand(query, connection))
                 {
                     command.Parameters.Add("@NomeCliente", SqlDbType.NVarChar, 100).Value = nomeCliente ?? string.Empty;
                     command.Parameters.Add("@Cpf", SqlDbType.NVarChar, 14).Value = cpf ?? string.Empty;
@@ -76,7 +76,7 @@ namespace GVC.DALL
                               WHERE (@NomeCliente <> '' AND NomeCliente = @NomeCliente) 
                               OR (@Cpf <> '' AND Cpf = @Cpf)";
 
-                using (var verificarCommand = new SqlCeCommand(verificarQuery, connection))
+                using (var verificarCommand = new SqlCommand(verificarQuery, connection))
                 {
                     verificarCommand.Parameters.Add("@NomeCliente", SqlDbType.NVarChar, 100).Value = cliente.NomeCliente ?? string.Empty;
                     verificarCommand.Parameters.Add("@Cpf", SqlDbType.NVarChar, 14).Value = cliente.Cpf ?? string.Empty;
@@ -93,7 +93,7 @@ namespace GVC.DALL
                 var insertQuery = @"INSERT INTO Cliente (ClienteID, NomeCliente, Cpf, Endereco, Telefone, Email, CidadeID) 
                            VALUES (@ClienteID, @NomeCliente, @Cpf, @Endereco, @Telefone, @Email, @CidadeID)";
 
-                using (var insertCommand = new SqlCeCommand(insertQuery, connection))
+                using (var insertCommand = new SqlCommand(insertQuery, connection))
                 {
                     insertCommand.Parameters.Add("@ClienteID", SqlDbType.Int).Value = cliente.ClienteID;
                     insertCommand.Parameters.Add("@NomeCliente", SqlDbType.NVarChar, 100).Value = cliente.NomeCliente ?? string.Empty;
@@ -120,7 +120,7 @@ namespace GVC.DALL
         //    var conn = Conexao.Conex();
         //    try
         //    {
-        //        SqlCeCommand sql = new SqlCeCommand("INSERT INTO Cliente (ClienteID, NomeCliente, Cpf, Endereco, Telefone, Email, CidadeID) VALUES (@ClienteID, @NomeCliente, @Cpf, @Endereco, @Telefone, @Email, @CidadeID)", conn);
+        //        SqlCommand sql = new SqlCommand("INSERT INTO Cliente (ClienteID, NomeCliente, Cpf, Endereco, Telefone, Email, CidadeID) VALUES (@ClienteID, @NomeCliente, @Cpf, @Endereco, @Telefone, @Email, @CidadeID)", conn);
 
 
         //        sql.Parameters.AddWithValue("@ClienteID", cliente.ClienteID);
@@ -133,7 +133,7 @@ namespace GVC.DALL
         //        conn.Open();
         //        sql.ExecuteNonQuery();
         //    }
-        //    catch (SqlCeException ex)
+        //    catch (SqlException ex)
         //    {
         //        throw new ApplicationException(ex.ToString());
         //    }
@@ -147,7 +147,7 @@ namespace GVC.DALL
             var conn = Conexao.Conex();
             try
             {
-                SqlCeCommand sql = new SqlCeCommand("DELETE FROM Cliente WHERE ClienteID = @ClienteID ", conn);
+                SqlCommand sql = new SqlCommand("DELETE FROM Cliente WHERE ClienteID = @ClienteID ", conn);
                 sql.Parameters.AddWithValue("@ClienteID", cliente.ClienteID);
 
 
@@ -170,7 +170,7 @@ namespace GVC.DALL
             
             try
             {
-                SqlCeCommand Sql = new SqlCeCommand("UPDATE Cliente SET NomeCliente = @NomeCliente, Cpf = @Cpf, Endereco = @Endereco, Telefone = @Telefone, Email = @Email, CidadeID = @CidadeID WHERE ClienteID = @ClienteID", conn);
+                SqlCommand Sql = new SqlCommand("UPDATE Cliente SET NomeCliente = @NomeCliente, Cpf = @Cpf, Endereco = @Endereco, Telefone = @Telefone, Email = @Email, CidadeID = @CidadeID WHERE ClienteID = @ClienteID", conn);
 
                 Sql.Parameters.AddWithValue("@NomeCliente", cliente.NomeCliente);
                 Sql.Parameters.AddWithValue("@Cpf", cliente.Cpf);
@@ -203,11 +203,11 @@ namespace GVC.DALL
 
 
                 //string sqlconn = "SELECT TOP (30) * FROM Cliente WHERE NomeCliente LIKE @NomeCliente";
-                SqlCeCommand cmd = new SqlCeCommand(sqlconn, conn);
+                SqlCommand cmd = new SqlCommand(sqlconn, conn);
                 cmd.Parameters.AddWithValue("@NomeCliente", nome);
                 conn.Open();
                 cmd.ExecuteNonQuery();
-                SqlCeDataAdapter da = new SqlCeDataAdapter(cmd);
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
                 da.Fill(dt);
                 conn.Close();
                 conn.Dispose();
@@ -230,11 +230,11 @@ namespace GVC.DALL
 
 
                 //string sqlconn = "SELECT TOP (30) * FROM Cliente WHERE NomeCliente LIKE @NomeCliente";
-                SqlCeCommand cmd = new SqlCeCommand(sqlconn, conn);
+                SqlCommand cmd = new SqlCommand(sqlconn, conn);
                 cmd.Parameters.AddWithValue("@ClienteID", nome);
                 conn.Open();
                 cmd.ExecuteNonQuery();
-                SqlCeDataAdapter da = new SqlCeDataAdapter(cmd);
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
                 da.Fill(dt);
                 conn.Close();
                 conn.Dispose();
@@ -255,11 +255,11 @@ namespace GVC.DALL
                 string sqlconn = "SELECT TOP (30) Cliente.ClienteID, Cliente.NomeCliente, Cliente.Cpf, Cliente.Email, Cliente.Endereco, Cliente.Telefone, Cliente.CidadeID, Cidade.NomeCidade, Estado.NomeEstado FROM Cliente INNER JOIN Cidade ON Cliente.CidadeID = Cidade.CidadeID INNER JOIN Estado ON Cidade.EstadoID = Estado.EstadoID";
                 //WHERE Cidade.NomeCidade = @NomeCidade);
 
-                SqlCeCommand cmd = new SqlCeCommand(sqlconn, conn);
+                SqlCommand cmd = new SqlCommand(sqlconn, conn);
                 //cmd.Parameters.AddWithValue("@NomeCidade", nome);
                 conn.Open();
                 cmd.ExecuteNonQuery();
-                SqlCeDataAdapter da = new SqlCeDataAdapter(cmd);
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
                 da.Fill(dt);
                 conn.Close();
                 conn.Dispose();

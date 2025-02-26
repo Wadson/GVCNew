@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Data;
-using System.Data.SqlServerCe;
+using System.Data.SqlClient;
 using System.Configuration;
 using System.IO; // Adicione este namespace
 
@@ -12,22 +12,23 @@ namespace GVC
 
         private static string GetConnectionString()
         {
-            // Define o caminho do banco de dados SQL Compact (.sdf)
-            string dbFilePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "bdsiscontrol.sdf");
+            // String de conexão para SQL Server Express
+            string connString = @"Server=.\SQLEXPRESS;Database=bdsiscontrol;Trusted_Connection=True;TrustServerCertificate=True;";
 
-            // Monta a string de conexão para SQL Compact 4.0
-            string connString = $@"Data Source={dbFilePath};Persist Security Info=False;";
-
-            // Verifica se a string de conexão no App.config precisa ser atualizada
+            // Carrega a configuração do App.config
             var config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
             var settings = config.ConnectionStrings.ConnectionStrings["ConexaoDB"];
 
             if (settings == null)
             {
-                config.ConnectionStrings.ConnectionStrings.Add(new ConnectionStringSettings("ConexaoDB", connString, "System.Data.SqlServerCe.4.0"));
+                // Adiciona a string de conexão correta para SQL Server Express
+                config.ConnectionStrings.ConnectionStrings.Add(
+                    new ConnectionStringSettings("ConexaoDB", connString, "System.Data.SqlClient")
+                );
             }
             else if (settings.ConnectionString != connString)
             {
+                // Atualiza a string de conexão caso esteja errada
                 settings.ConnectionString = connString;
             }
 
@@ -39,27 +40,27 @@ namespace GVC
 
 
 
-        public static SqlCeConnection Conex()
+        public static SqlConnection Conex()
         {
             try
             {
                 string conn = GetConnectionString(); // Obtém a string de conexão
-                SqlCeConnection myConn = new SqlCeConnection(conn);
+                SqlConnection myConn = new SqlConnection(conn);
                 return myConn;
             }
-            catch (SqlCeException ex)
+            catch (SqlException ex)
             {
                 throw new Exception("Erro ao conectar ao banco de dados: " + ex.Message);
             }
         }
 
-        public static SqlCeDataReader Sql_DataReader(string queryString)
+        public static SqlDataReader Sql_DataReader(string queryString)
         {
             var conexao = Conex();
             conexao.Open();
 
-            SqlCeCommand comando = new SqlCeCommand(queryString, conexao);
-            SqlCeDataReader reader = comando.ExecuteReader();
+            SqlCommand comando = new SqlCommand(queryString, conexao);
+            SqlDataReader reader = comando.ExecuteReader();
 
             return reader;
         }
@@ -72,7 +73,7 @@ namespace GVC
             try
             {
                 conexao.Open();
-                SqlCeDataAdapter adapter = new SqlCeDataAdapter(query_String, conexao);
+                SqlDataAdapter adapter = new SqlDataAdapter(query_String, conexao);
                 adapter.Fill(DataTableC);
             }
             catch (Exception ex)
@@ -94,7 +95,7 @@ namespace GVC
                 using (var conexao = Conex())
                 {
                     conexao.Open();
-                    using (SqlCeCommand comando = new SqlCeCommand(query_String, conexao))
+                    using (SqlCommand comando = new SqlCommand(query_String, conexao))
                     {
                         comando.Parameters.AddWithValue(ParametroBase, parametroReal);
                         comando.ExecuteNonQuery();

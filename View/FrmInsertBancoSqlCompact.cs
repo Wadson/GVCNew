@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
-using System.Data.SqlServerCe;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -63,7 +62,7 @@ namespace GVC.View
                             try
                             {
                                 // Criar e executar o comando SQL
-                                using (SqlCeCommand cmd = new SqlCeCommand(query, connection, transaction))
+                                using (SqlCommand cmd = new SqlCommand(query, connection, transaction))
                                 {
                                     cmd.ExecuteNonQuery();
                                 }
@@ -141,7 +140,7 @@ namespace GVC.View
 
                 foreach (var query in queries)
                 {
-                    using (SqlCeCommand command = new SqlCeCommand(query, connection))
+                    using (SqlCommand command = new SqlCommand(query, connection))
                     {
                         command.ExecuteNonQuery();
                     }
@@ -158,7 +157,7 @@ namespace GVC.View
             using (var connection = Conexao.Conex())
             {
                 connection.Open();
-                using (var cmd = new SqlCeCommand("SELECT COUNT(*) FROM SuaTabela", connection))
+                using (var cmd = new SqlCommand("SELECT COUNT(*) FROM SuaTabela", connection))
                 {
                     int count = (int)cmd.ExecuteScalar();
                     MessageBox.Show("Total de registros na tabela: " + count);

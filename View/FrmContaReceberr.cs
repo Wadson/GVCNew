@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
-using System.Data.SqlServerCe;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -357,12 +357,12 @@ namespace GVC.View
                 string query = @"SELECT * Parcela;
 ";
 
-                SqlCeCommand command = new SqlCeCommand(query, connection);
+                SqlCommand command = new SqlCommand(query, connection);
                 command.Parameters.AddWithValue("@Cliente", cliente);
                 command.Parameters.AddWithValue("@DataVencimentoInicio", dataVencimentoInicio.HasValue ? (object)dataVencimentoInicio.Value : DBNull.Value);
                 command.Parameters.AddWithValue("@DataVencimentoFim", dataVencimentoFim.HasValue ? (object)dataVencimentoFim.Value : DBNull.Value);
 
-                SqlCeDataAdapter dataAdapter = new SqlCeDataAdapter(command);
+                SqlDataAdapter dataAdapter = new SqlDataAdapter(command);
                 DataTable dataTable = new DataTable();
                 dataAdapter.Fill(dataTable);
                 dgvContasReceber.DataSource = dataTable;
@@ -371,12 +371,12 @@ namespace GVC.View
         public void BaixarParcelaEContaReceber(int parcelaID, decimal valorRecebido, DateTime dataRecebimento, int formaPgtoID)
         {
             string connectionString = "sua_connection_string";
-            using (SqlCeConnection conn = new SqlCeConnection(connectionString))
+            using (SqlConnection conn = new SqlConnection(connectionString))
             {
                 conn.Open();
 
                 // Iniciar uma transação para garantir a integridade das atualizações
-                using (SqlCeTransaction transaction = conn.BeginTransaction())
+                using (SqlTransaction transaction = conn.BeginTransaction())
                 {
                     try
                     {
@@ -386,7 +386,7 @@ namespace GVC.View
                                              Pago = CASE WHEN ValorRecebido >= ValorParcela THEN 1 ELSE 0 END
                                          WHERE ParcelaID = @ParcelaID";
 
-                        using (SqlCeCommand cmdParcelas = new SqlCeCommand(queryParcelas, conn, transaction))
+                        using (SqlCommand cmdParcelas = new SqlCommand(queryParcelas, conn, transaction))
                         {
                             cmdParcelas.Parameters.AddWithValue("@ParcelaID", parcelaID);
                             cmdParcelas.Parameters.AddWithValue("@ValorRecebido", valorRecebido);
@@ -402,7 +402,7 @@ namespace GVC.View
                                             FormaPagamento = @FormaPgtoID
                                         WHERE ParcelaID = @ParcelaID;";
 
-                        using (SqlCeCommand cmdContaReceber = new SqlCeCommand(queryContaReceber, conn, transaction))
+                        using (SqlCommand cmdContaReceber = new SqlCommand(queryContaReceber, conn, transaction))
                         {
                             cmdContaReceber.Parameters.AddWithValue("@ParcelaID", parcelaID);
                             cmdContaReceber.Parameters.AddWithValue("@DataRecebimento", dataRecebimento);
@@ -748,7 +748,7 @@ namespace GVC.View
                     try
                     {
                         string updateParcela = "UPDATE Parcela SET ValorRecebido += @ValorPago, SaldoRestante -= @ValorPago, Pago = CASE WHEN SaldoRestante = 0 THEN 1 ELSE 0 END WHERE ParcelaID = @ParcelaID";
-                        using (SqlCeCommand cmd = new SqlCeCommand(updateParcela, connection, transaction))
+                        using (SqlCommand cmd = new SqlCommand(updateParcela, connection, transaction))
                         {
                             cmd.Parameters.Add("@ParcelaID", SqlDbType.Int).Value = parcelaID;
                             cmd.Parameters.Add("@ValorPago", SqlDbType.Decimal).Value = valorPago;

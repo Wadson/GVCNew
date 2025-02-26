@@ -9,6 +9,7 @@ using System.Windows.Forms;
 using static GVC.View.FrmContaReceberr;
 using ComponentFactory.Krypton.Toolkit;
 using System;
+using GVC.Relatorios;
 
 namespace GVC.View
 {
@@ -92,7 +93,7 @@ namespace GVC.View
 
         private void btnRelatorios_Click(object sender, EventArgs e)
         {
-            FrmRelatorios frm = new FrmRelatorios();
+            FrmMenuRelatorio frm = new FrmMenuRelatorio();
             AbrirFormEnPanel(frm);
         }
         private void OnTimedEvent(Object source, ElapsedEventArgs e)
