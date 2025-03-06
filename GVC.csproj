@@ -284,6 +284,7 @@
     <Compile Include="BLL\HistoricoPrecoBLL.cs" />
     <Compile Include="BLL\ItensVendaBLL.cs" />
     <Compile Include="BLL\PagamentoParcialBll.cs" />
+    <Compile Include="BLL\ParcelaBLL.cs" />
     <Compile Include="BLL\ProdutoBLL.cs" />
     <Compile Include="BLL\UsuarioBLL.cs" />
     <Compile Include="BLL\VendaBLL.cs" />
@@ -407,12 +408,6 @@
     <Compile Include="View\FrmExclusaoOrfaos.Designer.cs">
       <DependentUpon>FrmExclusaoOrfaos.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\FrmExclusaoOrfao.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="View\FrmExclusaoOrfao.Designer.cs">
-      <DependentUpon>FrmExclusaoOrfao.cs</DependentUpon>
-    </Compile>
     <Compile Include="View\FrmFerramentas.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -472,12 +467,6 @@
     </Compile>
     <Compile Include="View\FrmTelaPrincipal.Designer.cs">
       <DependentUpon>FrmTelaPrincipal.cs</DependentUpon>
-    </Compile>
-    <Compile Include="View\FrmPrincipal.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="View\FrmPrincipal.Designer.cs">
-      <DependentUpon>FrmPrincipal.cs</DependentUpon>
     </Compile>
     <Compile Include="View\FrmRelatorios.cs">
       <SubType>Form</SubType>
@@ -664,9 +653,6 @@
     <EmbeddedResource Include="View\FrmExclusaoOrfaos.resx">
       <DependentUpon>FrmExclusaoOrfaos.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\FrmExclusaoOrfao.resx">
-      <DependentUpon>FrmExclusaoOrfao.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="View\FrmFerramentas.resx">
       <DependentUpon>FrmFerramentas.cs</DependentUpon>
     </EmbeddedResource>
@@ -696,9 +682,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\FrmTelaPrincipal.resx">
       <DependentUpon>FrmTelaPrincipal.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="View\FrmPrincipal.resx">
-      <DependentUpon>FrmPrincipal.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\FrmRelatorios.resx">
       <DependentUpon>FrmRelatorios.cs</DependentUpon>
@@ -867,6 +850,9 @@
     <None Include="Resources\Report.png" />
     <None Include="Resources\Produtos24.png" />
     <None Include="Resources\diagrama.png" />
+    <None Include="Resources\Logo - Maria Brandão-Essencia Radiante.png" />
+    <None Include="Resources\pasta.png" />
+    <None Include="Resources\copia-de-seguranca.png" />
     <Content Include="SqlServerTypes\readme.htm" />
     <Content Include="SqlServerTypes\x64\msvcr120.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

@@ -13841,14 +13841,28 @@ GROUP BY Cliente.NomeCliente";
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = @"SELECT        Cliente.NomeCliente, SUM(Parcela.ValorParcela) AS ValorTotalParcelas, SUM(Parcela.SaldoRestante) AS SaldoRestanteTotal, SUM(PagamentosParciais.ValorPago) AS ValorTotalPago, MAX(PagamentosParciais.DataPagamento) 
-                         AS UltimaDataPagamento
-FROM            PagamentosParciais INNER JOIN
-                         Parcela ON PagamentosParciais.ParcelaID = Parcela.ParcelaID INNER JOIN
-                         Venda ON Parcela.VendaID = Venda.VendaID INNER JOIN
-                         Cliente ON Venda.ClienteID = Cliente.ClienteID
-WHERE        (Cliente.NomeCliente LIKE '%' + @NomeCliente + '%') AND (Parcela.Pago = 0)
-GROUP BY Cliente.NomeCliente";
+            this._commandCollection[0].CommandText = "SELECT        NomeCliente,\r\n                             (SELECT        SUM(p.Val" +
+                "orParcela) AS Expr1\r\n                               FROM            Parcela AS p" +
+                " INNER JOIN\r\n                                                         Venda AS v" +
+                " ON p.VendaID = v.VendaID\r\n                               WHERE        (v.Client" +
+                "eID = c.ClienteID) AND (p.Pago = 0)) AS ValorTotalParcelas,\r\n                   " +
+                "          (SELECT        SUM(p.SaldoRestante) AS Expr1\r\n                        " +
+                "       FROM            Parcela AS p INNER JOIN\r\n                                " +
+                "                         Venda AS v ON p.VendaID = v.VendaID\r\n                  " +
+                "             WHERE        (v.ClienteID = c.ClienteID) AND (p.Pago = 0)) AS Saldo" +
+                "RestanteTotal,\r\n                             (SELECT        SUM(pp.ValorPago) AS" +
+                " Expr1\r\n                               FROM            PagamentosParciais AS pp " +
+                "INNER JOIN\r\n                                                         Parcela AS " +
+                "p ON pp.ParcelaID = p.ParcelaID INNER JOIN\r\n                                    " +
+                "                     Venda AS v ON p.VendaID = v.VendaID\r\n                      " +
+                "         WHERE        (v.ClienteID = c.ClienteID)) AS ValorTotalPago,\r\n         " +
+                "                    (SELECT        MAX(pp.DataPagamento) AS Expr1\r\n             " +
+                "                  FROM            PagamentosParciais AS pp INNER JOIN\r\n         " +
+                "                                                Parcela AS p ON pp.ParcelaID = p" +
+                ".ParcelaID INNER JOIN\r\n                                                         " +
+                "Venda AS v ON p.VendaID = v.VendaID\r\n                               WHERE       " +
+                " (v.ClienteID = c.ClienteID)) AS UltimaDataPagamento\r\nFROM            Cliente AS" +
+                " c\r\nWHERE        (NomeCliente LIKE \'%\' + @NomeCliente + \'%\')";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@NomeCliente", global::System.Data.SqlDbType.NVarChar, 100, global::System.Data.ParameterDirection.Input, 0, 0, "NomeCliente", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
